@@ -129,17 +129,244 @@ per-sample paired-clonotype diversity ranges 69.7–999.8, but the paired-cell
 counts behind those values range 445–1,301. Diversity is depth-dependent;
 comparing the raw values measures library size.
 
-## 7. Open items
+## 7. Annotation
 
-1. **Resolution is deliberately unset.** `MNN_RES_FINAL` and `CCA_RES_FINAL`
-   remain `NA` in `config.R`. Choose from `CHER_clustree_MNN.png` /
-   `_CCA.png` at annotation, not from this document.
-2. **CCA or FastMNN?** CCA mixes marginally better (11.8 vs 14.3 pp median
-   skew); FastMNN keeps all four donors in every cluster. Not yet decided.
-3. **Cell cycle phase needs a sanity check.** ATI samples score ~40% S phase
-   against ~20% in the controls. `CellCycleScoring` assigns phase by *relative*
-   score, so in a mostly-resting PBMC population this can over-call S. Check
-   against MKI67/TOP2A before reading it as proliferation.
-4. **TCR is aligned but not yet attached** to the Seurat object.
-5. **Azimuth is not installed**, so there are no reference labels yet.
-   Annotation will be marker-based regardless.
+FastMNN was taken forward over CCA: every one of its clusters contains all four
+donors, which matters more here than the 2.5 pp mixing advantage CCA showed.
+
+**Resolution 0.6 (16 clusters) was chosen on nameability — a judgement, not a
+measurement.** The marker-redundancy criterion carried over from miR29a did not
+discriminate: it found zero redundant marker pairs anywhere from 0.2 to 1.0 and
+would therefore have selected 1.0. Disclosed rather than presented as derived.
+
+14 labels survive (`ANNO_ORDER` in `config.R`). Cluster 13 was dropped as
+debris — PTPRC detected in 43% of its cells against 97% elsewhere, median 808
+genes against 2,322, ~48% of UMIs in histone genes, no lineage marker, and
+present in all 8 samples. Final: **19,826 cells**.
+
+**Cluster 9 was resolved by TCR carriage, which is independent of the GEX used
+to cluster it.** It sat between T and NK. Measured receptor carriage split it
+cleanly: subclusters 9_0 (60.2%) and 9_5 (59.3%) carry TCRs at T-cell rates and
+became CD8 effector/TEMRA; 9_1–9_4 (0–1.5%) match the NK rate of 0.6% and
+became NK cell.
+
+**No Treg cluster is recoverable.** FOXP3 is detected in 227 of 20,050 cells
+(1.13%); 75 co-express IL2RA and 58 of those are IL7R-negative. Subclustering
+C7/C8 and a dedicated CD4 re-embedding both failed — the best CD4 subcluster
+reaches FOXP3 at 12.8% with IL7R still at 84.8%. Carried as a cell-level flag
+(`Treg_like`, 39 cells strict), never as a cluster.
+
+**Audit (`10_annotation_audit.R`) forced two renames.** Part 1 falsification:
+14/14 pass. Part 2 discrimination: 12/14 unique, the two non-unique being the
+expected programme-qualified pairs. Part 3: only CD8 effector T (cycling)
+exceeds 30% programme markers (36%, all cycling), which is the intended
+meaning of that label.
+- *Memory B → **B cell (unresolved)***: failed the IGHD ≤25% ceiling at 41.5%,
+  and CD27 reached only 3.2% — *below* naive B's 5.6%. The data do not support
+  a memory call.
+- *CD4 memory → **CD4 effector memory T***: CCR4 41.9%, KLRB1 57.5%, S100A4
+  69.6%. Thresholds for the CD4 CM/EM split were tightened post-hoc after the
+  Part 2 failure; this is disclosed in the script.
+
+## 8. Dissociation stress separates the controls from the ATI samples
+
+A stress / immediate-early programme (FOS, FOSB, JUN, JUNB, HSPA1A/B, DUSP1,
+PER1, GADD45G) accounts for **1.51% and 1.45%** of UMIs in BC_control_A/B
+against **0.24–0.41%** in the ATI samples — roughly 5×. The duplicate agrees
+with itself, so this is a property of how those two libraries were handled, not
+noise. Within the ATI samples it is nearly flat (B4 0.33%, Interrupt 0.28%).
+
+This is the third independent reason control-versus-ATI is not a comparison
+arm, alongside well and donor.
+
+## 9. Cell cycle: the S-phase signal is largely artefactual
+
+The ~40% vs ~20% S-phase difference flagged in section 6 does not survive
+checking against proliferation transcripts.
+
+**Median proliferation-gene count is 0 in every phase, including S and G2M.**
+Only 11.5% of S-labelled cells detect ≥2 proliferation transcripts, against
+2.6% of G1 cells. `CellCycleScoring` assigns phase by *relative* score, so in a
+mostly-resting PBMC population it over-calls S.
+
+Measured on transcripts rather than phase labels, real proliferation is ATI
+median **8.81%** against control **2.70%** — not 43% vs 21%. It is also not
+consistent per participant: 149496 +13.9 pp, 150815 +2.9 pp, 154026 **−3.1 pp**.
+
+Internal controls behave: plasma cells are 43.4% proliferating, monocytes near
+zero.
+
+## 10. TCR repertoire
+
+7,862 cells (39.7%) carry a receptor across 6,706 clonotypes. **Coverage
+validates the annotation independently of the GEX it was built from**: T
+clusters 61.6–92.2%, NK 0.7%, B / monocyte / pDC 0–1.2%.
+
+**Clonal expansion rises B4 → Interrupt in all three participants**
+(`CHER_clonal_expansion_paired.csv`; clone size counted *within sample*):
+
+| Participant | B4 | Interrupt | Change |
+|---|---|---|---|
+| 149496 | 20.3% | 41.0% | **+20.7 pp** |
+| 154026 | 10.0% | 28.8% | **+18.8 pp** |
+| 150815 | 2.9% | 6.9% | +4.0 pp |
+| *BC_A vs BC_B (floor)* | *15.6%* | *14.0%* | *1.6 pp* |
+
+The expansion is confined to CD8: effector/TEMRA 55.7% → 62.4% and effector T
+(cycling) 33.3% → 62.5%, while every CD4 subset stays at 0–1.8%.
+
+**Diversity falls in the same three participants**, rarefied to 593 TCR+ cells
+over 100 draws (raw diversity is depth-dependent — section 6):
+
+| Participant | Δ richness | Δ Shannon | Δ inverse Simpson |
+|---|---|---|---|
+| 149496 | −122.6 | −0.68 | −142.7 |
+| 154026 | −66.9 | −0.23 | −167.3 |
+| 150815 | −9.8 | −0.03 | −27.0 |
+| *floor (BC_A vs BC_B)* | *6.1* | *0.02* | *22.2* |
+
+149496 and 154026 clear the floor decisively on every metric. **150815 clears it
+only marginally** (Shannon 0.03 vs 0.02; inverse Simpson 27.0 vs 22.2) — the
+direction agrees but that participant carries little weight.
+
+## 11. CoNGA
+
+Pipeline: `14_conga_export.R` → `14_conga_run.sh` → `14_conga_interpret.py`.
+4,769 paired-αβ clones; 303 hit rows over 209 unique clones.
+
+**The run is pooled across all 8 libraries.** A graph-vs-graph hit is therefore
+a dataset-level statement — a clone whose transcriptional neighbours and whose
+receptor neighbours overlap more than chance — and is **not** a per-timepoint or
+per-participant call. Library composition is reported only as a descriptive
+diagnostic and was deliberately not split by timepoint.
+
+Clone-level QC was set to this project's thresholds, not CoNGA's defaults,
+which would have imposed a second undocumented 3,500-gene ceiling selecting
+against exactly the activated CD8 cells this analysis concerns.
+
+**The dominant hit signal is MAIT, which is a positive control.** TRAV1-2 is in
+29.2% of hit clones against 3.4% of background (8.6×); the full MAIT receptor
+configuration is 17.2% against 1.3% (13×); 31 of 209 clones score
+`mait_fraction` > 0.5. An invariant receptor paired with a distinct
+transcriptional programme is precisely what graph-vs-graph is built to detect.
+
+**Two caveats on the hit set.** 51.4% of hit cells come from `149496_B4` alone
+(enrichment 2.85× over its share of clone-assigned cells), so the hits are not
+evenly sourced. And the hit set is dominated by germline-segment structure
+rather than convergent CDR3s.
+
+### 11a. CoNGA surfaced a MAIT population the annotation had absorbed
+
+Followed up in `16_mait_check.R`, testing the **receptor** (VDJ library)
+against the **programme** (GEX library) — independent evidence.
+
+81 cells carry a MAIT-configuration receptor. Receptor and programme agree in
+the CD4 memory compartments and disagree in the CD8 ones:
+
+| Label carrying the receptor | n | SLC4A10 (receptor+ vs −) | Verdict |
+|---|---|---|---|
+| CD4 effector memory T | 39 | 53.8% vs 7.2% (×7.5) | MAIT |
+| CD4 central memory T | 10 | 70.0% vs 3.3% (×21.2) | MAIT |
+| CD8 effector/TEMRA | 22 | 0.0% vs 0.5% | TRAV1-2+, not MAIT |
+| CD8 naive/CM T | 8 | 0.0% vs 0.1% | TRAV1-2+, not MAIT |
+| CD4 naive T | 2 | — (below n=5) | not assessed |
+
+So **~49 genuine MAIT cells sit inside the CD4 memory labels**, carrying KLRB1
+(97.4% / 80.0%), NCR3, ZBTB16, CXCR6 and DPP4 well above their label-mates. At
+0.25% of the dataset they will not form a cluster at any resolution. The
+remaining 30 TRAV1-2+ CD8 cells are conventional T cells using that V segment,
+not MAIT — the α-chain alone does not make the call.
+
+Per library they run 0.12–0.56% of cells with no consistent timepoint pattern
+(149496 0.38→0.54, 150815 0.26→0.12, 154026 0.56→0.52). The duplicate agrees
+with itself (0.45% vs 0.48%).
+
+**Recommendation: carry MAIT as a cell-level flag, exactly as with
+`Treg_like`.** Not yet added to `ANNO_ORDER` — that is a change to an
+already-approved annotation and is left for a decision.
+
+## 12. Composition shift, B4 → Interrupt
+
+`17_composition_shift.R`. No p-values, deliberately: three pairs cannot support
+a per-cell-type test, and shares are compositionally dependent (one subset
+expanding forces the others down). What is reported is direction in each
+participant, size, and whether it clears the BC duplicate floor.
+
+**Two shifts are consistent in all three participants and clear the floor:**
+
+| Cell type | 149496 | 150815 | 154026 | floor | min cells moved |
+|---|---|---|---|---|---|
+| CD8 effector/TEMRA | +3.20 | +4.25 | +13.46 | 0.68 | 114 |
+| CD4 central memory T | −1.52 | −5.66 | −2.48 | 1.13 | 51 |
+
+A floor test alone also passed Plasma cell and CD8 effector T (cycling), **on
+changes of 1 and 8 cells** in the weakest participant. A minimum 10-cell guard
+was added and both are now reported as floor-only rather than consistent.
+
+**The Plasma cell row is one participant, not a trend.** 149496 goes from 0 to
+323 plasma cells (21.7% of that library) between B4 and Interrupt, while 150815
+moves by 3 cells and 154026 by 1. Striking, and worth pursuing in that
+participant, but it is a single observation.
+
+Nothing else is consistent: NK cell moves +2.76/+3.03/−11.17, CD4 naive T
+−20.42/+0.50/+0.46 (the mirror of 149496's plasma-cell burst).
+
+## 13. Differential expression is null
+
+`15_dge_pseudobulk.R`. Counts summed per participant × timepoint × cell type;
+edgeR QL F-test with `~ Participant + Timepoint`, so the between-participant
+offset is removed and the timepoint effect is tested within pair. Pseudobulk
+rather than per-cell because the unit of replication is the participant —
+a per-cell test would return p-values driven by cell count.
+
+**4 significant gene × cell-type calls** at FDR < 0.05 and |logFC| > 0.5 across
+the 10 testable cell types:
+
+| Cell type | Gene | logFC | FDR | Direction |
+|---|---|---|---|---|
+| CD4 central memory T | HSP90AA1 | −1.17 | 0.033 | up in B4 |
+| CD8 effector/TEMRA | S100B | −2.40 | 0.049 | up in B4 |
+| CD8 effector/TEMRA | FOS | −2.20 | 0.049 | up in B4 |
+| CD8 effector/TEMRA | SMIM43 | +5.02 | 0.049 | up in Interrupt |
+
+**Three of the four are the handling confound from section 8.** HSP90AA1 and
+FOS are core members of the stress / immediate-early programme, and S100B
+travels with it; all three are up in B4, matching the small residual stress
+difference within the ATI samples (0.33% vs 0.28%). SMIM43 sits at logCPM 2.8,
+where a handful of counts moves a 5-log-fold call.
+
+Four cell types were not testable at all — 17 of 81 pseudobulk libraries fall
+below the 20-cell floor (Plasma cell and Classical monocyte have essentially no
+cells in most libraries).
+
+**Read this as a negative result with low power, not as evidence of no change.**
+Three pairs is near the floor for pseudobulk testing. The repertoire and
+composition results above are where this dataset carries signal.
+
+## 14. What the dataset supports
+
+1. **CD8 effector/TEMRA expand during interruption**, in share of the library
+   (section 12) and in clonal structure (section 10), consistently in all three
+   participants and above the technical floor. These are the same cells by two
+   independent measures — GEX composition and VDJ clonality.
+2. **Repertoire diversity contracts** in the same direction in all three,
+   decisively in two.
+3. **CD4 central memory contracts** in all three.
+4. **Transcriptional differences are not detectable** at n = 3 beyond a stress
+   signature attributable to handling.
+5. **Control-versus-ATI remains uninterpretable** — well, donor and
+   dissociation stress, all three confounded.
+
+## 15. Open items
+
+1. **MAIT labelling decision** — section 11a. Flag, sub-label, or leave.
+2. **149496's plasma-cell burst** (0 → 323 cells) is unexplained and
+   participant-specific. Worth a targeted look at that participant's B-cell
+   compartment and any clinical correlate.
+3. **Cluster 14** (section 5) remains donor-versus-batch unresolvable.
+4. **HIV transcript alignment** was deferred — a stock GRCh38 reference was
+   used, so viral reads are not counted. If rebound dynamics matter, a custom
+   reference with the HIV genome would be needed.
+5. **Azimuth is not installed**; annotation is marker-based throughout.
+6. **git identity is unset** in this repo — `user.name` / `user.email` and a
+   remote must be configured before the first commit.

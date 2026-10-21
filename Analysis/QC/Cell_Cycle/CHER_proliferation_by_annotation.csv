@@ -1,0 +1,15 @@
+"Annotation","n_cells","pct_S","pct_prolif"
+"CD4 naive T",2992,48.66,3.68
+"CD4 central memory T",963,48.6,2.91
+"CD4 effector memory T",1160,45.86,12.76
+"CD8 naive/CM T",1486,47.04,4.58
+"CD8 effector/TEMRA",2751,41.4,11.81
+"CD8 effector T (cycling)",136,66.91,100
+"NK cell",1909,34.89,7.49
+"Naive B cell",3312,49.18,5.83
+"B cell (unresolved)",436,36.7,1.38
+"Plasma cell",334,19.46,43.41
+"Classical monocyte",2216,3.29,0.72
+"Classical monocyte (inflammatory)",1294,0.62,2.01
+"Non-classical monocyte",732,11.34,1.64
+"pDC",105,43.81,17.14

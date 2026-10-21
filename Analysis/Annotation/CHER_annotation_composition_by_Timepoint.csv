@@ -1,0 +1,43 @@
+"Annotation","Timepoint","n_cells","pct_of_sample"
+"CD4 naive T","B4",1618,22.64
+"CD4 central memory T","B4",363,5.08
+"CD4 effector memory T","B4",495,6.93
+"CD8 naive/CM T","B4",645,9.02
+"CD8 effector/TEMRA","B4",938,13.12
+"CD8 effector T (cycling)","B4",46,0.64
+"NK cell","B4",731,10.23
+"Naive B cell","B4",1562,21.86
+"B cell (unresolved)","B4",95,1.33
+"Plasma cell","B4",1,0.01
+"Classical monocyte","B4",5,0.07
+"Classical monocyte (inflammatory)","B4",401,5.61
+"Non-classical monocyte","B4",209,2.92
+"pDC","B4",38,0.53
+"CD4 naive T","Control",295,4.75
+"CD4 central memory T","Control",493,7.94
+"CD4 effector memory T","Control",196,3.16
+"CD8 naive/CM T","Control",142,2.29
+"CD8 effector/TEMRA","Control",555,8.94
+"CD8 effector T (cycling)","Control",6,0.1
+"NK cell","Control",636,10.25
+"Naive B cell","Control",483,7.78
+"B cell (unresolved)","Control",241,3.88
+"Plasma cell","Control",5,0.08
+"Classical monocyte","Control",2202,35.48
+"Classical monocyte (inflammatory)","Control",486,7.83
+"Non-classical monocyte","Control",438,7.06
+"pDC","Control",28,0.45
+"CD4 naive T","Interrupt",1079,16.67
+"CD4 central memory T","Interrupt",107,1.65
+"CD4 effector memory T","Interrupt",469,7.25
+"CD8 naive/CM T","Interrupt",699,10.8
+"CD8 effector/TEMRA","Interrupt",1258,19.43
+"CD8 effector T (cycling)","Interrupt",84,1.3
+"NK cell","Interrupt",542,8.37
+"Naive B cell","Interrupt",1267,19.57
+"B cell (unresolved)","Interrupt",100,1.54
+"Plasma cell","Interrupt",328,5.07
+"Classical monocyte","Interrupt",9,0.14
+"Classical monocyte (inflammatory)","Interrupt",407,6.29
+"Non-classical monocyte","Interrupt",85,1.31
+"pDC","Interrupt",39,0.6

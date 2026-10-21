@@ -1,0 +1,37 @@
+"Annotation","gene","n_receptor_pos","n_receptor_neg","pct_pos","pct_neg","fold"
+"CD4 central memory T","SLC4A10",10,953,70,3.3,21.2
+"CD4 central memory T","KLRB1",10,953,80,13.4,6
+"CD4 central memory T","IL18R1",10,953,50,3.4,14.7
+"CD4 central memory T","CCR6",10,953,50,9.2,5.4
+"CD4 central memory T","ZBTB16",10,953,30,3.3,9.1
+"CD4 central memory T","NCR3",10,953,50,5.2,9.6
+"CD4 central memory T","DPP4",10,953,40,12.9,3.1
+"CD4 central memory T","RORC",10,953,10,0.9,11.1
+"CD4 central memory T","CXCR6",10,953,30,1.8,16.7
+"CD4 effector memory T","SLC4A10",39,1121,53.8,7.2,7.5
+"CD4 effector memory T","KLRB1",39,1121,97.4,56.1,1.7
+"CD4 effector memory T","IL18R1",39,1121,30.8,15.2,2
+"CD4 effector memory T","CCR6",39,1121,53.8,28.5,1.9
+"CD4 effector memory T","ZBTB16",39,1121,46.2,8.6,5.4
+"CD4 effector memory T","NCR3",39,1121,56.4,11.8,4.8
+"CD4 effector memory T","DPP4",39,1121,46.2,12.8,3.6
+"CD4 effector memory T","RORC",39,1121,17.9,5,3.6
+"CD4 effector memory T","CXCR6",39,1121,56.4,16,3.5
+"CD8 effector/TEMRA","SLC4A10",22,2729,0,0.5,0
+"CD8 effector/TEMRA","KLRB1",22,2729,22.7,26.2,0.9
+"CD8 effector/TEMRA","IL18R1",22,2729,13.6,5.7,2.4
+"CD8 effector/TEMRA","CCR6",22,2729,0,0.3,0
+"CD8 effector/TEMRA","ZBTB16",22,2729,0,1.4,0
+"CD8 effector/TEMRA","NCR3",22,2729,9.1,6.9,1.3
+"CD8 effector/TEMRA","DPP4",22,2729,0,1.8,0
+"CD8 effector/TEMRA","RORC",22,2729,0,0,0
+"CD8 effector/TEMRA","CXCR6",22,2729,9.1,6.7,1.4
+"CD8 naive/CM T","SLC4A10",8,1478,0,0.1,0
+"CD8 naive/CM T","KLRB1",8,1478,0,3.7,0
+"CD8 naive/CM T","IL18R1",8,1478,0,0.9,0
+"CD8 naive/CM T","CCR6",8,1478,0,0.3,0
+"CD8 naive/CM T","ZBTB16",8,1478,0,0.5,0
+"CD8 naive/CM T","NCR3",8,1478,0,2.4,0
+"CD8 naive/CM T","DPP4",8,1478,12.5,5.3,2.4
+"CD8 naive/CM T","RORC",8,1478,0,0.2,0
+"CD8 naive/CM T","CXCR6",8,1478,0,0.3,0

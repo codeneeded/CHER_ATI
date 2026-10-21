@@ -1,0 +1,57 @@
+"Annotation","gene","pct_detected","mean_expression"
+"CD4 naive T","LILRA4",0,0
+"CD4 naive T","CLEC4C",0,0
+"CD4 naive T","IRF7",39.2,0.4608
+"CD4 naive T","FCER1A",0,0
+"CD4 central memory T","LILRA4",0,0
+"CD4 central memory T","CLEC4C",0,0
+"CD4 central memory T","IRF7",30.84,0.3577
+"CD4 central memory T","FCER1A",0.1,9e-04
+"CD4 effector memory T","LILRA4",0,0
+"CD4 effector memory T","CLEC4C",0.09,5e-04
+"CD4 effector memory T","IRF7",50.17,0.5626
+"CD4 effector memory T","FCER1A",0,0
+"CD8 naive/CM T","LILRA4",0,0
+"CD8 naive/CM T","CLEC4C",0.07,4e-04
+"CD8 naive/CM T","IRF7",36.81,0.395
+"CD8 naive/CM T","FCER1A",0.07,5e-04
+"CD8 effector/TEMRA","LILRA4",0.04,2e-04
+"CD8 effector/TEMRA","CLEC4C",0.04,2e-04
+"CD8 effector/TEMRA","IRF7",47.76,0.5705
+"CD8 effector/TEMRA","FCER1A",0,0
+"CD8 effector T (cycling)","LILRA4",0.74,0.0013
+"CD8 effector T (cycling)","CLEC4C",0,0
+"CD8 effector T (cycling)","IRF7",77.21,0.5622
+"CD8 effector T (cycling)","FCER1A",0,0
+"NK cell","LILRA4",0,0
+"NK cell","CLEC4C",0.05,6e-04
+"NK cell","IRF7",54.64,0.7629
+"NK cell","FCER1A",0.05,8e-04
+"Naive B cell","LILRA4",0.75,0.007
+"Naive B cell","CLEC4C",0.12,7e-04
+"Naive B cell","IRF7",52.36,0.6385
+"Naive B cell","FCER1A",0.06,5e-04
+"B cell (unresolved)","LILRA4",2.29,0.0288
+"B cell (unresolved)","CLEC4C",0.92,0.0118
+"B cell (unresolved)","IRF7",36.7,0.4912
+"B cell (unresolved)","FCER1A",0,0
+"Plasma cell","LILRA4",0,0
+"Plasma cell","CLEC4C",0,0
+"Plasma cell","IRF7",70.36,0.3966
+"Plasma cell","FCER1A",0,0
+"Classical monocyte","LILRA4",2.21,0.0157
+"Classical monocyte","CLEC4C",0.45,0.0028
+"Classical monocyte","IRF7",41.38,0.4073
+"Classical monocyte","FCER1A",5.51,0.0662
+"Classical monocyte (inflammatory)","LILRA4",4.64,0.0198
+"Classical monocyte (inflammatory)","CLEC4C",0.39,0.0016
+"Classical monocyte (inflammatory)","IRF7",92.43,1.0981
+"Classical monocyte (inflammatory)","FCER1A",5.02,0.033
+"Non-classical monocyte","LILRA4",3.55,0.0202
+"Non-classical monocyte","CLEC4C",0.27,0.0025
+"Non-classical monocyte","IRF7",75,1.0261
+"Non-classical monocyte","FCER1A",0,0
+"pDC","LILRA4",61.9,1.0746
+"pDC","CLEC4C",47.62,0.4327
+"pDC","IRF7",80,1.6303
+"pDC","FCER1A",28.57,0.2521

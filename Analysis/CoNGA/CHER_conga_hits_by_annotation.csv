@@ -1,0 +1,12 @@
+Annotation,clone_cells,hit_cells,pct_of_hit_cells,pct_of_clone_cells,hit_rate_within_label
+CD4 naive T,1977,112,43.24,34.32,5.67
+CD8 effector/TEMRA,1659,66,25.48,28.8,3.98
+CD8 naive/CM T,938,41,15.83,16.28,4.37
+CD4 effector memory T,748,27,10.42,12.98,3.61
+CD4 central memory T,330,9,3.47,5.73,2.73
+CD8 effector T (cycling),96,4,1.54,1.67,4.17
+Classical monocyte (inflammatory),3,0,0.0,0.05,0.0
+NK cell,3,0,0.0,0.05,0.0
+Naive B cell,3,0,0.0,0.05,0.0
+Non-classical monocyte,1,0,0.0,0.02,0.0
+Plasma cell,3,0,0.0,0.05,0.0

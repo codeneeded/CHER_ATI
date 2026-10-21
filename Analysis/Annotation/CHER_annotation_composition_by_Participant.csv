@@ -1,0 +1,57 @@
+"Annotation","Participant","n_cells","pct_of_sample"
+"CD4 naive T","149496",939,22.59
+"CD4 central memory T","149496",169,4.07
+"CD4 effector memory T","149496",299,7.19
+"CD8 naive/CM T","149496",202,4.86
+"CD8 effector/TEMRA","149496",842,20.25
+"CD8 effector T (cycling)","149496",29,0.7
+"NK cell","149496",390,9.38
+"Naive B cell","149496",500,12.03
+"B cell (unresolved)","149496",77,1.85
+"Plasma cell","149496",323,7.77
+"Classical monocyte","149496",4,0.1
+"Classical monocyte (inflammatory)","149496",250,6.01
+"Non-classical monocyte","149496",117,2.81
+"pDC","149496",16,0.38
+"CD4 naive T","150815",852,17.72
+"CD4 central memory T","150815",210,4.37
+"CD4 effector memory T","150815",286,5.95
+"CD8 naive/CM T","150815",885,18.4
+"CD8 effector/TEMRA","150815",320,6.65
+"CD8 effector T (cycling)","150815",27,0.56
+"NK cell","150815",217,4.51
+"Naive B cell","150815",1509,31.38
+"B cell (unresolved)","150815",83,1.73
+"Plasma cell","150815",5,0.1
+"Classical monocyte","150815",7,0.15
+"Classical monocyte (inflammatory)","150815",279,5.8
+"Non-classical monocyte","150815",87,1.81
+"pDC","150815",42,0.87
+"CD4 naive T","154026",906,19.47
+"CD4 central memory T","154026",91,1.96
+"CD4 effector memory T","154026",379,8.14
+"CD8 naive/CM T","154026",257,5.52
+"CD8 effector/TEMRA","154026",1034,22.22
+"CD8 effector T (cycling)","154026",74,1.59
+"NK cell","154026",666,14.31
+"Naive B cell","154026",820,17.62
+"B cell (unresolved)","154026",35,0.75
+"Plasma cell","154026",1,0.02
+"Classical monocyte","154026",3,0.06
+"Classical monocyte (inflammatory)","154026",279,5.99
+"Non-classical monocyte","154026",90,1.93
+"pDC","154026",19,0.41
+"CD4 naive T","BC_control",295,4.75
+"CD4 central memory T","BC_control",493,7.94
+"CD4 effector memory T","BC_control",196,3.16
+"CD8 naive/CM T","BC_control",142,2.29
+"CD8 effector/TEMRA","BC_control",555,8.94
+"CD8 effector T (cycling)","BC_control",6,0.1
+"NK cell","BC_control",636,10.25
+"Naive B cell","BC_control",483,7.78
+"B cell (unresolved)","BC_control",241,3.88
+"Plasma cell","BC_control",5,0.08
+"Classical monocyte","BC_control",2202,35.48
+"Classical monocyte (inflammatory)","BC_control",486,7.83
+"Non-classical monocyte","BC_control",438,7.06
+"pDC","BC_control",28,0.45

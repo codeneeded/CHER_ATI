@@ -1,0 +1,29 @@
+"Annotation","Group","n_cells","pct_of_sample"
+"CD4 naive T","ATI",2697,19.8
+"CD4 central memory T","ATI",470,3.45
+"CD4 effector memory T","ATI",964,7.08
+"CD8 naive/CM T","ATI",1344,9.87
+"CD8 effector/TEMRA","ATI",2196,16.12
+"CD8 effector T (cycling)","ATI",130,0.95
+"NK cell","ATI",1273,9.35
+"Naive B cell","ATI",2829,20.77
+"B cell (unresolved)","ATI",195,1.43
+"Plasma cell","ATI",329,2.42
+"Classical monocyte","ATI",14,0.1
+"Classical monocyte (inflammatory)","ATI",808,5.93
+"Non-classical monocyte","ATI",294,2.16
+"pDC","ATI",77,0.57
+"CD4 naive T","Healthy_control",295,4.75
+"CD4 central memory T","Healthy_control",493,7.94
+"CD4 effector memory T","Healthy_control",196,3.16
+"CD8 naive/CM T","Healthy_control",142,2.29
+"CD8 effector/TEMRA","Healthy_control",555,8.94
+"CD8 effector T (cycling)","Healthy_control",6,0.1
+"NK cell","Healthy_control",636,10.25
+"Naive B cell","Healthy_control",483,7.78
+"B cell (unresolved)","Healthy_control",241,3.88
+"Plasma cell","Healthy_control",5,0.08
+"Classical monocyte","Healthy_control",2202,35.48
+"Classical monocyte (inflammatory)","Healthy_control",486,7.83
+"Non-classical monocyte","Healthy_control",438,7.06
+"pDC","Healthy_control",28,0.45

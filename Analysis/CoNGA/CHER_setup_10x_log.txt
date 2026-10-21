@@ -1,0 +1,13 @@
+/home/ammasakshay/.claude-science/conda/envs/conga/lib/python3.11/site-packages/louvain/__init__.py:54: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  from pkg_resources import get_distribution, DistributionNotFound
+Read 4769 paired tcrs from file CHER_clones_AB.dist_50_kpcs_tcrs.tsv
+making CHER_clones_AB.dist_50_kpcs_tcrdists.txt
+...............................................
+ab_counts: [((1, 1), 5236), ((2, 1), 525), ((1, 2), 141), ((2, 2), 23)]
+old_unpaired_barcodes: 1934 old_paired_barcodes: 5928 new_stringent_paired_barcodes: 5761 paired_barcode_fraction: 0.9718286099865048
+compute tcrdist distance matrix for 4769 clonotypes
+Using C++ TCRdist calculator
+running KernelPCA with None kernel distance matrix shape= (4769, 4769) D.max()= 508.0 force_Dmax= None
+writing TCRdist kernel PCs to outfile: CHER_clones_AB.dist_50_kpcs
+If this all worked you should be able to pass CHER_clones.tsv as the --clones_file argument to run_conga.py
+DONE

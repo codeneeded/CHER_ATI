@@ -1,0 +1,57 @@
+"Annotation","gene","pct_detected","mean_expression"
+"CD4 naive T","MKI67",0.3,0.003
+"CD4 naive T","TOP2A",0.9,0.0088
+"CD4 naive T","CCL2",0.8,0.0069
+"CD4 naive T","IDO1",0.07,5e-04
+"CD4 central memory T","MKI67",0.21,0.0018
+"CD4 central memory T","TOP2A",1.04,0.0112
+"CD4 central memory T","CCL2",0.42,0.0046
+"CD4 central memory T","IDO1",0.31,0.0039
+"CD4 effector memory T","MKI67",1.38,0.0085
+"CD4 effector memory T","TOP2A",4.4,0.0443
+"CD4 effector memory T","CCL2",0.78,0.0059
+"CD4 effector memory T","IDO1",0,0
+"CD8 naive/CM T","MKI67",0.61,0.0053
+"CD8 naive/CM T","TOP2A",0.61,0.0055
+"CD8 naive/CM T","CCL2",0.27,0.0022
+"CD8 naive/CM T","IDO1",0.07,5e-04
+"CD8 effector/TEMRA","MKI67",3.49,0.0276
+"CD8 effector/TEMRA","TOP2A",4.03,0.0335
+"CD8 effector/TEMRA","CCL2",0.62,0.0046
+"CD8 effector/TEMRA","IDO1",0.07,8e-04
+"CD8 effector T (cycling)","MKI67",97.79,1.8399
+"CD8 effector T (cycling)","TOP2A",93.38,1.2914
+"CD8 effector T (cycling)","CCL2",0,0
+"CD8 effector T (cycling)","IDO1",0.74,0.0013
+"NK cell","MKI67",3.04,0.035
+"NK cell","TOP2A",1.94,0.0216
+"NK cell","CCL2",0.73,0.006
+"NK cell","IDO1",0,0
+"Naive B cell","MKI67",0.42,0.0045
+"Naive B cell","TOP2A",5.43,0.0553
+"Naive B cell","CCL2",0.51,0.0042
+"Naive B cell","IDO1",0.54,0.0048
+"B cell (unresolved)","MKI67",0.23,0.0044
+"B cell (unresolved)","TOP2A",2.52,0.0255
+"B cell (unresolved)","CCL2",0.92,0.012
+"B cell (unresolved)","IDO1",0.23,0.0013
+"Plasma cell","MKI67",40.72,0.5501
+"Plasma cell","TOP2A",26.95,0.2433
+"Plasma cell","CCL2",0.6,0.0019
+"Plasma cell","IDO1",0.3,8e-04
+"Classical monocyte","MKI67",0.5,0.0031
+"Classical monocyte","TOP2A",0.45,0.0046
+"Classical monocyte","CCL2",4.74,0.0545
+"Classical monocyte","IDO1",0.77,0.005
+"Classical monocyte (inflammatory)","MKI67",0.62,0.0021
+"Classical monocyte (inflammatory)","TOP2A",0.7,0.0031
+"Classical monocyte (inflammatory)","CCL2",48.76,1.4214
+"Classical monocyte (inflammatory)","IDO1",43.97,0.713
+"Non-classical monocyte","MKI67",0.55,0.0044
+"Non-classical monocyte","TOP2A",0.14,7e-04
+"Non-classical monocyte","CCL2",0.41,0.0024
+"Non-classical monocyte","IDO1",9.97,0.1199
+"pDC","MKI67",0.95,0.0048
+"pDC","TOP2A",6.67,0.0371
+"pDC","CCL2",1.9,0.0095
+"pDC","IDO1",1.9,0.0526

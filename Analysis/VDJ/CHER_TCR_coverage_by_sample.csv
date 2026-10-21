@@ -1,0 +1,9 @@
+"Sample_ID","Participant","Timepoint","Group","Well","n_cells","n_TCR","pct_TCR","n_clonotypes"
+"149496_B4","149496","B4","ATI","34349",2669,1485,55.6,1226
+"149496_Interrupt","149496","Interrupt","ATI","34349",1488,593,39.9,383
+"150815_B4","150815","B4","ATI","34349",2314,945,40.8,927
+"150815_Interrupt","150815","Interrupt","ATI","34349",2495,1226,49.1,1169
+"154026_B4","154026","B4","ATI","33445",2164,932,43.1,869
+"154026_Interrupt","154026","Interrupt","ATI","33445",2490,1382,55.5,1072
+"BC_control_A","BC_control","Control","Healthy_control","33445",3102,679,21.9,609
+"BC_control_B","BC_control","Control","Healthy_control","33445",3104,620,20,565

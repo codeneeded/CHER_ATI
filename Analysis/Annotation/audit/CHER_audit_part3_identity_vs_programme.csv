@@ -1,0 +1,15 @@
+"cluster","n_markers","n_programme","pct_programme","n_cycling","n_interferon","n_activation"
+"CD4 naive T",50,0,0,0,0,0
+"CD4 central memory T",50,3,6,0,0,3
+"CD4 effector memory T",50,0,0,0,0,0
+"CD8 naive/CM T",50,0,0,0,0,0
+"CD8 effector/TEMRA",50,0,0,0,0,0
+"CD8 effector T (cycling)",50,18,36,18,0,0
+"NK cell",50,0,0,0,0,0
+"Naive B cell",50,0,0,0,0,0
+"B cell (unresolved)",50,0,0,0,0,0
+"Plasma cell",50,2,4,2,0,0
+"Classical monocyte",50,2,4,0,0,2
+"Classical monocyte (inflammatory)",50,0,0,0,0,0
+"Non-classical monocyte",50,0,0,0,0,0
+"pDC",50,0,0,0,0,0

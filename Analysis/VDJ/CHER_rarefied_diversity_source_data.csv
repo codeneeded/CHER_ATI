@@ -1,0 +1,9 @@
+"Sample_ID","Participant","Timepoint","Group","richness","shannon","inv_simpson","evenness"
+"149496_B4","149496","B4","ATI",505.58,6,207.75,0.96
+"149496_Interrupt","149496","Interrupt","ATI",383,5.32,65.04,0.9
+"150815_B4","150815","B4","ATI",584.47,6.36,569.2,1
+"150815_Interrupt","150815","Interrupt","ATI",574.67,6.33,542.19,1
+"154026_B4","154026","B4","ATI",561.2,6.29,493.54,0.99
+"154026_Interrupt","154026","Interrupt","ATI",494.35,6.06,326.22,0.98
+"BC_control_A","BC_control","Control","Healthy_control",536,6.22,431.26,0.99
+"BC_control_B","BC_control","Control","Healthy_control",542.05,6.24,453.41,0.99

@@ -1,0 +1,9 @@
+"Sample_ID","Group","Timepoint","n_cells","pct_S","pct_G2M","pct_prolif","MKI67_pct"
+"149496_B4","ATI","B4",2669,43.5,14.13,4.12,0.97
+"149496_Interrupt","ATI","Interrupt",1488,37.3,23.45,18.01,12.84
+"150815_B4","ATI","B4",2314,46.93,10.11,3.28,0.43
+"150815_Interrupt","ATI","Interrupt",2495,43.65,11.86,6.21,1.84
+"154026_B4","ATI","B4",2164,42.56,13.49,14.46,5.08
+"154026_Interrupt","ATI","Interrupt",2490,40.68,15.9,11.41,3.33
+"BC_control_A","Healthy_control","Control",3102,20.89,9.77,3.03,0.55
+"BC_control_B","Healthy_control","Control",3104,20.68,9.31,2.38,0.48

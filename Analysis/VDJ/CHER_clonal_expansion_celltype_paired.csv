@@ -1,0 +1,49 @@
+"Annotation","Participant","Timepoint","n_TCR","pct_ge2"
+"CD4 naive T","149496","B4",735,0
+"CD4 naive T","149496","Interrupt",132,0
+"CD4 naive T","150815","B4",372,0
+"CD4 naive T","150815","Interrupt",398,0
+"CD4 naive T","154026","B4",370,0.5
+"CD4 naive T","154026","Interrupt",469,1.9
+"CD4 central memory T","149496","B4",87,0
+"CD4 central memory T","149496","Interrupt",26,0
+"CD4 central memory T","150815","B4",92,0
+"CD4 central memory T","150815","Interrupt",19,0
+"CD4 central memory T","154026","B4",23,0
+"CD4 central memory T","154026","Interrupt",7,0
+"CD4 effector memory T","149496","B4",148,2.7
+"CD4 effector memory T","149496","Interrupt",92,4.3
+"CD4 effector memory T","150815","B4",87,0
+"CD4 effector memory T","150815","Interrupt",141,0
+"CD4 effector memory T","154026","B4",154,0.6
+"CD4 effector memory T","154026","Interrupt",165,1.8
+"CD8 naive/CM T","149496","B4",142,0.7
+"CD8 naive/CM T","149496","Interrupt",25,0
+"CD8 naive/CM T","150815","B4",323,0.9
+"CD8 naive/CM T","150815","Interrupt",462,0
+"CD8 naive/CM T","154026","B4",86,2.3
+"CD8 naive/CM T","154026","Interrupt",129,1.6
+"CD8 effector/TEMRA","149496","B4",359,80.5
+"CD8 effector/TEMRA","149496","Interrupt",295,77.6
+"CD8 effector/TEMRA","150815","B4",71,33.8
+"CD8 effector/TEMRA","150815","Interrupt",182,38.5
+"CD8 effector/TEMRA","154026","B4",275,29.1
+"CD8 effector/TEMRA","154026","Interrupt",570,62.1
+"CD8 effector T (cycling)","149496","B4",7,28.6
+"CD8 effector T (cycling)","149496","Interrupt",13,38.5
+"CD8 effector T (cycling)","150815","Interrupt",22,54.5
+"CD8 effector T (cycling)","154026","B4",23,34.8
+"CD8 effector T (cycling)","154026","Interrupt",37,75.7
+"NK cell","149496","B4",4,100
+"NK cell","149496","Interrupt",3,100
+"NK cell","150815","Interrupt",1,100
+"NK cell","154026","Interrupt",1,0
+"Naive B cell","149496","B4",1,0
+"Naive B cell","154026","B4",1,0
+"Naive B cell","154026","Interrupt",1,0
+"Plasma cell","149496","Interrupt",4,50
+"Classical monocyte (inflammatory)","149496","B4",2,100
+"Classical monocyte (inflammatory)","149496","Interrupt",2,0
+"Classical monocyte (inflammatory)","150815","Interrupt",1,100
+"Classical monocyte (inflammatory)","154026","Interrupt",3,66.7
+"Non-classical monocyte","149496","Interrupt",1,0

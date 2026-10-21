@@ -1,0 +1,9 @@
+"Sample_ID","Participant","Timepoint","Group","n_TCR","n_clonotypes","pct_in_clone_ge2","pct_in_clone_ge5","largest_clone"
+"149496_B4","149496","B4","ATI",1485,1226,20.3,15.6,57
+"149496_Interrupt","149496","Interrupt","ATI",593,383,41,32,42
+"150815_B4","150815","B4","ATI",945,927,2.9,0.5,5
+"150815_Interrupt","150815","Interrupt","ATI",1226,1169,6.9,3.1,7
+"154026_B4","154026","B4","ATI",932,869,10,3.6,9
+"154026_Interrupt","154026","Interrupt","ATI",1382,1072,28.8,17.3,20
+"BC_control_A","BC_control","Control","Healthy_control",679,609,15.6,4,8
+"BC_control_B","BC_control","Control","Healthy_control",620,565,14,3.7,7

@@ -1,0 +1,113 @@
+"Sample_ID","Participant","Timepoint","Group","Annotation","cells","pct"
+"149496_B4","149496","B4","ATI","B cell (unresolved)",28,1.04908205320345
+"149496_B4","149496","B4","ATI","CD4 central memory T",123,4.608467590858
+"149496_B4","149496","B4","ATI","CD4 effector memory T",193,7.23117272386662
+"149496_B4","149496","B4","ATI","CD4 naive T",798,29.8988385162982
+"149496_B4","149496","B4","ATI","CD8 effector T (cycling)",10,0.374672161858374
+"149496_B4","149496","B4","ATI","CD8 effector/TEMRA",510,19.1082802547771
+"149496_B4","149496","B4","ATI","CD8 naive/CM T",175,6.55676283252154
+"149496_B4","149496","B4","ATI","Classical monocyte",2,0.0749344323716748
+"149496_B4","149496","B4","ATI","Classical monocyte (inflammatory)",192,7.19370550768078
+"149496_B4","149496","B4","ATI","Naive B cell",300,11.2401648557512
+"149496_B4","149496","B4","ATI","NK cell",224,8.39265642562758
+"149496_B4","149496","B4","ATI","Non-classical monocyte",106,3.97152491569876
+"149496_B4","149496","B4","ATI","pDC",8,0.299737729486699
+"149496_B4","149496","B4","ATI","Plasma cell",0,0
+"149496_Interrupt","149496","Interrupt","ATI","B cell (unresolved)",49,3.29301075268817
+"149496_Interrupt","149496","Interrupt","ATI","CD4 central memory T",46,3.09139784946237
+"149496_Interrupt","149496","Interrupt","ATI","CD4 effector memory T",106,7.12365591397849
+"149496_Interrupt","149496","Interrupt","ATI","CD4 naive T",141,9.4758064516129
+"149496_Interrupt","149496","Interrupt","ATI","CD8 effector T (cycling)",19,1.27688172043011
+"149496_Interrupt","149496","Interrupt","ATI","CD8 effector/TEMRA",332,22.3118279569892
+"149496_Interrupt","149496","Interrupt","ATI","CD8 naive/CM T",27,1.81451612903226
+"149496_Interrupt","149496","Interrupt","ATI","Classical monocyte",2,0.134408602150538
+"149496_Interrupt","149496","Interrupt","ATI","Classical monocyte (inflammatory)",58,3.89784946236559
+"149496_Interrupt","149496","Interrupt","ATI","Naive B cell",200,13.4408602150538
+"149496_Interrupt","149496","Interrupt","ATI","NK cell",166,11.1559139784946
+"149496_Interrupt","149496","Interrupt","ATI","Non-classical monocyte",11,0.739247311827957
+"149496_Interrupt","149496","Interrupt","ATI","pDC",8,0.537634408602151
+"149496_Interrupt","149496","Interrupt","ATI","Plasma cell",323,21.7069892473118
+"150815_B4","150815","B4","ATI","B cell (unresolved)",42,1.81503889369058
+"150815_B4","150815","B4","ATI","CD4 central memory T",169,7.30337078651685
+"150815_B4","150815","B4","ATI","CD4 effector memory T",112,4.84010371650821
+"150815_B4","150815","B4","ATI","CD4 naive T",404,17.4589455488332
+"150815_B4","150815","B4","ATI","CD8 effector T (cycling)",3,0.129645635263613
+"150815_B4","150815","B4","ATI","CD8 effector/TEMRA",103,4.45116681071737
+"150815_B4","150815","B4","ATI","CD8 naive/CM T",370,15.9896283491789
+"150815_B4","150815","B4","ATI","Classical monocyte",3,0.129645635263613
+"150815_B4","150815","B4","ATI","Classical monocyte (inflammatory)",113,4.88331892826275
+"150815_B4","150815","B4","ATI","Naive B cell",867,37.4675885911841
+"150815_B4","150815","B4","ATI","NK cell",68,2.93863439930856
+"150815_B4","150815","B4","ATI","Non-classical monocyte",39,1.68539325842697
+"150815_B4","150815","B4","ATI","pDC",20,0.864304235090752
+"150815_B4","150815","B4","ATI","Plasma cell",1,0.0432152117545376
+"150815_Interrupt","150815","Interrupt","ATI","B cell (unresolved)",41,1.64328657314629
+"150815_Interrupt","150815","Interrupt","ATI","CD4 central memory T",41,1.64328657314629
+"150815_Interrupt","150815","Interrupt","ATI","CD4 effector memory T",174,6.97394789579158
+"150815_Interrupt","150815","Interrupt","ATI","CD4 naive T",448,17.9559118236473
+"150815_Interrupt","150815","Interrupt","ATI","CD8 effector T (cycling)",24,0.961923847695391
+"150815_Interrupt","150815","Interrupt","ATI","CD8 effector/TEMRA",217,8.69739478957916
+"150815_Interrupt","150815","Interrupt","ATI","CD8 naive/CM T",515,20.6412825651303
+"150815_Interrupt","150815","Interrupt","ATI","Classical monocyte",4,0.160320641282565
+"150815_Interrupt","150815","Interrupt","ATI","Classical monocyte (inflammatory)",166,6.65330661322645
+"150815_Interrupt","150815","Interrupt","ATI","Naive B cell",642,25.7314629258517
+"150815_Interrupt","150815","Interrupt","ATI","NK cell",149,5.97194388777555
+"150815_Interrupt","150815","Interrupt","ATI","Non-classical monocyte",48,1.92384769539078
+"150815_Interrupt","150815","Interrupt","ATI","pDC",22,0.881763527054108
+"150815_Interrupt","150815","Interrupt","ATI","Plasma cell",4,0.160320641282565
+"154026_B4","154026","B4","ATI","B cell (unresolved)",25,1.15526802218115
+"154026_B4","154026","B4","ATI","CD4 central memory T",71,3.28096118299445
+"154026_B4","154026","B4","ATI","CD4 effector memory T",190,8.78003696857671
+"154026_B4","154026","B4","ATI","CD4 naive T",416,19.2236598890943
+"154026_B4","154026","B4","ATI","CD8 effector T (cycling)",33,1.52495378927911
+"154026_B4","154026","B4","ATI","CD8 effector/TEMRA",325,15.0184842883549
+"154026_B4","154026","B4","ATI","CD8 naive/CM T",100,4.62107208872458
+"154026_B4","154026","B4","ATI","Classical monocyte",0,0
+"154026_B4","154026","B4","ATI","Classical monocyte (inflammatory)",96,4.4362292051756
+"154026_B4","154026","B4","ATI","Naive B cell",395,18.2532347504621
+"154026_B4","154026","B4","ATI","NK cell",439,20.2865064695009
+"154026_B4","154026","B4","ATI","Non-classical monocyte",64,2.95748613678373
+"154026_B4","154026","B4","ATI","pDC",10,0.462107208872458
+"154026_B4","154026","B4","ATI","Plasma cell",0,0
+"154026_Interrupt","154026","Interrupt","ATI","B cell (unresolved)",10,0.401606425702811
+"154026_Interrupt","154026","Interrupt","ATI","CD4 central memory T",20,0.803212851405622
+"154026_Interrupt","154026","Interrupt","ATI","CD4 effector memory T",189,7.59036144578313
+"154026_Interrupt","154026","Interrupt","ATI","CD4 naive T",490,19.6787148594378
+"154026_Interrupt","154026","Interrupt","ATI","CD8 effector T (cycling)",41,1.64658634538153
+"154026_Interrupt","154026","Interrupt","ATI","CD8 effector/TEMRA",709,28.4738955823293
+"154026_Interrupt","154026","Interrupt","ATI","CD8 naive/CM T",157,6.30522088353414
+"154026_Interrupt","154026","Interrupt","ATI","Classical monocyte",3,0.120481927710843
+"154026_Interrupt","154026","Interrupt","ATI","Classical monocyte (inflammatory)",183,7.34939759036145
+"154026_Interrupt","154026","Interrupt","ATI","Naive B cell",425,17.0682730923695
+"154026_Interrupt","154026","Interrupt","ATI","NK cell",227,9.11646586345381
+"154026_Interrupt","154026","Interrupt","ATI","Non-classical monocyte",26,1.04417670682731
+"154026_Interrupt","154026","Interrupt","ATI","pDC",9,0.36144578313253
+"154026_Interrupt","154026","Interrupt","ATI","Plasma cell",1,0.0401606425702811
+"BC_control_A","BC_control","Control","Healthy_control","B cell (unresolved)",116,3.73952288845906
+"BC_control_A","BC_control","Control","Healthy_control","CD4 central memory T",264,8.51063829787234
+"BC_control_A","BC_control","Control","Healthy_control","CD4 effector memory T",95,3.06254029658285
+"BC_control_A","BC_control","Control","Healthy_control","CD4 naive T",145,4.67440361057382
+"BC_control_A","BC_control","Control","Healthy_control","CD8 effector T (cycling)",3,0.0967117988394584
+"BC_control_A","BC_control","Control","Healthy_control","CD8 effector/TEMRA",288,9.28433268858801
+"BC_control_A","BC_control","Control","Healthy_control","CD8 naive/CM T",67,2.1598968407479
+"BC_control_A","BC_control","Control","Healthy_control","Classical monocyte",1089,35.1063829787234
+"BC_control_A","BC_control","Control","Healthy_control","Classical monocyte (inflammatory)",235,7.57575757575758
+"BC_control_A","BC_control","Control","Healthy_control","Naive B cell",236,7.6079948420374
+"BC_control_A","BC_control","Control","Healthy_control","NK cell",329,10.6060606060606
+"BC_control_A","BC_control","Control","Healthy_control","Non-classical monocyte",217,6.99548678272083
+"BC_control_A","BC_control","Control","Healthy_control","pDC",15,0.483558994197292
+"BC_control_A","BC_control","Control","Healthy_control","Plasma cell",3,0.0967117988394584
+"BC_control_B","BC_control","Control","Healthy_control","B cell (unresolved)",125,4.0270618556701
+"BC_control_B","BC_control","Control","Healthy_control","CD4 central memory T",229,7.37757731958763
+"BC_control_B","BC_control","Control","Healthy_control","CD4 effector memory T",101,3.25386597938144
+"BC_control_B","BC_control","Control","Healthy_control","CD4 naive T",150,4.83247422680412
+"BC_control_B","BC_control","Control","Healthy_control","CD8 effector T (cycling)",3,0.0966494845360825
+"BC_control_B","BC_control","Control","Healthy_control","CD8 effector/TEMRA",267,8.60180412371134
+"BC_control_B","BC_control","Control","Healthy_control","CD8 naive/CM T",75,2.41623711340206
+"BC_control_B","BC_control","Control","Healthy_control","Classical monocyte",1113,35.8569587628866
+"BC_control_B","BC_control","Control","Healthy_control","Classical monocyte (inflammatory)",251,8.08634020618557
+"BC_control_B","BC_control","Control","Healthy_control","Naive B cell",247,7.95747422680412
+"BC_control_B","BC_control","Control","Healthy_control","NK cell",307,9.89046391752577
+"BC_control_B","BC_control","Control","Healthy_control","Non-classical monocyte",221,7.11984536082474
+"BC_control_B","BC_control","Control","Healthy_control","pDC",13,0.418814432989691
+"BC_control_B","BC_control","Control","Healthy_control","Plasma cell",2,0.0644329896907216

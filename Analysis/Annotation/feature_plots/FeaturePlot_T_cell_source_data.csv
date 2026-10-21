@@ -1,0 +1,57 @@
+"Annotation","gene","pct_detected","mean_expression"
+"CD4 naive T","CD3E",88.84,1.488
+"CD4 naive T","CD4",19.02,0.1873
+"CD4 naive T","CD8A",0.8,0.0095
+"CD4 naive T","CD8B",1.94,0.0238
+"CD4 central memory T","CD3E",68.95,1.0947
+"CD4 central memory T","CD4",12.77,0.1345
+"CD4 central memory T","CD8A",12.67,0.1825
+"CD4 central memory T","CD8B",11.84,0.1784
+"CD4 effector memory T","CD3E",87.24,1.4352
+"CD4 effector memory T","CD4",27.07,0.2661
+"CD4 effector memory T","CD8A",13.53,0.2468
+"CD4 effector memory T","CD8B",4.31,0.051
+"CD8 naive/CM T","CD3E",83.98,1.3084
+"CD8 naive/CM T","CD4",0.34,0.0022
+"CD8 naive/CM T","CD8A",67.7,0.9931
+"CD8 naive/CM T","CD8B",69.92,1.0487
+"CD8 effector/TEMRA","CD3E",89.31,1.622
+"CD8 effector/TEMRA","CD4",0.8,0.0094
+"CD8 effector/TEMRA","CD8A",86.59,2.2727
+"CD8 effector/TEMRA","CD8B",66.19,1.2067
+"CD8 effector T (cycling)","CD3E",91.91,1.3598
+"CD8 effector T (cycling)","CD4",10.29,0.0846
+"CD8 effector T (cycling)","CD8A",81.62,1.8797
+"CD8 effector T (cycling)","CD8B",72.06,1.1944
+"NK cell","CD3E",31.53,0.4944
+"NK cell","CD4",0.21,0.0025
+"NK cell","CD8A",36.09,0.6269
+"NK cell","CD8B",3.09,0.0374
+"Naive B cell","CD3E",0.39,0.003
+"Naive B cell","CD4",0.06,5e-04
+"Naive B cell","CD8A",0.79,0.007
+"Naive B cell","CD8B",0.12,0.0011
+"B cell (unresolved)","CD3E",0.23,0.0032
+"B cell (unresolved)","CD4",0.23,0.0038
+"B cell (unresolved)","CD8A",1.38,0.0177
+"B cell (unresolved)","CD8B",0.23,0.0018
+"Plasma cell","CD3E",1.8,0.0068
+"Plasma cell","CD4",0.6,0.0078
+"Plasma cell","CD8A",0.3,8e-04
+"Plasma cell","CD8B",0.3,7e-04
+"Classical monocyte","CD3E",0.09,4e-04
+"Classical monocyte","CD4",29.69,0.2573
+"Classical monocyte","CD8A",0.41,0.0031
+"Classical monocyte","CD8B",0.23,0.0016
+"Classical monocyte (inflammatory)","CD3E",1,0.0064
+"Classical monocyte (inflammatory)","CD4",50.77,0.2981
+"Classical monocyte (inflammatory)","CD8A",1.31,0.0099
+"Classical monocyte (inflammatory)","CD8B",0.62,0.0026
+"Non-classical monocyte","CD3E",0.41,0.0048
+"Non-classical monocyte","CD4",47.27,0.396
+"Non-classical monocyte","CD8A",0.55,0.0051
+"Non-classical monocyte","CD8B",0.41,0.003
+"pDC","CD3E",6.67,0.0367
+"pDC","CD4",54.29,0.6273
+"pDC","CD8A",0.95,0.0047
+"pDC","CD8B",0.95,0.0059

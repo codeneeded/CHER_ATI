@@ -1,0 +1,7 @@
+graph_overlap_type,nbr_frac,rows,clones
+gex_cluster_vs_tcr_nbr,0.01,39,39
+gex_cluster_vs_tcr_nbr,0.1,156,156
+gex_nbr_vs_tcr_cluster,0.01,13,13
+gex_nbr_vs_tcr_cluster,0.1,44,44
+gex_nbr_vs_tcr_nbr,0.01,29,29
+gex_nbr_vs_tcr_nbr,0.1,22,22

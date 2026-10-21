@@ -39,6 +39,18 @@ cellranger_out/
 barcodes.tsv.gz
 features.tsv.gz
 
+# ── CoNGA stage intermediates ────────────────────────────────────────────────
+# Rebuilt by Scripts/2. Analysis/14_conga_export.R + 14_conga_run.sh from the
+# annotated object and the Cell Ranger VDJ output. The hit tables, the clones
+# file and the interpretation CSVs ARE committed — these are the bulky inputs
+# and caches behind them.
+Analysis/CoNGA/gex/
+Analysis/CoNGA/CHER_filtered_contig_annotations.csv
+Analysis/CoNGA/CHER_conga_cellmeta.csv
+*.dist_50_kpcs
+*_checkpoint.h5ad
+*.tmp_*.svg
+
 # ── Local R library / environment scratch ────────────────────────────────────
 # .Rlib/ holds packages missing from the conda env (GenomeInfoDbData, and any
 # GitHub-only package). Binary builds, machine-specific — rebuilt by

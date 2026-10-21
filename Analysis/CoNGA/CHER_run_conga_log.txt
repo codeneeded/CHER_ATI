@@ -1,0 +1,183 @@
+/home/ammasakshay/.claude-science/conda/envs/conga/lib/python3.11/site-packages/louvain/__init__.py:54: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  from pkg_resources import get_distribution, DistributionNotFound
+/home/ammasakshay/Desktop/Projects/Packages/conga_build/site-packages/conga/preprocess.py:233: FutureWarning: The method isview is deprecated and will be removed in the future. Use is_view instead of isview.
+  if adata.isview: # ran into trouble with AnnData views vs copies
+/home/ammasakshay/Desktop/Projects/Packages/conga_build/site-packages/conga/util.py:168: FutureWarning: The method uns_keys is deprecated and will be removed in the future. Use uns instead of uns_keys. (e.g. `k in adata.uns` or `sorted(adata.uns)`)
+  if 'conga_results' not in adata.uns_keys():
+/home/ammasakshay/Desktop/Projects/Packages/conga_build/site-packages/conga/util.py:171: FutureWarning: The method uns_keys is deprecated and will be removed in the future. Use uns instead of uns_keys. (e.g. `k in adata.uns` or `sorted(adata.uns)`)
+  if 'conga_stats' not in adata.uns_keys():
+/home/ammasakshay/Desktop/Projects/Packages/conga_build/scripts/run_conga.py:422: FutureWarning: The method uns_keys is deprecated and will be removed in the future. Use uns instead of uns_keys. (e.g. `k in adata.uns` or `sorted(adata.uns)`)
+  assert 'organism' in adata.uns_keys()
+/home/ammasakshay/Desktop/Projects/Packages/conga_build/scripts/run_conga.py:501: FutureWarning: The method obsm_keys is deprecated and will be removed in the future. Use obsm instead of obsm_keys. (e.g. `k in adata.obsm` or `adata.obsm.keys() | {'u'}`)
+  assert allow_missing_kpca_file or 'X_pca_tcr' in adata.obsm_keys()
+/home/ammasakshay/Desktop/Projects/Packages/conga_build/site-packages/conga/util.py:168: FutureWarning: The method uns_keys is deprecated and will be removed in the future. Use uns instead of uns_keys. (e.g. `k in adata.uns` or `sorted(adata.uns)`)
+  if 'conga_results' not in adata.uns_keys():
+/home/ammasakshay/Desktop/Projects/Packages/conga_build/site-packages/conga/util.py:171: FutureWarning: The method uns_keys is deprecated and will be removed in the future. Use uns instead of uns_keys. (e.g. `k in adata.uns` or `sorted(adata.uns)`)
+  if 'conga_stats' not in adata.uns_keys():
+/home/ammasakshay/Desktop/Projects/Packages/conga_build/site-packages/conga/preprocess.py:541: FutureWarning: Use sc.pp.normalize_total instead
+  sc.pp.normalize_per_cell(adata, counts_per_cell_after=1e4)
+/home/ammasakshay/.claude-science/conda/envs/conga/lib/python3.11/site-packages/scanpy/preprocessing/_simple.py:590: FutureWarning: Use sc.pp.normalize_total instead
+  normalize_per_cell(
+/home/ammasakshay/.claude-science/conda/envs/conga/lib/python3.11/site-packages/scanpy/preprocessing/_simple.py:666: NumbaPerformanceWarning: '@' is faster on contiguous arrays, called on (Array(float64, 1, 'A', False, aligned=True), Array(float64, 2, 'C', False, aligned=True))
+  data[i] -= regressor[i] @ coeff
+/home/ammasakshay/.claude-science/conda/envs/conga/lib/python3.11/site-packages/scanpy/preprocessing/_simple.py:666: NumbaPerformanceWarning: '@' is faster on contiguous arrays, called on (Array(float64, 1, 'A', False, aligned=True), Array(float64, 2, 'C', False, aligned=True))
+  data[i] -= regressor[i] @ coeff
+reading: gex of type 10x_mtx
+total barcodes: 19826 (19826, 22376)
+reading: CHER_clones.tsv
+reading: CHER_clones_AB.dist_50_kpcs
+Reducing to the 5761 barcodes (out of 19826) with paired TCR sequence data
+AnnData object with n_obs × n_vars = 5761 × 22376
+    obs: 'va', 'ja', 'cdr3a', 'cdr3a_nucseq', 'vb', 'jb', 'cdr3b', 'cdr3b_nucseq'
+    var: 'gene_ids', 'feature_types'
+    uns: 'conga_results', 'conga_stats', 'organism'
+    obsm: 'X_pca_tcr'
+min_genes_per_cell not set. Using default 200
+making: CHER_qc_violins.png
+making: CHER_counts_vs_genes.png
+filtered out 0 cells with more than 100000 genes
+filtered out 0 cells with more than 0.15 percent mito
+get_feature_types_varname: feature_types feature_type_counts: [('Gene Expression', 19896)]
+num antibody features: 0
+excluding 133 TR genes (89 variable)
+excluding 11 sexlinked genes
+total of 1665 variable genes (5761, 19896)
+Normalize and logging matrix...
+get_feature_types_varname: feature_types feature_type_counts: [('Gene Expression', 1665)]
+feature_types counter: [('Gene Expression', 19896)]
+normalize_and_log_the_raw_matrix: adata.raw.X.max()=  6307.0
+run reduce_to_single_cell_per_clone
+/home/ammasakshay/Desktop/Projects/Packages/conga_build/site-packages/conga/util.py:168: FutureWarning: The method uns_keys is deprecated and will be removed in the future. Use uns instead of uns_keys. (e.g. `k in adata.uns` or `sorted(adata.uns)`)
+  if 'conga_results' not in adata.uns_keys():
+/home/ammasakshay/Desktop/Projects/Packages/conga_build/site-packages/conga/util.py:171: FutureWarning: The method uns_keys is deprecated and will be removed in the future. Use uns instead of uns_keys. (e.g. `k in adata.uns` or `sorted(adata.uns)`)
+  if 'conga_stats' not in adata.uns_keys():
+/home/ammasakshay/Desktop/Projects/Packages/conga_build/site-packages/conga/preprocess.py:192: FutureWarning: The method obs_keys is deprecated and will be removed in the future. Use obs instead of obs_keys. (e.g. `k in adata.obs` or `str(adata.obs.columns.tolist())`)
+  if include_subject_id_if_present and util.SUBJECT_ID_OBS_KEY in adata.obs_keys():
+/home/ammasakshay/Desktop/Projects/Packages/conga_build/site-packages/conga/preprocess.py:875: FutureWarning: The method uns_keys is deprecated and will be removed in the future. Use uns instead of uns_keys. (e.g. `k in adata.uns` or `sorted(adata.uns)`)
+  if 'pmhc_var_names' in adata.uns_keys():
+/home/ammasakshay/Desktop/Projects/Packages/conga_build/site-packages/conga/preprocess.py:882: FutureWarning: The method uns_keys is deprecated and will be removed in the future. Use uns instead of uns_keys. (e.g. `k in adata.uns` or `sorted(adata.uns)`)
+  if 'batch_keys' in adata.uns_keys():
+compute pca to find rep cell for each clone (5761, 1665)
+num_clones: 4769
+normalize_and_log_the_raw_matrix:: matrix is already logged
+choose representative cell for clone: 0 4769 (5761, 1665)
+choose representative cell for clone: 1000 4769 (5761, 1665)
+choose representative cell for clone: 2000 4769 (5761, 1665)
+choose representative cell for clone: 3000 4769 (5761, 1665)
+choose representative cell for clone: 4000 4769 (5761, 1665)
+/home/ammasakshay/Desktop/Projects/Packages/conga_build/site-packages/conga/preprocess.py:192: FutureWarning: The method obs_keys is deprecated and will be removed in the future. Use obs instead of obs_keys. (e.g. `k in adata.obs` or `str(adata.obs.columns.tolist())`)
+  if include_subject_id_if_present and util.SUBJECT_ID_OBS_KEY in adata.obs_keys():
+reduce from 5761 cells to 4769 cells (one per clonotype)
+run cluster_and_tsne_and_umap
+/home/ammasakshay/Desktop/Projects/Packages/conga_build/site-packages/conga/preprocess.py:715: FutureWarning: The method obsm_keys is deprecated and will be removed in the future. Use obsm instead of obsm_keys. (e.g. `k in adata.obsm` or `adata.obsm.keys() | {'u'}`)
+  if 'X_pca_gex' not in adata.obsm_keys() or recompute_pca_gex:
+/home/ammasakshay/Desktop/Projects/Packages/conga_build/site-packages/conga/preprocess.py:723: FutureWarning: The method obsm_keys is deprecated and will be removed in the future. Use obsm instead of obsm_keys. (e.g. `k in adata.obsm` or `adata.obsm.keys() | {'u'}`)
+  assert 'X_pca_gex' in adata.obsm_keys()
+/home/ammasakshay/Desktop/Projects/Packages/conga_build/site-packages/conga/preprocess.py:733: FutureWarning: The method obsm_keys is deprecated and will be removed in the future. Use obsm instead of obsm_keys. (e.g. `k in adata.obsm` or `adata.obsm.keys() | {'u'}`)
+  if tag == 'tcr' and 'X_pca_tcr' not in adata.obsm_keys():
+/home/ammasakshay/Desktop/Projects/Packages/conga_build/site-packages/conga/preprocess.py:786: FutureWarning: The method obsm_keys is deprecated and will be removed in the future. Use obsm instead of obsm_keys. (e.g. `k in adata.obsm` or `adata.obsm.keys() | {'u'}`)
+  if 'X_umap' in adata.obsm_keys():
+/home/ammasakshay/Desktop/Projects/Packages/conga_build/site-packages/conga/preprocess.py:788: FutureWarning: The method obsm_keys is deprecated and will be removed in the future. Use obsm instead of obsm_keys. (e.g. `k in adata.obsm` or `adata.obsm.keys() | {'u'}`)
+  if 'X_pca' in adata.obsm_keys():
+/home/ammasakshay/Desktop/Projects/Packages/conga_build/scripts/run_conga.py:655: FutureWarning: The method uns_keys is deprecated and will be removed in the future. Use uns instead of uns_keys. (e.g. `k in adata.uns` or `sorted(adata.uns)`)
+  if 'batch_keys' in adata.uns_keys():
+/home/ammasakshay/Desktop/Projects/Packages/conga_build/scripts/run_conga.py:715: FutureWarning: The method obsm_keys is deprecated and will be removed in the future. Use obsm instead of obsm_keys. (e.g. `k in adata.obsm` or `adata.obsm.keys() | {'u'}`)
+  'X_tcr_2d' not in adata.obsm_keys() or # missing
+/home/ammasakshay/Desktop/Projects/Packages/conga_build/scripts/run_conga.py:719: FutureWarning: The method obs_keys is deprecated and will be removed in the future. Use obs instead of obs_keys. (e.g. `k in adata.obs` or `str(adata.obs.columns.tolist())`)
+  'clusters_tcr' not in adata.obs_keys() or # missing
+/home/ammasakshay/Desktop/Projects/Packages/conga_build/site-packages/conga/preprocess.py:1199: FutureWarning: The method obsm_keys is deprecated and will be removed in the future. Use obsm instead of obsm_keys. (e.g. `k in adata.obsm` or `adata.obsm.keys() | {'u'}`)
+  if obsm_tag_tcr is not None and obsm_tag_tcr not in adata.obsm_keys():
+/home/ammasakshay/Desktop/Projects/Packages/conga_build/site-packages/conga/preprocess.py:192: FutureWarning: The method obs_keys is deprecated and will be removed in the future. Use obs instead of obs_keys. (e.g. `k in adata.obs` or `str(adata.obs.columns.tolist())`)
+  if include_subject_id_if_present and util.SUBJECT_ID_OBS_KEY in adata.obs_keys():
+/home/ammasakshay/Desktop/Projects/Packages/conga_build/site-packages/conga/preprocess.py:53: FutureWarning: The method uns_keys is deprecated and will be removed in the future. Use uns instead of uns_keys. (e.g. `k in adata.uns` or `sorted(adata.uns)`)
+  organism = 'human' if 'organism' not in adata.uns_keys() else \
+/home/ammasakshay/Desktop/Projects/Packages/conga_build/site-packages/conga/preprocess.py:192: FutureWarning: The method obs_keys is deprecated and will be removed in the future. Use obs instead of obs_keys. (e.g. `k in adata.obs` or `str(adata.obs.columns.tolist())`)
+  if include_subject_id_if_present and util.SUBJECT_ID_OBS_KEY in adata.obs_keys():
+/home/ammasakshay/Desktop/Projects/Packages/conga_build/site-packages/conga/correlations.py:111: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  mait_fraction=np.sum(is_mait[double_nbrs])/overlap,
+/home/ammasakshay/Desktop/Projects/Packages/conga_build/site-packages/conga/correlations.py:189: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  mait_fraction=np.sum(is_mait[same_cluster_nbrs])/overlap
+/home/ammasakshay/Desktop/Projects/Packages/conga_build/site-packages/conga/correlations.py:189: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  mait_fraction=np.sum(is_mait[same_cluster_nbrs])/overlap
+/home/ammasakshay/Desktop/Projects/Packages/conga_build/site-packages/conga/correlations.py:111: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  mait_fraction=np.sum(is_mait[double_nbrs])/overlap,
+/home/ammasakshay/Desktop/Projects/Packages/conga_build/site-packages/conga/correlations.py:189: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  mait_fraction=np.sum(is_mait[same_cluster_nbrs])/overlap
+/home/ammasakshay/Desktop/Projects/Packages/conga_build/site-packages/conga/correlations.py:189: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  mait_fraction=np.sum(is_mait[same_cluster_nbrs])/overlap
+/home/ammasakshay/Desktop/Projects/Packages/conga_build/site-packages/conga/correlations.py:646: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  results_df[tag] = list(adata.obs[tag][indices])
+/home/ammasakshay/Desktop/Projects/Packages/conga_build/site-packages/conga/correlations.py:646: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  results_df[tag] = list(adata.obs[tag][indices])
+/home/ammasakshay/Desktop/Projects/Packages/conga_build/site-packages/conga/correlations.py:646: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  results_df[tag] = list(adata.obs[tag][indices])
+/home/ammasakshay/Desktop/Projects/Packages/conga_build/site-packages/conga/correlations.py:646: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  results_df[tag] = list(adata.obs[tag][indices])
+/home/ammasakshay/Desktop/Projects/Packages/conga_build/site-packages/conga/correlations.py:646: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  results_df[tag] = list(adata.obs[tag][indices])
+/home/ammasakshay/Desktop/Projects/Packages/conga_build/site-packages/conga/correlations.py:646: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  results_df[tag] = list(adata.obs[tag][indices])
+/home/ammasakshay/Desktop/Projects/Packages/conga_build/site-packages/conga/util.py:168: FutureWarning: The method uns_keys is deprecated and will be removed in the future. Use uns instead of uns_keys. (e.g. `k in adata.uns` or `sorted(adata.uns)`)
+  if 'conga_results' not in adata.uns_keys():
+/home/ammasakshay/Desktop/Projects/Packages/conga_build/site-packages/conga/util.py:171: FutureWarning: The method uns_keys is deprecated and will be removed in the future. Use uns instead of uns_keys. (e.g. `k in adata.uns` or `sorted(adata.uns)`)
+  if 'conga_stats' not in adata.uns_keys():
+/home/ammasakshay/Desktop/Projects/Packages/conga_build/site-packages/conga/tcr_scoring.py:325: FutureWarning: The method obs_keys is deprecated and will be removed in the future. Use obs instead of obs_keys. (e.g. `k in adata.obs` or `str(adata.obs.columns.tolist())`)
+  if 'nndists_tcr' not in adata.obs_keys():
+/home/ammasakshay/Desktop/Projects/Packages/conga_build/site-packages/conga/correlations.py:977: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  mait_fraction = np.sum(nbrhood_is_mait[ top_indices ] )\
+computing X_pca_gex using sc.tl.pca
+running 1D UMAP gex
+ran louvain clustering: louvain_gex
+running 1D UMAP tcr
+ran louvain clustering: louvain_tcr
+compute D gex 4769
+argpartitions: 0.01 4769 gex
+calculate nndists: gex 0.01
+DONE calculating nndists: gex 0.01
+argpartitions: 0.1 4769 gex
+compute D tcr 4769
+argpartitions: 0.01 4769 tcr
+calculate nndists: tcr 0.01
+DONE calculating nndists: tcr 0.01
+argpartitions: 0.1 4769 tcr
+setup_tcr_cluster_names: ['0', '1_AV8', '2', '3_BV20', '4', '5_AV12', '6_av38', '7_AV26', '8_AV19', '9_AV9', '10_AV21', '11_AV1', '12_BV30', '13', '14_BV20', '15_AV26']
+saved graph_vs_graph_stats results to tsvfile: CHER_graph_vs_graph_stats.tsv
+find_neighbor_neighbor_interactions:
+find_neighbor_cluster_interactions:
+find_neighbor_cluster_interactions:
+find_neighbor_neighbor_interactions:
+find_neighbor_cluster_interactions:
+find_neighbor_cluster_interactions:
+saved graph_vs_graph results to tsvfile: CHER_graph_vs_graph.tsv
+making tcr score table, #features= 35
+/home/ammasakshay/Desktop/Projects/Packages/conga_build/site-packages/conga/plotting.py:386: FutureWarning: The method uns_keys is deprecated and will be removed in the future. Use uns instead of uns_keys. (e.g. `k in adata.uns` or `sorted(adata.uns)`)
+  make_batch_bars = 'batch_keys' in adata.uns_keys()
+/home/ammasakshay/Desktop/Projects/Packages/conga_build/site-packages/conga/plotting.py:433: FutureWarning: The method uns_keys is deprecated and will be removed in the future. Use uns instead of uns_keys. (e.g. `k in adata.uns` or `sorted(adata.uns)`)
+  'conga_results' in adata.uns_keys() and
+/home/ammasakshay/Desktop/Projects/Packages/conga_build/site-packages/conga/tcr_scoring.py:325: FutureWarning: The method obs_keys is deprecated and will be removed in the future. Use obs instead of obs_keys. (e.g. `k in adata.obs` or `str(adata.obs.columns.tolist())`)
+  if 'nndists_tcr' not in adata.obs_keys():
+/home/ammasakshay/Desktop/Projects/Packages/conga_build/site-packages/conga/plotting.py:1179: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  num_cells = sum( clone_sizes[x] for x in nodes )
+Error: conga.convert_svg_to_png failed to convert svg file to png file
+Is the "convert" cmdline tool (ImageMagick) installed, or Inkscape?
+run rank_genes_groups [('none', 4590), ('clp_1_5', 33), ('clp_4_11', 31), ('clp_1_2', 25), ('clp_14_11', 22), ('clp_0_3', 17), ('clp_1_10', 13), ('clp_1_0', 10), ('clp_14_3', 7), ('clp_1_6', 6), ('clp_7_11', 5), ('clp_1_8', 5), ('clp_0_15', 5)]
+making cluster logos: 0 12 CHER_graph_vs_graph_logos.png
+Error: conga.convert_svg_to_png failed to convert svg file to png file
+Is the "convert" cmdline tool (ImageMagick) installed, or Inkscape?
+
+Traceback (most recent call last):
+  File "/home/ammasakshay/Desktop/Projects/Packages/conga_build/scripts/run_conga.py", line 914, in <module>
+    conga.plotting.make_graph_vs_graph_logos(
+  File "/home/ammasakshay/Desktop/Projects/Packages/conga_build/site-packages/conga/plotting.py", line 3550, in make_graph_vs_graph_logos
+    help_message = make_logo_plots(
+                   ^^^^^^^^^^^^^^^^
+  File "/home/ammasakshay/Desktop/Projects/Packages/conga_build/site-packages/conga/plotting.py", line 1319, in make_logo_plots
+    image = mpimg.imread(pngfile)
+            ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ammasakshay/.claude-science/conda/envs/conga/lib/python3.11/site-packages/matplotlib/image.py", line 1594, in imread
+    with img_open(fname) as image:
+         ^^^^^^^^^^^^^^^
+  File "/home/ammasakshay/.claude-science/conda/envs/conga/lib/python3.11/site-packages/PIL/ImageFile.py", line 138, in __init__
+    self.fp = open(fp, "rb")
+              ^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'CHER_graph_vs_graph_logos.png.tmp_1_0_0.png'

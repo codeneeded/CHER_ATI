@@ -1,0 +1,43 @@
+"Annotation","Phase","n_cells","pct_of_sample"
+"CD4 naive T","G1",1349,13.26
+"CD4 central memory T","G1",350,3.44
+"CD4 effector memory T","G1",436,4.29
+"CD8 naive/CM T","G1",686,6.74
+"CD8 effector/TEMRA","G1",714,7.02
+"CD8 effector T (cycling)","G1",0,0
+"NK cell","G1",862,8.47
+"Naive B cell","G1",1343,13.2
+"B cell (unresolved)","G1",212,2.08
+"Plasma cell","G1",185,1.82
+"Classical monocyte","G1",2092,20.56
+"Classical monocyte (inflammatory)","G1",1286,12.64
+"Non-classical monocyte","G1",604,5.94
+"pDC","G1",56,0.55
+"CD4 naive T","S",1456,20.46
+"CD4 central memory T","S",468,6.58
+"CD4 effector memory T","S",532,7.48
+"CD8 naive/CM T","S",699,9.82
+"CD8 effector/TEMRA","S",1139,16.01
+"CD8 effector T (cycling)","S",91,1.28
+"NK cell","S",666,9.36
+"Naive B cell","S",1629,22.9
+"B cell (unresolved)","S",160,2.25
+"Plasma cell","S",65,0.91
+"Classical monocyte","S",73,1.03
+"Classical monocyte (inflammatory)","S",8,0.11
+"Non-classical monocyte","S",83,1.17
+"pDC","S",46,0.65
+"CD4 naive T","G2M",187,7.37
+"CD4 central memory T","G2M",145,5.72
+"CD4 effector memory T","G2M",192,7.57
+"CD8 naive/CM T","G2M",101,3.98
+"CD8 effector/TEMRA","G2M",898,35.41
+"CD8 effector T (cycling)","G2M",45,1.77
+"NK cell","G2M",381,15.02
+"Naive B cell","G2M",340,13.41
+"B cell (unresolved)","G2M",64,2.52
+"Plasma cell","G2M",84,3.31
+"Classical monocyte","G2M",51,2.01
+"Classical monocyte (inflammatory)","G2M",0,0
+"Non-classical monocyte","G2M",45,1.77
+"pDC","G2M",3,0.12

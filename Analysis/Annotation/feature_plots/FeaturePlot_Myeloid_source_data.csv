@@ -1,0 +1,57 @@
+"Annotation","gene","pct_detected","mean_expression"
+"CD4 naive T","CD14",0.1,8e-04
+"CD4 naive T","LYZ",1.5,0.0138
+"CD4 naive T","FCGR3A",0.23,0.0025
+"CD4 naive T","CDKN1C",0.84,0.0076
+"CD4 central memory T","CD14",0.62,0.0069
+"CD4 central memory T","LYZ",2.39,0.0264
+"CD4 central memory T","FCGR3A",0.62,0.0061
+"CD4 central memory T","CDKN1C",3.22,0.0341
+"CD4 effector memory T","CD14",0.26,0.0019
+"CD4 effector memory T","LYZ",2.07,0.0161
+"CD4 effector memory T","FCGR3A",0.6,0.0047
+"CD4 effector memory T","CDKN1C",0.86,0.0073
+"CD8 naive/CM T","CD14",0.07,6e-04
+"CD8 naive/CM T","LYZ",0.87,0.0075
+"CD8 naive/CM T","FCGR3A",0.34,0.0026
+"CD8 naive/CM T","CDKN1C",0.61,0.0049
+"CD8 effector/TEMRA","CD14",0.29,0.0025
+"CD8 effector/TEMRA","LYZ",2.11,0.0189
+"CD8 effector/TEMRA","FCGR3A",37.33,0.5013
+"CD8 effector/TEMRA","CDKN1C",2,0.0217
+"CD8 effector T (cycling)","CD14",0.74,0.0038
+"CD8 effector T (cycling)","LYZ",2.21,0.0058
+"CD8 effector T (cycling)","FCGR3A",27.21,0.2373
+"CD8 effector T (cycling)","CDKN1C",5.15,0.0218
+"NK cell","CD14",0.16,0.0016
+"NK cell","LYZ",2.83,0.0282
+"NK cell","FCGR3A",64.27,1.0352
+"NK cell","CDKN1C",1.36,0.0144
+"Naive B cell","CD14",0.03,3e-04
+"Naive B cell","LYZ",1.33,0.0115
+"Naive B cell","FCGR3A",0.3,0.0027
+"Naive B cell","CDKN1C",0.3,0.0023
+"B cell (unresolved)","CD14",0,0
+"B cell (unresolved)","LYZ",2.52,0.0305
+"B cell (unresolved)","FCGR3A",0.23,0.0027
+"B cell (unresolved)","CDKN1C",1.61,0.0282
+"Plasma cell","CD14",0.6,0.0016
+"Plasma cell","LYZ",1.8,0.0054
+"Plasma cell","FCGR3A",0.3,0.0042
+"Plasma cell","CDKN1C",0.3,6e-04
+"Classical monocyte","CD14",56.27,0.7071
+"Classical monocyte","LYZ",95.8,3.4792
+"Classical monocyte","FCGR3A",9.43,0.0768
+"Classical monocyte","CDKN1C",11.55,0.1166
+"Classical monocyte (inflammatory)","CD14",73.8,0.9965
+"Classical monocyte (inflammatory)","LYZ",99.3,3.1367
+"Classical monocyte (inflammatory)","FCGR3A",55.02,0.6595
+"Classical monocyte (inflammatory)","CDKN1C",10.05,0.063
+"Non-classical monocyte","CD14",50.55,0.8966
+"Non-classical monocyte","LYZ",87.57,1.5934
+"Non-classical monocyte","FCGR3A",92.08,2.2704
+"Non-classical monocyte","CDKN1C",67.9,1.107
+"pDC","CD14",0,0
+"pDC","LYZ",13.33,0.1046
+"pDC","FCGR3A",0,0
+"pDC","CDKN1C",20.95,0.1294

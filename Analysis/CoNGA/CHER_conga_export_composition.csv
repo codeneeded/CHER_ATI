@@ -1,0 +1,113 @@
+"Sample","Annotation","Freq"
+"149496_B4","B cell (unresolved)",28
+"149496_Interrupt","B cell (unresolved)",49
+"150815_B4","B cell (unresolved)",42
+"150815_Interrupt","B cell (unresolved)",41
+"154026_B4","B cell (unresolved)",25
+"154026_Interrupt","B cell (unresolved)",10
+"BC_control_A","B cell (unresolved)",116
+"BC_control_B","B cell (unresolved)",125
+"149496_B4","CD4 central memory T",123
+"149496_Interrupt","CD4 central memory T",46
+"150815_B4","CD4 central memory T",169
+"150815_Interrupt","CD4 central memory T",41
+"154026_B4","CD4 central memory T",71
+"154026_Interrupt","CD4 central memory T",20
+"BC_control_A","CD4 central memory T",264
+"BC_control_B","CD4 central memory T",229
+"149496_B4","CD4 effector memory T",193
+"149496_Interrupt","CD4 effector memory T",106
+"150815_B4","CD4 effector memory T",112
+"150815_Interrupt","CD4 effector memory T",174
+"154026_B4","CD4 effector memory T",190
+"154026_Interrupt","CD4 effector memory T",189
+"BC_control_A","CD4 effector memory T",95
+"BC_control_B","CD4 effector memory T",101
+"149496_B4","CD4 naive T",798
+"149496_Interrupt","CD4 naive T",141
+"150815_B4","CD4 naive T",404
+"150815_Interrupt","CD4 naive T",448
+"154026_B4","CD4 naive T",416
+"154026_Interrupt","CD4 naive T",490
+"BC_control_A","CD4 naive T",145
+"BC_control_B","CD4 naive T",150
+"149496_B4","CD8 effector T (cycling)",10
+"149496_Interrupt","CD8 effector T (cycling)",19
+"150815_B4","CD8 effector T (cycling)",3
+"150815_Interrupt","CD8 effector T (cycling)",24
+"154026_B4","CD8 effector T (cycling)",33
+"154026_Interrupt","CD8 effector T (cycling)",41
+"BC_control_A","CD8 effector T (cycling)",3
+"BC_control_B","CD8 effector T (cycling)",3
+"149496_B4","CD8 effector/TEMRA",510
+"149496_Interrupt","CD8 effector/TEMRA",332
+"150815_B4","CD8 effector/TEMRA",103
+"150815_Interrupt","CD8 effector/TEMRA",217
+"154026_B4","CD8 effector/TEMRA",325
+"154026_Interrupt","CD8 effector/TEMRA",709
+"BC_control_A","CD8 effector/TEMRA",288
+"BC_control_B","CD8 effector/TEMRA",267
+"149496_B4","CD8 naive/CM T",175
+"149496_Interrupt","CD8 naive/CM T",27
+"150815_B4","CD8 naive/CM T",370
+"150815_Interrupt","CD8 naive/CM T",515
+"154026_B4","CD8 naive/CM T",100
+"154026_Interrupt","CD8 naive/CM T",157
+"BC_control_A","CD8 naive/CM T",67
+"BC_control_B","CD8 naive/CM T",75
+"149496_B4","Classical monocyte",2
+"149496_Interrupt","Classical monocyte",2
+"150815_B4","Classical monocyte",3
+"150815_Interrupt","Classical monocyte",4
+"154026_B4","Classical monocyte",0
+"154026_Interrupt","Classical monocyte",3
+"BC_control_A","Classical monocyte",1089
+"BC_control_B","Classical monocyte",1113
+"149496_B4","Classical monocyte (inflammatory)",192
+"149496_Interrupt","Classical monocyte (inflammatory)",58
+"150815_B4","Classical monocyte (inflammatory)",113
+"150815_Interrupt","Classical monocyte (inflammatory)",166
+"154026_B4","Classical monocyte (inflammatory)",96
+"154026_Interrupt","Classical monocyte (inflammatory)",183
+"BC_control_A","Classical monocyte (inflammatory)",235
+"BC_control_B","Classical monocyte (inflammatory)",251
+"149496_B4","Naive B cell",300
+"149496_Interrupt","Naive B cell",200
+"150815_B4","Naive B cell",867
+"150815_Interrupt","Naive B cell",642
+"154026_B4","Naive B cell",395
+"154026_Interrupt","Naive B cell",425
+"BC_control_A","Naive B cell",236
+"BC_control_B","Naive B cell",247
+"149496_B4","NK cell",224
+"149496_Interrupt","NK cell",166
+"150815_B4","NK cell",68
+"150815_Interrupt","NK cell",149
+"154026_B4","NK cell",439
+"154026_Interrupt","NK cell",227
+"BC_control_A","NK cell",329
+"BC_control_B","NK cell",307
+"149496_B4","Non-classical monocyte",106
+"149496_Interrupt","Non-classical monocyte",11
+"150815_B4","Non-classical monocyte",39
+"150815_Interrupt","Non-classical monocyte",48
+"154026_B4","Non-classical monocyte",64
+"154026_Interrupt","Non-classical monocyte",26
+"BC_control_A","Non-classical monocyte",217
+"BC_control_B","Non-classical monocyte",221
+"149496_B4","pDC",8
+"149496_Interrupt","pDC",8
+"150815_B4","pDC",20
+"150815_Interrupt","pDC",22
+"154026_B4","pDC",10
+"154026_Interrupt","pDC",9
+"BC_control_A","pDC",15
+"BC_control_B","pDC",13
+"149496_B4","Plasma cell",0
+"149496_Interrupt","Plasma cell",323
+"150815_B4","Plasma cell",1
+"150815_Interrupt","Plasma cell",4
+"154026_B4","Plasma cell",0
+"154026_Interrupt","Plasma cell",1
+"BC_control_A","Plasma cell",3
+"BC_control_B","Plasma cell",2

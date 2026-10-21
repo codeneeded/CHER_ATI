@@ -1,0 +1,65 @@
+"Annotation","Sample_ID","n_TCR","pct_in_clone_ge2"
+"CD4 naive T","149496_B4",735,0
+"CD4 naive T","149496_Interrupt",132,0
+"CD4 naive T","150815_B4",372,0
+"CD4 naive T","150815_Interrupt",398,0
+"CD4 naive T","154026_B4",370,0.5
+"CD4 naive T","154026_Interrupt",469,1.9
+"CD4 naive T","BC_control_A",141,0
+"CD4 naive T","BC_control_B",142,2.8
+"CD4 central memory T","149496_B4",87,0
+"CD4 central memory T","149496_Interrupt",26,0
+"CD4 central memory T","150815_B4",92,0
+"CD4 central memory T","150815_Interrupt",19,0
+"CD4 central memory T","154026_B4",23,0
+"CD4 central memory T","154026_Interrupt",7,0
+"CD4 central memory T","BC_control_A",191,1.6
+"CD4 central memory T","BC_control_B",148,1.4
+"CD4 effector memory T","149496_B4",148,2.7
+"CD4 effector memory T","149496_Interrupt",92,4.3
+"CD4 effector memory T","150815_B4",87,0
+"CD4 effector memory T","150815_Interrupt",141,0
+"CD4 effector memory T","154026_B4",154,0.6
+"CD4 effector memory T","154026_Interrupt",165,1.8
+"CD4 effector memory T","BC_control_A",87,12.6
+"CD4 effector memory T","BC_control_B",92,8.7
+"CD8 naive/CM T","149496_B4",142,0.7
+"CD8 naive/CM T","149496_Interrupt",25,0
+"CD8 naive/CM T","150815_B4",323,0.9
+"CD8 naive/CM T","150815_Interrupt",462,0
+"CD8 naive/CM T","154026_B4",86,2.3
+"CD8 naive/CM T","154026_Interrupt",129,1.6
+"CD8 naive/CM T","BC_control_A",61,3.3
+"CD8 naive/CM T","BC_control_B",67,3
+"CD8 effector/TEMRA","149496_B4",359,80.5
+"CD8 effector/TEMRA","149496_Interrupt",295,77.6
+"CD8 effector/TEMRA","150815_B4",71,33.8
+"CD8 effector/TEMRA","150815_Interrupt",182,38.5
+"CD8 effector/TEMRA","154026_B4",275,29.1
+"CD8 effector/TEMRA","154026_Interrupt",570,62.1
+"CD8 effector/TEMRA","BC_control_A",194,45.9
+"CD8 effector/TEMRA","BC_control_B",163,41.7
+"CD8 effector T (cycling)","149496_B4",7,28.6
+"CD8 effector T (cycling)","149496_Interrupt",13,38.5
+"CD8 effector T (cycling)","150815_Interrupt",22,54.5
+"CD8 effector T (cycling)","154026_B4",23,34.8
+"CD8 effector T (cycling)","154026_Interrupt",37,75.7
+"CD8 effector T (cycling)","BC_control_A",3,0
+"CD8 effector T (cycling)","BC_control_B",3,33.3
+"NK cell","149496_B4",4,100
+"NK cell","149496_Interrupt",3,100
+"NK cell","150815_Interrupt",1,100
+"NK cell","154026_Interrupt",1,0
+"NK cell","BC_control_A",1,100
+"NK cell","BC_control_B",3,66.7
+"Naive B cell","149496_B4",1,0
+"Naive B cell","154026_B4",1,0
+"Naive B cell","154026_Interrupt",1,0
+"Naive B cell","BC_control_B",2,0
+"B cell (unresolved)","BC_control_A",1,0
+"Plasma cell","149496_Interrupt",4,50
+"Classical monocyte (inflammatory)","149496_B4",2,100
+"Classical monocyte (inflammatory)","149496_Interrupt",2,0
+"Classical monocyte (inflammatory)","150815_Interrupt",1,100
+"Classical monocyte (inflammatory)","154026_Interrupt",3,66.7
+"Non-classical monocyte","149496_Interrupt",1,0

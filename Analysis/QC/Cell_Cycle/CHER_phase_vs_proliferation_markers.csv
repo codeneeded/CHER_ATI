@@ -1,0 +1,4 @@
+"Phase","n_cells","pct_prolif_pos","median_n_prolif_genes","MKI67_pct","TOP2A_pct"
+"G1",10175,2.58,0,0.78,1.41
+"S",7115,11.54,0,3.19,4.48
+"G2M",2536,11.44,0,7.57,8.6

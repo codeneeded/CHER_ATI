@@ -1,0 +1,57 @@
+"Annotation","gene","pct_detected","mean_expression"
+"CD4 naive T","MS4A1",0.47,0.0047
+"CD4 naive T","CD79A",3.48,0.0347
+"CD4 naive T","IGHD",0.1,0.0014
+"CD4 naive T","FCRL1",0.84,0.0085
+"CD4 central memory T","MS4A1",0.31,0.0046
+"CD4 central memory T","CD79A",2.28,0.0231
+"CD4 central memory T","IGHD",0,0
+"CD4 central memory T","FCRL1",0.42,0.0047
+"CD4 effector memory T","MS4A1",0.17,0.0014
+"CD4 effector memory T","CD79A",3.79,0.0416
+"CD4 effector memory T","IGHD",0,0
+"CD4 effector memory T","FCRL1",0.34,0.0027
+"CD8 naive/CM T","MS4A1",0.4,0.0038
+"CD8 naive/CM T","CD79A",10.83,0.1092
+"CD8 naive/CM T","IGHD",0,0
+"CD8 naive/CM T","FCRL1",0.13,0.0012
+"CD8 effector/TEMRA","MS4A1",0.25,0.003
+"CD8 effector/TEMRA","CD79A",2.22,0.0186
+"CD8 effector/TEMRA","IGHD",0.11,0.0011
+"CD8 effector/TEMRA","FCRL1",0.15,0.0012
+"CD8 effector T (cycling)","MS4A1",0,0
+"CD8 effector T (cycling)","CD79A",4.41,0.0193
+"CD8 effector T (cycling)","IGHD",0,0
+"CD8 effector T (cycling)","FCRL1",0,0
+"NK cell","MS4A1",0.94,0.0105
+"NK cell","CD79A",2.46,0.0247
+"NK cell","IGHD",0.1,0.0015
+"NK cell","FCRL1",0.26,0.0034
+"Naive B cell","MS4A1",95.68,2.3808
+"Naive B cell","CD79A",99.76,3.4345
+"Naive B cell","IGHD",54.26,0.7275
+"Naive B cell","FCRL1",23.94,0.2459
+"B cell (unresolved)","MS4A1",92.2,2.4945
+"B cell (unresolved)","CD79A",81.65,2.1933
+"B cell (unresolved)","IGHD",41.51,0.6132
+"B cell (unresolved)","FCRL1",50.46,0.7267
+"Plasma cell","MS4A1",4.49,0.0369
+"Plasma cell","CD79A",83.83,0.8872
+"Plasma cell","IGHD",2.4,0.0095
+"Plasma cell","FCRL1",2.4,0.0093
+"Classical monocyte","MS4A1",0.27,0.002
+"Classical monocyte","CD79A",0.27,0.0014
+"Classical monocyte","IGHD",0.14,7e-04
+"Classical monocyte","FCRL1",0.14,0.0013
+"Classical monocyte (inflammatory)","MS4A1",1.47,0.0212
+"Classical monocyte (inflammatory)","CD79A",2.32,0.0277
+"Classical monocyte (inflammatory)","IGHD",0.7,0.0042
+"Classical monocyte (inflammatory)","FCRL1",0.85,0.0041
+"Non-classical monocyte","MS4A1",1.37,0.0167
+"Non-classical monocyte","CD79A",2.6,0.0285
+"Non-classical monocyte","IGHD",0.68,0.0058
+"Non-classical monocyte","FCRL1",1.09,0.0117
+"pDC","MS4A1",2.86,0.0225
+"pDC","CD79A",15.24,0.1277
+"pDC","IGHD",6.67,0.0296
+"pDC","FCRL1",0,0

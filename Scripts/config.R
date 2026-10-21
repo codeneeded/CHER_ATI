@@ -53,6 +53,8 @@ QS_FILTERED   <- file.path(SAVED_DIR, "CHER_03_postQC_filtered.qs2")
 QS_CELLCYCLE  <- file.path(SAVED_DIR, "CHER_04_cellcycle.qs2")
 QS_SINGLETS   <- file.path(SAVED_DIR, "CHER_05_postQC_scDblFinder_singlets.qs2")
 QS_INTEGRATED <- file.path(SAVED_DIR, "CHER_06_RNA_integrated_CCA_MNN.qs2")
+QS_ANNOTATED  <- file.path(SAVED_DIR, "CHER_09_annotated.qs2")
+QS_WITH_TCR   <- file.path(SAVED_DIR, "CHER_10_annotated_withTCR.qs2")
 
 # ── Sample sheet ─────────────────────────────────────────────────────────────
 # From L. de Armas, confirmed against both BaseSpace share pages 2026-10-19.
@@ -114,6 +116,27 @@ sample_vdj <- function(sample_id) {
   p
 }
 
+# Cells carrying a productive TCR, as a named logical keyed by Seurat cell name.
+# NOTE the `productive` field in Cell Ranger 10.1 contig CSVs is lowercase
+# "true"; matching "True"/TRUE returns ZERO rows and reads as "no T cells
+# anywhere" rather than as an error.
+tcr_cells <- function(cell_names, paired_only = FALSE) {
+  tc <- do.call(rbind, lapply(CHER_SAMPLES$Sample_ID, function(s) {
+    d <- utils::read.csv(sample_vdj(s), stringsAsFactors = FALSE)
+    d <- d[tolower(as.character(d$productive)) == "true" &
+           tolower(as.character(d$high_confidence)) == "true" &
+           d$chain %in% c("TRA", "TRB"), ]
+    if (!nrow(d)) return(NULL)
+    u   <- unique(d[, c("barcode", "chain")])
+    agg <- stats::aggregate(chain ~ barcode, data = u,
+                            FUN = function(x) paste(sort(unique(x)), collapse = "+"))
+    data.frame(cell = paste0(s, "_", agg$barcode), chains = agg$chain,
+               stringsAsFactors = FALSE)
+  }))
+  keep <- if (paired_only) tc$cell[tc$chains == "TRA+TRB"] else tc$cell
+  stats::setNames(cell_names %in% keep, cell_names)
+}
+
 # ── Shared aesthetics ────────────────────────────────────────────────────────
 # B4 / Interrupt are the contrast; the healthy control is deliberately neutral
 # grey so it never reads as a third arm of the comparison.
@@ -169,11 +192,59 @@ MITO_PATTERN     <- "^MT-"
 HB_PATTERN       <- "^HB[ABDEGQZ][0-9]?$|^HBA[12]$"
 
 # ── Clustering ───────────────────────────────────────────────────────────────
-# Set from clustree in script 06; NOT inherited from CP018, because cluster
-# structure is dataset-specific. Left NA until that figure has been reviewed.
 MIN_CLUSTER_SIZE <- 10
-MNN_RES_FINAL    <- NA_real_
-CCA_RES_FINAL    <- NA_real_
+# FastMNN at 0.6, 16 clusters. NOTE the miR29a marker-redundancy criterion did
+# NOT discriminate here: zero redundant pairs at every level 0.2-1.0, so it
+# would have picked 1.0. 0.6 was chosen on nameability instead — every cluster
+# gets a defensible lineage call, which higher levels start to lose. That is a
+# judgement, recorded as such.
+MNN_RES_FINAL    <- 0.6
+CCA_RES_FINAL    <- NA_real_   # CCA embedding kept but not taken forward
+
+# ── Annotation vocabulary ────────────────────────────────────────────────────
+# Lineage identity first; a PROGRAMME (cycling, inflammatory) is only ever a
+# bracketed qualifier, never the noun — naming a cluster after a programme hides
+# what the cell is and makes composition analysis incoherent.
+# Two labels were CORRECTED by the audit (script 10), not chosen up front:
+#   "Memory B cell" -> "B cell (unresolved)". It failed its own falsification
+#      criterion (IGHD <=25 required, observed 41.5) and CD27 — the memory B
+#      marker — is detected in only 3.2% of its cells, LOWER than the naive B
+#      cluster's 5.6%. It is a distinct population (1,351 DE genes vs naive B,
+#      FCRL1 50.5% vs 23.9%, BANK1 81.2% vs 68.2%) but is neither memory nor
+#      class-switched on the evidence, so it is named unresolved rather than
+#      guessed.
+#   "CD4 memory T" -> "CD4 effector memory T". Justified by CCR4 41.9%,
+#      KLRB1 57.5%, S100A4 69.6%, AQP3 47.9% against 3.0 / 2.5 / 8.9 / 24.5 in
+#      CD4 naive — an effector-memory phenotype, not generic memory.
+ANNO_ORDER <- c(
+  "CD4 naive T", "CD4 central memory T", "CD4 effector memory T",
+  "CD8 naive/CM T", "CD8 effector/TEMRA", "CD8 effector T (cycling)",
+  "NK cell",
+  "Naive B cell", "B cell (unresolved)", "Plasma cell",
+  "Classical monocyte", "Classical monocyte (inflammatory)",
+  "Non-classical monocyte", "pDC")
+
+ANNO_COLS <- c(
+  "CD4 naive T"                      = "#2171B5",
+  "CD4 central memory T"             = "#6BAED6",
+  "CD4 effector memory T"            = "#9ECAE1",
+  "CD8 naive/CM T"                   = "#1A9850",
+  "CD8 effector/TEMRA"               = "#E63946",
+  "CD8 effector T (cycling)"         = "#9D4EDD",
+  "NK cell"                          = "#F4A261",
+  "Naive B cell"                     = "#762A83",
+  "B cell (unresolved)"              = "#C2A5CF",
+  "Plasma cell"                      = "#40004B",
+  "Classical monocyte"               = "#8C510A",
+  "Classical monocyte (inflammatory)"= "#BF812D",
+  "Non-classical monocyte"           = "#DFC27D",
+  "pDC"                              = "#00838F")
+
+# Clusters removed before annotation, with the reason. C13 is NOT a cell type:
+# PTPRC (CD45) detected in only 43% of its cells against 97% elsewhere, median
+# 808 genes against 2,322, replication-dependent histones at ~48%, no lineage
+# marker at all, spread across all 8 samples. Debris the QC filters missed.
+DROP_CLUSTERS <- c("13")
 
 # ── Output location policy ───────────────────────────────────────────────────
 # Everything written goes under Analysis/. Manuscript/ holds figures only once
@@ -303,6 +374,15 @@ panel_size <- function(n_panels, ncol = 2, panel_w = 5.0, panel_h = 3.6) {
   c(width = ncol * panel_w, height = nrow * panel_h)
 }
 
+# ── Filenames ────────────────────────────────────────────────────────────────
+# Cell-type labels contain spaces, slashes and parentheses ("CD8 naive/CM T",
+# "Classical monocyte (inflammatory)"). fs_safe turns one into a filename
+# fragment that survives a shell and a Windows checkout.
+fs_safe <- function(x) {
+  x <- gsub("[^[:alnum:]]+", "_", as.character(x))
+  gsub("(^_|_$)", "", x)
+}
+
 # ── CSV export ───────────────────────────────────────────────────────────────
 # Every figure ships the numbers behind it (house rule). save_csv echoes the
 # path so a skipped export is visible in the log.
@@ -364,6 +444,83 @@ tidy_umap <- function(p, title = NULL, subtitle = NULL,
                    legend.key    = ggplot2::element_blank())
   if (!legend) p <- p + ggplot2::theme(legend.position = "none")
   p
+}
+
+# ── House UMAP idiom ─────────────────────────────────────────────────────────
+# Ported from miR29a_PDAC_CD8/Scripts/config.R (umap_house + add_umap_arrows),
+# which in turn takes its parameters verbatim from CD8_Longitudinal
+# "Scripts/3. Manuscript/Figure_4.R". Boxed state names ON the embedding with
+# leader lines, corner axis arrows instead of axes, square canvas.
+#
+# THE CANVAS MUST BE SQUARE. Each arrow arm is 0.12 of its OWN axis range, so
+# the two arms only render equal on a square drawing area; on a wide panel the
+# horizontal arm comes out nearly twice the vertical one.
+add_umap_arrows <- function(p, df, x = "UMAP1", y = "UMAP2", size = 5) {
+  xr <- diff(range(df[[x]], na.rm = TRUE)); yr <- diff(range(df[[y]], na.rm = TRUE))
+  af <- 0.12
+  xa <- min(df[[x]], na.rm = TRUE) - xr * 0.05
+  ya <- min(df[[y]], na.rm = TRUE) - yr * 0.08
+  p +
+    ggplot2::annotate("segment", x = xa, xend = xa + xr * af, y = ya, yend = ya,
+                      arrow = ggplot2::arrow(length = ggplot2::unit(0.3, "cm"), type = "closed"),
+                      linewidth = 0.9, colour = "black") +
+    ggplot2::annotate("text", x = xa + xr * af / 2, y = ya - yr * 0.04,
+                      label = "UMAP1", size = size, fontface = "bold") +
+    ggplot2::annotate("segment", x = xa, xend = xa, y = ya, yend = ya + yr * af,
+                      arrow = ggplot2::arrow(length = ggplot2::unit(0.3, "cm"), type = "closed"),
+                      linewidth = 0.9, colour = "black") +
+    ggplot2::annotate("text", x = xa - xr * 0.04, y = ya + yr * af / 2,
+                      label = "UMAP2", size = size, fontface = "bold", angle = 90) +
+    ggplot2::coord_cartesian(clip = "off")
+}
+
+umap_house <- function(obj, group = "Annotation", reduction = "umap.mnn",
+                       cols = ANNO_COLS, title = NULL, pt.size = NULL,
+                       label = TRUE, legend = FALSE, label.size = 5.2,
+                       arrow.size = 5, split.by = NULL) {
+  df <- as.data.frame(SeuratObject::Embeddings(obj, reduction))[, 1:2]
+  colnames(df) <- c("UMAP1", "UMAP2")
+  df$grp <- factor(obj@meta.data[[group]])
+  if (!is.null(split.by)) df$split <- obj@meta.data[[split.by]]
+
+  # Point size vs cell count: 1.2 at ~12k cells is the house value.
+  if (is.null(pt.size)) pt.size <- max(0.8, min(1.6, 1.2 * sqrt(12000 / nrow(df))))
+
+  p <- ggplot2::ggplot(df, ggplot2::aes(UMAP1, UMAP2, colour = grp)) +
+    ggplot2::geom_point(size = pt.size, alpha = 0.7, stroke = 0) +
+    ggplot2::expand_limits(
+      x = range(df$UMAP1, na.rm = TRUE) + c(-1, 1) * 0.10 * diff(range(df$UMAP1, na.rm = TRUE)),
+      y = range(df$UMAP2, na.rm = TRUE) + c(-1, 1) * 0.10 * diff(range(df$UMAP2, na.rm = TRUE))) +
+    ggplot2::theme_void() +
+    ggplot2::theme(
+      plot.title      = ggplot2::element_text(size = 18, face = "bold", hjust = 0.5),
+      legend.text     = ggplot2::element_text(size = 11, face = "bold"),
+      legend.title    = ggplot2::element_blank(),
+      legend.position = if (legend) "bottom" else "none",
+      strip.text      = ggplot2::element_text(size = 14, face = "bold"),
+      plot.margin     = ggplot2::margin(10, 10, 20, 20))
+
+  if (!is.null(cols)) {
+    keep <- intersect(names(cols), levels(df$grp))
+    if (length(keep) == nlevels(df$grp))
+      p <- p + ggplot2::scale_colour_manual(values = cols, drop = FALSE)
+  }
+  if (!is.null(title)) p <- p + ggplot2::ggtitle(title)
+  if (!is.null(split.by)) p <- p + ggplot2::facet_wrap(~ split)
+
+  if (label && is.null(split.by)) {
+    ctr <- stats::aggregate(cbind(UMAP1, UMAP2) ~ grp, df, stats::median)
+    # House geom_label_repel parameters, verbatim.
+    p <- p + ggrepel::geom_label_repel(
+      data = ctr, ggplot2::aes(label = grp, colour = grp),
+      fill = "white", size = label.size, fontface = "bold",
+      label.size = 0.6, label.padding = ggplot2::unit(0.35, "lines"),
+      box.padding = 1.5, point.padding = 0.5,
+      segment.color = "grey40", segment.size = 0.6,
+      min.segment.length = 0, max.overlaps = 30,
+      force = 5, force_pull = 0.2, seed = 42, show.legend = FALSE)
+  }
+  add_umap_arrows(p, df, size = arrow.size)
 }
 
 umap_labels <- function(p, size = 4.2) {
@@ -461,6 +618,100 @@ run_qc_plots <- function(seu, group_col, out_dir) {
 
   invisible(out_dir)
 }
+
+# ── Canonical clonotype column ───────────────────────────────────────────────
+# Ported from CD8_Longitudinal "Scripts/CP018 - FACTseq/config.R".
+#
+# Cell Ranger 10.1.0 writes an EMPTY D-gene field where 9.0.1 and older
+# alignments write a literal "NA":
+#   CR 9.0.1   TRBV6-1.NA.TRBJ2-5.TRBC2;TGTGCC...
+#   CR 10.1.0  TRBV29-1..TRBJ1-2.TRBC1;TGCAGC...   <- ".."
+# So a CHER clonotype string can NEVER match one from an older run on raw
+# CTstrict, and the result is zero matches — indistinguishable from a real
+# biological absence. normalise_ct() makes the conventions comparable and is
+# idempotent, so re-stamping an object is harmless.
+CT_CANON <- "CTstrict_norm"
+
+normalise_ct <- function(x) {
+  x <- as.character(x)
+  x[x == "" | x == "NA"] <- NA_character_
+  for (i in 1:3) x <- gsub("\\.\\.", ".NA.", x, perl = TRUE)
+  x
+}
+
+# Stamp CT_CANON ON the object, and record which convention it came from so
+# provenance travels with the data rather than living in a script comment.
+add_ct_canon <- function(obj, verbose = TRUE) {
+  md <- obj@meta.data
+  if (!"CTstrict" %in% colnames(md)) {
+    warning("No CTstrict column - cannot add ", CT_CANON, "; TCR not attached?")
+    return(obj)
+  }
+  raw <- as.character(md$CTstrict)
+  nm  <- normalise_ct(raw)
+  obj[[CT_CANON]] <- nm
+  has <- !is.na(raw) & raw != "NA" & raw != ""
+  n_changed <- sum(has & raw != nm, na.rm = TRUE)
+  obj$ct_convention <- if (n_changed > 0) "CR10-style (empty D field, normalised)"
+                       else                "CR9/legacy-style (.NA. D field)"
+  if (verbose) cat(sprintf("  %s: %d clonotype strings | %d normalised (%.1f%%) | %s\n",
+                           CT_CANON, sum(has), n_changed,
+                           if (sum(has)) 100 * n_changed / sum(has) else 0,
+                           obj$ct_convention[1]))
+  obj
+}
+
+require_ct_canon <- function(obj, what = "object") {
+  if (!CT_CANON %in% colnames(obj@meta.data)) {
+    stop(what, " has no ", CT_CANON, " column. Run 12_tcr_attach.R first.\n",
+         "Comparing raw CTstrict across Cell Ranger versions silently returns\n",
+         "zero matches - see the normalise_ct() note in config.R.", call. = FALSE)
+  }
+  invisible(TRUE)
+}
+
+# ── Marker panel for whole PBMC ──────────────────────────────────────────────
+# Lineage first, then state. Used by the resolution ladder, the dot plot and the
+# annotation audit, so the panel is defined ONCE here rather than per script.
+# Order matters: the dot plot reads as a lineage map top-to-bottom.
+PBMC_PANEL <- list(
+  `T cell`          = c("CD3D","CD3E","CD3G","TRAC"),
+  `CD4`             = c("CD4","IL7R"),
+  `CD8`             = c("CD8A","CD8B"),
+  `Naive/CM`        = c("CCR7","SELL","LEF1","TCF7"),
+  `Treg`            = c("FOXP3","IL2RA","CTLA4"),
+  `MAIT`            = c("SLC4A10","KLRB1","TRAV1-2"),
+  `gdT`             = c("TRDC","TRGC1"),
+  `NK`              = c("GNLY","NKG7","KLRD1","KLRF1","NCAM1"),
+  `Cytotoxic`       = c("GZMB","GZMK","PRF1","FGFBP2","CX3CR1"),
+  `B`               = c("MS4A1","CD79A","TCL1A","IGHD"),
+  `Plasma`          = c("MZB1","JCHAIN"),
+  `Mono classical`  = c("CD14","LYZ","S100A8","S100A9","VCAN","FCN1"),
+  `Mono non-class.` = c("FCGR3A","MS4A7","CDKN1C"),
+  `cDC`             = c("FCER1A","CD1C","CLEC9A","CST3"),
+  `pDC`             = c("LILRA4","CLEC4C","IRF7"),
+  `Platelet`        = c("PPBP","PF4"),
+  `HSPC`            = c("CD34"),
+  `Exhaustion`      = c("PDCD1","TOX","LAG3","HAVCR2","TIGIT"),
+  `Proliferation`   = c("MKI67","TOP2A","PCNA"),
+  `Interferon`      = c("ISG15","IFI6","MX1","IFIT3")
+)
+PBMC_PANEL_FLAT <- unique(unlist(PBMC_PANEL, use.names = FALSE))
+
+# Programme genes, for the identity-versus-programme audit. A cluster must never
+# be NAMED after a programme (cycling / interferon / activation) — those are
+# things a cell of any identity can do, and naming a cluster after one hides what
+# the cell is and makes composition analysis incoherent. The audit rescores
+# identity with these removed.
+PROGRAMME_GENES <- list(
+  cycling    = unique(c(Seurat::cc.genes.updated.2019$s.genes,
+                        Seurat::cc.genes.updated.2019$g2m.genes)),
+  interferon = c("ISG15","IFI6","MX1","MX2","IFIT1","IFIT2","IFIT3","OAS1","OAS2",
+                 "OAS3","IFI44L","IFI44","RSAD2","STAT1","STAT2","IRF7","XAF1",
+                 "EIF2AK2","HERC5","CMPK2","LY6E","SIGLEC1","EPSTI1","PARP9"),
+  activation = c("CD69","FOS","FOSB","JUN","JUNB","EGR1","NR4A1","NR4A2","DUSP1",
+                 "HSPA1A","HSPA1B","HSPB1","DNAJB1","ZFP36","IER2","KLF6")
+)
 
 # ── FastMNN integration without SeuratWrappers ───────────────────────────────
 # CP018 used SeuratWrappers::FastMNNIntegration via IntegrateLayers.

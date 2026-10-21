@@ -1,0 +1,17 @@
+"cluster","n_cells","proposed_label","status","key_evidence","pct_of_cells"
+0,3312,"Naive B cell","confident","MS4A1 / CD79A / TCL1A / IGHD / PAX5 / CD19; CCR7 93%",16.5
+1,2992,"CD4 naive T","confident","CD3D 92%, CD8A 0.8%, CD8B 1.9%, CCR7 97%, LEF1 89%, IL7R 98%, MAL/ADTRP",14.9
+2,2392,"CD8 effector/TEMRA","confident","CD8A 89% CD8B 69%, FGFBP2 89%, GZMB 84%, GNLY 81%, EOMES 42%, CCR7 13%",11.9
+3,2216,"Classical monocyte","confident","CD14 56%, LYZ 96%, VCAN 93%, FCN1 91%, S100A8 95%, FCGR3A 9%",11.1
+4,1486,"CD8 naive/CM T","confident","CD8A 68% CD8B 70%, CCR7 96%, LEF1 86%, NELL2 75%, TCF7/CD27",7.4
+5,1304,"NK cell","confident","CD3D 5%, KLRF1 61%, KLRC1 62%, NCAM1 24%, GNLY 99%, FCGR3A 66%",6.5
+6,1294,"Classical monocyte (inflammatory)","confident","CD14 74%, FCN1 96%, MS4A7 93% PLUS CCL2 49% IDO1 44% ACOD1 49%",6.5
+7,1160,"CD4 memory T","confident","CD3D 90%, IL7R 90%, CCR4 42%, TNFRSF4 43%, CTLA4 24%; FOXP3 only 7.6%",5.8
+8,963,"CD4 central memory T","confident","CD3D 67%, CCR7 61%, LEF1 61%, IL7R 88%, CD4>CD8",4.8
+9,964,"NK / innate-like T","PROVISIONAL","KLRF1 45% FCGR3A 56% IFNG-high BUT CD3E 58% / TRAC 12% - mixed",4.8
+10,732,"Non-classical monocyte","confident","CDKN1C / MS4A4A / VMO1, FCGR3A 55%, VCAN low",3.7
+11,436,"Memory B cell","confident","MS4A1+ BANK1 / FCRL1 / CD22; TCL1A and IGHD low",2.2
+12,334,"Plasma cell","confident","MZB1 / JCHAIN / IGHG1 / TNFRSF17",1.7
+13,224,"LOW-QUALITY (exclude)","EXCLUDE","nFeature 808 vs 2322; PTPRC only 43% vs 97%; histones H2AC16 48%; no lineage marker",1.1
+14,136,"CD8 effector T (cycling)","confident","CD3E 92% CD8A 82% CD8B 72% EOMES 76%; 100% S/G2M (91 S, 45 G2M, 0 G1)",0.7
+15,105,"pDC","confident","LILRA4 / CLEC4C / SCT / SERPINF1 / DNASE1L3 / IRF7",0.5

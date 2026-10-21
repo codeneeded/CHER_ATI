@@ -1,0 +1,15 @@
+"criterion_set","n_satisfying","which","unique"
+"B cell (unresolved)",1,"B cell (unresolved)",TRUE
+"CD4 central memory T",1,"CD4 central memory T",TRUE
+"CD4 effector memory T",1,"CD4 effector memory T",TRUE
+"CD4 naive T",1,"CD4 naive T",TRUE
+"CD8 effector T (cycling)",1,"CD8 effector T (cycling)",TRUE
+"CD8 effector/TEMRA",2,"CD8 effector/TEMRA | CD8 effector T (cycling)",FALSE
+"CD8 naive/CM T",1,"CD8 naive/CM T",TRUE
+"Classical monocyte",2,"Classical monocyte | Classical monocyte (inflammatory)",FALSE
+"Classical monocyte (inflammatory)",1,"Classical monocyte (inflammatory)",TRUE
+"NK cell",1,"NK cell",TRUE
+"Naive B cell",1,"Naive B cell",TRUE
+"Non-classical monocyte",1,"Non-classical monocyte",TRUE
+"Plasma cell",1,"Plasma cell",TRUE
+"pDC",1,"pDC",TRUE

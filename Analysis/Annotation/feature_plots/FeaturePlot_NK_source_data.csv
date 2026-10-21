@@ -1,0 +1,57 @@
+"Annotation","gene","pct_detected","mean_expression"
+"CD4 naive T","KLRD1",0.77,0.0072
+"CD4 naive T","KLRF1",0,0
+"CD4 naive T","GNLY",2.17,0.0208
+"CD4 naive T","NCAM1",0.2,0.0022
+"CD4 central memory T","KLRD1",2.91,0.0408
+"CD4 central memory T","KLRF1",0.21,0.0034
+"CD4 central memory T","GNLY",3.12,0.0584
+"CD4 central memory T","NCAM1",0.62,0.0074
+"CD4 effector memory T","KLRD1",14.14,0.2349
+"CD4 effector memory T","KLRF1",0.43,0.0063
+"CD4 effector memory T","GNLY",15,0.3736
+"CD4 effector memory T","NCAM1",0.43,0.0034
+"CD8 naive/CM T","KLRD1",8.01,0.1241
+"CD8 naive/CM T","KLRF1",0,0
+"CD8 naive/CM T","GNLY",2.02,0.0347
+"CD8 naive/CM T","NCAM1",0.13,0.0013
+"CD8 effector/TEMRA","KLRD1",86.15,1.7905
+"CD8 effector/TEMRA","KLRF1",5.02,0.0547
+"CD8 effector/TEMRA","GNLY",79.35,3.0506
+"CD8 effector/TEMRA","NCAM1",0.84,0.0086
+"CD8 effector T (cycling)","KLRD1",73.53,1.2336
+"CD8 effector T (cycling)","KLRF1",9.56,0.1001
+"CD8 effector T (cycling)","GNLY",58.82,1.9203
+"CD8 effector T (cycling)","NCAM1",7.35,0.0616
+"NK cell","KLRD1",91.99,2.1957
+"NK cell","KLRF1",60.92,0.8945
+"NK cell","GNLY",93.66,4.2315
+"NK cell","NCAM1",23.99,0.2813
+"Naive B cell","KLRD1",0.36,0.0033
+"Naive B cell","KLRF1",0.15,0.0013
+"Naive B cell","GNLY",1.78,0.0172
+"Naive B cell","NCAM1",0.09,8e-04
+"B cell (unresolved)","KLRD1",0.69,0.0109
+"B cell (unresolved)","KLRF1",0.23,0.0017
+"B cell (unresolved)","GNLY",2.52,0.0342
+"B cell (unresolved)","NCAM1",0.46,0.0063
+"Plasma cell","KLRD1",0.6,0.0032
+"Plasma cell","KLRF1",0,0
+"Plasma cell","GNLY",0.9,0.0067
+"Plasma cell","NCAM1",0.3,5e-04
+"Classical monocyte","KLRD1",3.25,0.0397
+"Classical monocyte","KLRF1",0.18,0.0021
+"Classical monocyte","GNLY",1.85,0.0165
+"Classical monocyte","NCAM1",1.17,0.0105
+"Classical monocyte (inflammatory)","KLRD1",4.56,0.0263
+"Classical monocyte (inflammatory)","KLRF1",0.31,0.0013
+"Classical monocyte (inflammatory)","GNLY",3.79,0.039
+"Classical monocyte (inflammatory)","NCAM1",2.78,0.0139
+"Non-classical monocyte","KLRD1",2.46,0.0186
+"Non-classical monocyte","KLRF1",0.68,0.009
+"Non-classical monocyte","GNLY",2.32,0.0237
+"Non-classical monocyte","NCAM1",0.82,0.0068
+"pDC","KLRD1",0,0
+"pDC","KLRF1",0,0
+"pDC","GNLY",1.9,0.0095
+"pDC","NCAM1",0,0
