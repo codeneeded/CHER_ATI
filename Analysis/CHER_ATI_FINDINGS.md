@@ -193,8 +193,15 @@ Measured on transcripts rather than phase labels, real proliferation is ATI
 median **8.81%** against control **2.70%** — not 43% vs 21%. It is also not
 consistent per participant: 149496 +13.9 pp, 150815 +2.9 pp, 154026 **−3.1 pp**.
 
-Internal controls behave: plasma cells are 43.4% proliferating, monocytes near
-zero.
+Internal controls behave on the transcript measure: plasma cells are 43.4%
+proliferating against 0.72–2.01% across the three monocyte subsets
+(`CHER_proliferation_by_annotation.csv`).
+
+The *phase label* does not behave as cleanly even in monocytes, which is the
+point of this section: S-phase label runs 0.62% (inflammatory classical) to
+3.29% (classical) but reaches **11.34% in non-classical monocytes** — a
+population with 1.64% proliferating cells by transcript count. Quote the
+proliferation column, not `pct_S`.
 
 ## 10. TCR repertoire
 

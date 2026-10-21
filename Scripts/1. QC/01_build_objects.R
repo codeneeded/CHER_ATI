@@ -2,9 +2,13 @@
 # CHER ATI — 01: build the merged Seurat object
 #
 # Single purpose: read the 8 per-sample filtered matrices, stamp metadata,
-# merge, and compute QC metrics. NO filtering happens here — thresholds are
-# applied in 03_filter.R so that the pre-filter distributions can be inspected
-# first, and so a threshold change does not require re-reading the H5 files.
+# merge, and compute QC metrics. The only cells removed here are those below
+# CreateSeuratObject's min.features = 200 floor (24,233 called -> 23,835), which
+# drops near-empty barcodes so the QC distributions are readable; genes are held
+# to min.cells = 3. The QUALITY thresholds proper (mito, complexity, nFeature,
+# platelet, haemoglobin) are applied in 03_filter.R so that the pre-filter
+# distributions can be inspected first, and so a threshold change does not
+# require re-reading the H5 files.
 #
 # Input : <RUN>/outs/per_sample_outs/<sample>/sample_filtered_feature_bc_matrix.h5
 # Output: QS_RAW  +  Analysis/QC/CHER_cells_per_sample_raw.csv
