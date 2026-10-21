@@ -1,0 +1,9 @@
+"Sample_ID","Participant","Timepoint","Group","Well","OCM_Barcode","n_cells_raw","n_cells_postQC","pct_retained"
+"149496_B4","149496","B4","ATI",34349,"OB2",2943,2838,96.4
+"149496_Interrupt","149496","Interrupt","ATI",34349,"OB1",1984,1572,79.2
+"150815_B4","150815","B4","ATI",34349,"OB3",2496,2446,98
+"150815_Interrupt","150815","Interrupt","ATI",34349,"OB4",2817,2646,93.9
+"154026_B4","154026","B4","ATI",33445,"OB1",2689,2309,85.9
+"154026_Interrupt","154026","Interrupt","ATI",33445,"OB2",2800,2628,93.9
+"BC_control_A","BC_control","Control","Healthy_control",33445,"OB3",4092,3315,81
+"BC_control_B","BC_control","Control","Healthy_control",33445,"OB4",4014,3322,82.8

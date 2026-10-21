@@ -1,0 +1,17 @@
+"Sample_ID","fails_any","n_cells"
+"149496_B4","FALSE",2838
+"149496_Interrupt","FALSE",1572
+"150815_B4","FALSE",2446
+"150815_Interrupt","FALSE",2646
+"154026_B4","FALSE",2309
+"154026_Interrupt","FALSE",2628
+"BC_control_A","FALSE",3315
+"BC_control_B","FALSE",3322
+"149496_B4","TRUE",105
+"149496_Interrupt","TRUE",412
+"150815_B4","TRUE",50
+"150815_Interrupt","TRUE",171
+"154026_B4","TRUE",380
+"154026_Interrupt","TRUE",172
+"BC_control_A","TRUE",777
+"BC_control_B","TRUE",692

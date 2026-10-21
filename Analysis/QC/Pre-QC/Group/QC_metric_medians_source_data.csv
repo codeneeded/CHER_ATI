@@ -1,0 +1,3 @@
+"Group","n_cells","nCount_RNA","nFeature_RNA","percent_mito","percent_ribo","percent_hb","percent_plat","log10GenesPerUMI"
+"ATI",15729,6855,2283,2.65392023970892,22.9749631811487,0,0,0.871895515397792
+"Healthy_control",8106,6950,2164,3.77535769922109,11.8062770594911,0,0,0.867462528368416

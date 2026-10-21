@@ -1,0 +1,76 @@
+# ── R session scratch ────────────────────────────────────────────────────────
+.Rproj.user
+.Rproj.user/
+.Rhistory
+.RData
+.Ruserdata
+Rplots.pdf
+**/Rplots.pdf
+
+# ── Serialised objects ───────────────────────────────────────────────────────
+# Every pipeline checkpoint lands in saved_R_data/. These are regenerable from
+# the scripts plus the Cell Ranger output, and they are large, so they are NOT
+# committed. The scripts that produce them are the record.
+saved_R_data/
+*.qs2
+*.rds
+*.RData
+*.h5
+*.h5ad
+
+# ── Raw and aligned sequencing data ──────────────────────────────────────────
+# FASTQs live on the datadrive (/mnt/data/CHER_ATI/00_fastq) and are deposited
+# to GEO/SRA, not GitHub. Cell Ranger output lives outside the repo in
+# ~/Desktop/Projects/cellranger_out/ — the rules below guard a stray copy.
+fastq_raw/
+*.fastq
+*.fastq.gz
+*.fq.gz
+*.bam
+*.bam.bai
+*.cram
+cellranger_out/
+*_multi_out/
+*_multi_vdj/
+*.cloupe
+*.vloupe
+*.mtx
+*.mtx.gz
+barcodes.tsv.gz
+features.tsv.gz
+
+# ── Local R library / environment scratch ────────────────────────────────────
+# .Rlib/ holds packages missing from the conda env (GenomeInfoDbData, and any
+# GitHub-only package). Binary builds, machine-specific — rebuilt by
+# Scripts/0. Data_Acquisition/install_R_stack.R, never committed.
+.Rlib/
+.Rlib_*/
+.r-libs/
+renv/library/
+
+# ── Pipeline run traces ──────────────────────────────────────────────────────
+# Regenerated on every run, full of absolute local paths and package chatter.
+# Not results.
+Analysis/*/logs/
+Analysis/logs/
+*_run.log
+*.Rout
+
+# ── Editor / OS cruft ────────────────────────────────────────────────────────
+.DS_Store
+*~
+*.swp
+__pycache__/
+
+# ── Script backups left by in-place patchers ─────────────────────────────────
+# Committing these would put two versions of the same script in the repo.
+*.R.bak
+*.R.orig
+
+# ── Correspondence and deliverables live OUTSIDE the repo ────────────────────
+# in ~/Desktop/Projects/Deliverables/CHER_ATI/. This repo is the manuscript:
+# code, figures, tables and analysis notes only. Named rules guard a stray copy.
+*_collaborator_email*
+*_report.pdf
+build_email.py
+verify_claims.py

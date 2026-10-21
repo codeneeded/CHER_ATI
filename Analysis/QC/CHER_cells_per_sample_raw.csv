@@ -1,0 +1,9 @@
+"Sample_ID","Participant","Timepoint","Group","Well","OCM_Barcode","n_cells_raw"
+"149496_B4","149496","B4","ATI","34349","OB2",2943
+"149496_Interrupt","149496","Interrupt","ATI","34349","OB1",1984
+"150815_B4","150815","B4","ATI","34349","OB3",2496
+"150815_Interrupt","150815","Interrupt","ATI","34349","OB4",2817
+"154026_B4","154026","B4","ATI","33445","OB1",2689
+"154026_Interrupt","154026","Interrupt","ATI","33445","OB2",2800
+"BC_control_A","BC_control","Control","Healthy_control","33445","OB3",4092
+"BC_control_B","BC_control","Control","Healthy_control","33445","OB4",4014

@@ -1,0 +1,9 @@
+"Sample_ID","Group","Well","n_cells","n_doublet","pct_doublet"
+"149496_B4","ATI","34349",2838,158,5.57
+"149496_Interrupt","ATI","34349",1572,71,4.52
+"150815_B4","ATI","34349",2446,107,4.37
+"150815_Interrupt","ATI","34349",2646,125,4.72
+"154026_B4","ATI","33445",2309,105,4.55
+"154026_Interrupt","ATI","33445",2628,122,4.64
+"BC_control_A","Healthy_control","33445",3315,172,5.19
+"BC_control_B","Healthy_control","33445",3322,166,5
