@@ -1,0 +1,25 @@
+"to","from","weight","to_n_cells","to_n_TCR","from_n_cells","from_n_TCR","interpretable"
+"Classical monocyte (inflammatory)","CD8 effector/TEMRA",14.125,1294,8,2751,2109,FALSE
+"NK cell","CD8 effector/TEMRA",7.84615384615384,1909,13,2751,2109,FALSE
+"CD8 effector T (cycling)","CD8 effector/TEMRA",2.63888888888889,136,108,2751,2109,TRUE
+"Classical monocyte (inflammatory)","NK cell",0.875,1294,8,1909,13,FALSE
+"Classical monocyte (inflammatory)","CD8 effector T (cycling)",0.25,1294,8,136,108,FALSE
+"NK cell","CD8 effector T (cycling)",0.153846153846154,1909,13,136,108,FALSE
+"NK cell","Classical monocyte (inflammatory)",0.0769230769230769,1909,13,1294,8,FALSE
+"CD8 effector T (cycling)","NK cell",0.0740740740740741,136,108,1909,13,FALSE
+"CD8 effector/TEMRA","CD8 effector T (cycling)",0.0279753437648174,2751,2109,136,108,TRUE
+"CD4 central memory T","CD8 effector/TEMRA",0.0236087689713322,963,593,2751,2109,TRUE
+"CD8 effector T (cycling)","Classical monocyte (inflammatory)",0.0185185185185185,136,108,1294,8,FALSE
+"CD4 central memory T","CD4 effector memory T",0.0134907251264756,963,593,1160,966,TRUE
+"CD4 effector memory T","CD8 effector/TEMRA",0.0124223602484472,1160,966,2751,2109,TRUE
+"CD8 naive/CM T","CD8 effector/TEMRA",0.0115830115830116,1486,1295,2751,2109,TRUE
+"CD8 effector/TEMRA","NK cell",0.00521574205784732,2751,2109,1909,13,FALSE
+"CD4 effector memory T","CD4 central memory T",0.0031055900621118,1160,966,963,593,TRUE
+"CD8 effector/TEMRA","CD8 naive/CM T",0.00284495021337127,2751,2109,1486,1295,TRUE
+"CD8 effector/TEMRA","Classical monocyte (inflammatory)",0.00237079184447606,2751,2109,1294,8,FALSE
+"CD4 effector memory T","CD8 naive/CM T",0.0020703933747412,1160,966,1486,1295,TRUE
+"CD8 effector/TEMRA","CD4 effector memory T",0.00189663347558084,2751,2109,1160,966,TRUE
+"CD4 central memory T","CD8 naive/CM T",0.00168634064080944,963,593,1486,1295,TRUE
+"CD8 naive/CM T","CD4 effector memory T",0.00154440154440154,1486,1295,1160,966,TRUE
+"CD8 naive/CM T","CD4 central memory T",0.000772200772200772,1486,1295,963,593,TRUE
+"CD8 effector/TEMRA","CD4 central memory T",0.000474158368895211,2751,2109,963,593,TRUE
