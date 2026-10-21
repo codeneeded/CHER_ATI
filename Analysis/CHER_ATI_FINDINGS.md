@@ -450,36 +450,80 @@ supported by the other two participants.
 Nothing else is consistent: NK cell moves +2.76/+3.03/−11.17, CD4 naive T
 −20.42/+0.50/+0.46 (the mirror of 149496's plasma-cell burst).
 
-## 13. Differential expression is null
+## 13. Differential expression
 
-`15_dge_pseudobulk.R`. Counts summed per participant × timepoint × cell type;
-edgeR QL F-test with `~ Participant + Timepoint`, so the between-participant
-offset is removed and the timepoint effect is tested within pair. Pseudobulk
-rather than per-cell because the unit of replication is the participant —
-a per-cell test would return p-values driven by cell count.
+`22_dge_all_contrasts.R`. Counts are summed per participant, timepoint and cell
+type, and tested with the edgeR quasi-likelihood F-test. One folder per
+contrast under `Analysis/DGE/`, one file per cell type. Significance below is
+FDR < 0.05 with absolute log fold change above 0.5.
 
-4 significant gene × cell-type calls at FDR < 0.05 and |logFC| > 0.5 across
-the 10 testable cell types:
+Pseudobulk rather than per-cell, because the unit of replication is the
+participant; a per-cell test returns p-values driven by cell count.
+
+### The paired contrast
+
+`B4_vs_Interrupt/` uses `~ Participant + Timepoint`, so the between-participant
+offset is removed and the timepoint effect is tested within pair. It returns 4
+significant gene-by-cell-type calls across the 10 testable cell types:
 
 | Cell type | Gene | logFC | FDR | Direction |
 |---|---|---|---|---|
 | CD4 central memory T | HSP90AA1 | −1.17 | 0.033 | up in B4 |
 | CD8 effector/TEMRA | S100B | −2.40 | 0.049 | up in B4 |
 | CD8 effector/TEMRA | FOS | −2.20 | 0.049 | up in B4 |
-| CD8 effector/TEMRA | SMIM43 | +5.02 | 0.049 | up in interrupt |
+| CD8 effector/TEMRA | SMIM43 | +5.02 | 0.049 | up in Interrupt |
 
-Three of the four are the handling confound from section 8. HSP90AA1 and
-FOS are core members of the stress / immediate-early programme, and S100B
-travels with it; all three are up in B4, matching the small residual stress
-difference within the ATI samples (0.33% vs 0.28%). SMIM43 sits at logCPM 2.8,
-where a handful of counts moves a 5-log-fold call.
+HSP90AA1 and FOS belong to the stress and immediate-early programme of section
+8, and S100B travels with it; all three are higher at B4, matching the small
+residual stress difference within the ATI samples (0.33% against 0.28%).
+SMIM43 sits at logCPM 2.8, where a few counts move a five-log-fold call. Four
+cell types are untestable: 17 of 81 pseudobulk libraries fall below the 20-cell
+threshold. This is a negative result at low power rather than evidence of no
+change; three pairs is near the floor for pseudobulk testing.
 
-Four cell types were not testable at all — 17 of 81 pseudobulk libraries fall
-below the 20-cell floor (Plasma cell and classical monocyte have essentially no
-cells in most libraries).
+### The control contrasts, and what they measure
 
-This is a negative result at low power rather than evidence of no change.
-Three pairs is near the floor for pseudobulk testing.
+`B4_vs_Control/` and `Interrupt_vs_Control/` are unpaired. They return one to
+three orders of magnitude more genes than the paired contrast. To establish how
+much of that is attributable to the comparison being unpaired and between
+donors, `Donor_null_149496_vs_150815/` runs the same unpaired test between two
+ATI participants in the same GEM well, pooling each participant's two
+timepoints. That contrast differs by donor only; its true condition effect is
+zero by construction.
+
+Significant calls summed over cell types:
+
+| Contrast | Significant calls | Stress-programme genes among them |
+|---|---|---|
+| B4 vs Interrupt, paired | 4 | 1 |
+| Donor only, same condition and well | 401 | 1 |
+| B4 vs control | 2,126 | 46 |
+| Interrupt vs control | 6,540 | 76 |
+
+Donor identity alone yields 401 calls in a contrast where no condition
+difference exists. The control contrasts yield 5 to 16 times more, and carry 46
+and 76 stress-programme genes against 1 in the donor null, consistent with the
+donor difference, the well difference for two of the three participants, and
+the fivefold higher dissociation-stress programme in the control libraries
+(section 8) acting together.
+
+Three structural limitations apply to the control contrasts and are recorded
+per row in the output files:
+
+- The control arm is one donor. BC_control_A and BC_control_B are two GEM wells
+  from a single blood draw, so they are technical replicates. The comparison is
+  3 donors against 1, with dispersion estimated as though there were 2 control
+  replicates, which makes the p-values anticonservative. `n_control_donors`
+  records this.
+- `tech_floor_logFC` gives the absolute log fold change between the two control
+  libraries for the same gene and cell type. Because those libraries are the
+  same blood, nearly every significant gene exceeds it, so this column
+  constrains little on its own; it measures technical reproducibility, not
+  donor variation. The donor null above is the informative calibration.
+- `stress_programme` flags membership of the stress and immediate-early set.
+
+The control contrasts are therefore reported as measured, but a gene list from
+them cannot be separated from donor, well and handling effects.
 
 ## 14. Summary of supported conclusions
 
