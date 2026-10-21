@@ -86,3 +86,8 @@ __pycache__/
 *_report.pdf
 build_email.py
 verify_claims.py
+
+# TCR Explorer local record index (rebuilt by tcr-explorer-refresh; 71 MB,
+# redistribution of VDJdb/IEDB/McPAS/TCR3d is licence-restricted).
+data_local/
+records_index.parquet

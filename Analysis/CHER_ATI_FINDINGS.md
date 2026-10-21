@@ -365,6 +365,60 @@ with itself (0.45% vs 0.48%).
 `Treg_like`.** Not yet added to `ANNO_ORDER` — that is a change to an
 already-approved annotation and is left for a decision.
 
+## 11b. Known-receptor matching (TCR Explorer)
+
+`20_tcr_explorer_export.R` -> `21_tcr_explorer_query.py`, run locally against the
+harmonized VDJdb + IEDB + McPAS + TCR3d index built by `tcr-explorer-refresh`
+(486,542 records; 329,746 human beta with a CDR3). 6,618 unique beta receptors
+from our data, 294 of them from expanded clones.
+
+Two levels are reported because they carry different weight: **CDR3-only**
+(same CDR3 beta) and **CDR3 + V** (same CDR3 beta and same TRBV). Convergent
+CDR3s arise on different V genes with different specificity, so CDR3 + V is the
+defensible call.
+
+**The expanding clones are NOT enriched for known receptors:**
+
+| Match level | Group | Receptors | Hits | Rate |
+|---|---|---|---|---|
+| CDR3 + V | expanded | 294 | 3 | 1.02% |
+| CDR3 + V | not expanded | 6,324 | 87 | 1.38% |
+| CDR3 only | expanded | 294 | 19 | 6.46% |
+| CDR3 only | not expanded | 6,324 | 454 | 7.18% |
+
+Fisher exact on CDR3 + V: OR 0.74, p = 0.80. **This argues against the
+expansion being bystander reactivation of common chronic-virus memory** — if it
+were, the expanded set should match known CMV/EBV/influenza receptors more
+often than the background, and it does not. With 3 hits in the expanded set the
+test excludes a large effect, not a moderate one.
+
+**The hit set is dominated by database composition, not by this cohort.**
+SARS-CoV-2 is the single largest category (280 receptors) — post-2020 databases
+are saturated with COVID receptors. CMV follows at 141, then M. tuberculosis
+68, influenza A 56, EBV 45. A hit rate here is not an unbiased estimate of what
+the repertoire recognises.
+
+### The HIV matches are a worked example of the false-positive rate
+
+The index carries 4,325 HIV-annotated beta records, so HIV coverage is not
+negligible and "no HIV match" would be a measured negative. 13 of our receptors
+match an HIV record at CDR3-only level, across 15 cells. **None is from an
+expanded clone, and none survives CDR3 + V.**
+
+They should not be read as HIV-specific cells:
+- every one is a single-cell clone;
+- their CDR3s are short and germline-proximal (median 12 aa against 15 aa
+  across all receptors) — CASSLSYEQYF, CASSISYEQYF, CASSYGGTEAFF and the like
+  are public sequences seen across donors;
+- **two of the 15 are in BC_control, who is HIV-negative.** An HIV match in an
+  HIV-negative library is by construction a false positive, and that bounds how
+  much any CDR3-only hit can carry.
+
+HLA restriction was NOT checked — the participants' genotypes are unknown here,
+and public HIV-specific TCRs are heavily skewed to a few elite-controller
+restrictions. The MHC field is carried through `CHER_tcr_explorer_hits.csv` so
+this can be revisited if HLA typing becomes available.
+
 ## 12. Composition shift, B4 → Interrupt
 
 `17_composition_shift.R`. No p-values, deliberately: three pairs cannot support

@@ -1,0 +1,5 @@
+match_level,group,n_receptors,n_hits,pct_hits
+CDR3 only,expanded,294,19,6.46
+CDR3 only,not expanded,6324,454,7.18
+CDR3 + V,expanded,294,3,1.02
+CDR3 + V,not expanded,6324,87,1.38

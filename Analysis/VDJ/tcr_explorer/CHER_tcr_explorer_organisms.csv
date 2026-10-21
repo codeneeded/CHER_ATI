@@ -1,0 +1,32 @@
+organism,n_receptors,n_cells,n_expanded
+SARS-CoV-2,280,305,4
+CMV,141,181,8
+M. tuberculosis,68,70,0
+Influenza A,56,68,2
+EBV,45,54,2
+Human (self / tumour),41,45,1
+SARS-CoV-1,26,27,0
+Hepatitis B,17,25,2
+Yellow fever,16,21,1
+HIV,13,15,0
+Neoantigen,10,12,0
+HBV,9,10,0
+Celiac disease,6,6,0
+DENV,5,6,1
+Diabetes Type 1,5,5,0
+HCV,4,4,0
+Melanoma,3,3,0
+Rheumatoid Arthritis (RA),2,2,0
+Colorectal cancer,2,2,0
+Hepatitis C,1,1,0
+HTLV-1,1,1,0
+Coxsackievirus B1 (Coxsackie B virus type 1),1,1,0
+Multiple sclerosis (MS),1,1,0
+Psoriatic arthritis,1,1,0
+Parkinson disease,1,2,0
+Merkel cell carcinoma,1,1,0
+RotavirusA,1,1,0
+Severe acute respiratory syndrome coronavirus 2 Wuhan/Hu-1/2019,1,1,0
+Toxic epidermal necrolysis,1,1,0
+Triticum aestivum (Canadian hard winter wheat),1,1,0
+Wheat,1,1,0
