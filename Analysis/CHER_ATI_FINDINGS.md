@@ -473,10 +473,16 @@ significant gene-by-cell-type calls across the 10 testable cell types:
 | CD8 effector/TEMRA | FOS | −2.20 | 0.049 | up in B4 |
 | CD8 effector/TEMRA | SMIM43 | +5.02 | 0.049 | up in Interrupt |
 
-HSP90AA1 and FOS belong to the stress and immediate-early programme of section
-8, and S100B travels with it; all three are higher at B4, matching the small
-residual stress difference within the ATI samples (0.33% against 0.28%).
-SMIM43 sits at logCPM 2.8, where a few counts move a five-log-fold call. Four
+Of these four genes, only FOS is a member of the stress and immediate-early set
+quantified in section 8, and it is the single flagged gene in this contrast
+(`stress_programme` in the output files). HSP90AA1 is a heat-shock chaperone,
+but it is not in that set and the pipeline does not flag it; grouping it with
+FOS would assert a programme membership that was not tested. No measurement
+here links S100B to the programme either. The three genes higher at B4 are
+consistent in direction with the small residual stress difference within the
+ATI samples (0.33% against 0.28%), but one flagged gene does not establish that
+the contrast is driven by it. SMIM43 sits at logCPM 2.8, where a few counts
+move a five-log-fold call. Four
 cell types are untestable: 17 of 81 pseudobulk libraries fall below the 20-cell
 threshold. This is a negative result at low power rather than evidence of no
 change; three pairs is near the floor for pseudobulk testing.
