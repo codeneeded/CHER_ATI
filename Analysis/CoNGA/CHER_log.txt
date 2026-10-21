@@ -1,3 +1,4 @@
 sys.argv: /home/ammasakshay/Desktop/Projects/Packages/conga_build/scripts/run_conga.py --graph_vs_graph --graph_vs_graph_stats --gex_data gex --gex_data_type 10x_mtx --clones_file CHER_clones.tsv --organism human --clustering_method louvain --max_genes_per_cell 100000 --max_percent_mito 0.15 --checkpoint --outfile_prefix CHER
 hostname: localhost
 nbr_frac_for_nndists: 0.01
+run_conga took 1.158 minutes

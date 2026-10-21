@@ -1,0 +1,5 @@
+"Participant","clones_B4","clones_Interrupt","clones_shared","jaccard","pct_Interrupt_clones_seen_at_B4","pct_Interrupt_cells_in_shared_clone","n_expanded_clones_Interrupt","pct_expanded_clones_seen_at_B4"
+"149496",1226,383,27,0.0171,7.05,35.92,33,60.61
+"150815",927,1169,13,0.0062,1.11,2.85,27,22.22
+"154026",869,1072,28,0.0146,2.61,5.79,88,13.64
+"BC_control (duplicate ceiling)",609,565,46,0.0408,8.14,14.35,32,65.62

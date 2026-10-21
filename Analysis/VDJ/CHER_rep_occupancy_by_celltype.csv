@@ -1,0 +1,62 @@
+"Annotation","Timepoint","size_bin","cells","pct","n_cells_total"
+"CD4 naive T","B4","Single (1)",1475,99.86,1477
+"CD4 naive T","B4","Small (2-5)",2,0.14,1477
+"CD4 naive T","Control","Single (1)",279,98.59,283
+"CD4 naive T","Control","Small (2-5)",4,1.41,283
+"CD4 naive T","Interrupt","Single (1)",990,99.1,999
+"CD4 naive T","Interrupt","Small (2-5)",9,0.9,999
+"CD4 central memory T","B4","Single (1)",202,100,202
+"CD4 central memory T","Control","Single (1)",334,98.53,339
+"CD4 central memory T","Control","Small (2-5)",4,1.18,339
+"CD4 central memory T","Control","Medium (6-20)",1,0.29,339
+"CD4 central memory T","Interrupt","Single (1)",52,100,52
+"CD4 effector memory T","B4","Single (1)",384,98.71,389
+"CD4 effector memory T","B4","Small (2-5)",5,1.29,389
+"CD4 effector memory T","Control","Single (1)",160,89.39,179
+"CD4 effector memory T","Control","Small (2-5)",19,10.61,179
+"CD4 effector memory T","Interrupt","Single (1)",391,98.24,398
+"CD4 effector memory T","Interrupt","Small (2-5)",7,1.76,398
+"CD8 naive/CM T","B4","Single (1)",545,98.91,551
+"CD8 naive/CM T","B4","Small (2-5)",6,1.09,551
+"CD8 naive/CM T","Control","Single (1)",124,96.88,128
+"CD8 naive/CM T","Control","Small (2-5)",4,3.12,128
+"CD8 naive/CM T","Interrupt","Single (1)",614,99.68,616
+"CD8 naive/CM T","Interrupt","Small (2-5)",2,0.32,616
+"CD8 effector/TEMRA","B4","Single (1)",312,44.26,705
+"CD8 effector/TEMRA","B4","Small (2-5)",161,22.84,705
+"CD8 effector/TEMRA","B4","Medium (6-20)",84,11.91,705
+"CD8 effector/TEMRA","B4","Large (>20)",148,20.99,705
+"CD8 effector/TEMRA","Control","Single (1)",200,56.02,357
+"CD8 effector/TEMRA","Control","Small (2-5)",123,34.45,357
+"CD8 effector/TEMRA","Control","Medium (6-20)",34,9.52,357
+"CD8 effector/TEMRA","Interrupt","Single (1)",394,37.63,1047
+"CD8 effector/TEMRA","Interrupt","Small (2-5)",279,26.65,1047
+"CD8 effector/TEMRA","Interrupt","Medium (6-20)",271,25.88,1047
+"CD8 effector/TEMRA","Interrupt","Large (>20)",103,9.84,1047
+"CD8 effector T (cycling)","B4","Single (1)",20,66.67,30
+"CD8 effector T (cycling)","B4","Small (2-5)",7,23.33,30
+"CD8 effector T (cycling)","B4","Medium (6-20)",3,10,30
+"CD8 effector T (cycling)","Control","Single (1)",5,83.33,6
+"CD8 effector T (cycling)","Control","Small (2-5)",1,16.67,6
+"CD8 effector T (cycling)","Interrupt","Single (1)",27,37.5,72
+"CD8 effector T (cycling)","Interrupt","Small (2-5)",23,31.94,72
+"CD8 effector T (cycling)","Interrupt","Medium (6-20)",21,29.17,72
+"CD8 effector T (cycling)","Interrupt","Large (>20)",1,1.39,72
+"NK cell","B4","Large (>20)",4,100,4
+"NK cell","Control","Single (1)",1,25,4
+"NK cell","Control","Small (2-5)",3,75,4
+"NK cell","Interrupt","Single (1)",1,20,5
+"NK cell","Interrupt","Medium (6-20)",1,20,5
+"NK cell","Interrupt","Large (>20)",3,60,5
+"Naive B cell","B4","Single (1)",2,100,2
+"Naive B cell","Control","Single (1)",2,100,2
+"Naive B cell","Interrupt","Single (1)",1,100,1
+"B cell (unresolved)","Control","Single (1)",1,100,1
+"Plasma cell","Interrupt","Single (1)",2,50,4
+"Plasma cell","Interrupt","Small (2-5)",2,50,4
+"Classical monocyte (inflammatory)","B4","Small (2-5)",1,50,2
+"Classical monocyte (inflammatory)","B4","Large (>20)",1,50,2
+"Classical monocyte (inflammatory)","Interrupt","Single (1)",3,50,6
+"Classical monocyte (inflammatory)","Interrupt","Small (2-5)",1,16.67,6
+"Classical monocyte (inflammatory)","Interrupt","Medium (6-20)",2,33.33,6
+"Non-classical monocyte","Interrupt","Single (1)",1,100,1

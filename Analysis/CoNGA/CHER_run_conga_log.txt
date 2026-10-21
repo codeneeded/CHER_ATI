@@ -18,10 +18,6 @@
   sc.pp.normalize_per_cell(adata, counts_per_cell_after=1e4)
 /home/ammasakshay/.claude-science/conda/envs/conga/lib/python3.11/site-packages/scanpy/preprocessing/_simple.py:590: FutureWarning: Use sc.pp.normalize_total instead
   normalize_per_cell(
-/home/ammasakshay/.claude-science/conda/envs/conga/lib/python3.11/site-packages/scanpy/preprocessing/_simple.py:666: NumbaPerformanceWarning: '@' is faster on contiguous arrays, called on (Array(float64, 1, 'A', False, aligned=True), Array(float64, 2, 'C', False, aligned=True))
-  data[i] -= regressor[i] @ coeff
-/home/ammasakshay/.claude-science/conda/envs/conga/lib/python3.11/site-packages/scanpy/preprocessing/_simple.py:666: NumbaPerformanceWarning: '@' is faster on contiguous arrays, called on (Array(float64, 1, 'A', False, aligned=True), Array(float64, 2, 'C', False, aligned=True))
-  data[i] -= regressor[i] @ coeff
 reading: gex of type 10x_mtx
 total barcodes: 19826 (19826, 22376)
 reading: CHER_clones.tsv
@@ -158,26 +154,78 @@ making tcr score table, #features= 35
   if 'nndists_tcr' not in adata.obs_keys():
 /home/ammasakshay/Desktop/Projects/Packages/conga_build/site-packages/conga/plotting.py:1179: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
   num_cells = sum( clone_sizes[x] for x in nodes )
-Error: conga.convert_svg_to_png failed to convert svg file to png file
-Is the "convert" cmdline tool (ImageMagick) installed, or Inkscape?
+/home/ammasakshay/Desktop/Projects/Packages/conga_build/site-packages/conga/plotting.py:1179: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  num_cells = sum( clone_sizes[x] for x in nodes )
+/home/ammasakshay/Desktop/Projects/Packages/conga_build/site-packages/conga/plotting.py:1179: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  num_cells = sum( clone_sizes[x] for x in nodes )
+/home/ammasakshay/Desktop/Projects/Packages/conga_build/site-packages/conga/plotting.py:1179: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  num_cells = sum( clone_sizes[x] for x in nodes )
+/home/ammasakshay/Desktop/Projects/Packages/conga_build/site-packages/conga/plotting.py:1179: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  num_cells = sum( clone_sizes[x] for x in nodes )
+/home/ammasakshay/Desktop/Projects/Packages/conga_build/site-packages/conga/plotting.py:1179: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  num_cells = sum( clone_sizes[x] for x in nodes )
+/home/ammasakshay/Desktop/Projects/Packages/conga_build/site-packages/conga/plotting.py:1179: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  num_cells = sum( clone_sizes[x] for x in nodes )
+/home/ammasakshay/Desktop/Projects/Packages/conga_build/site-packages/conga/plotting.py:1179: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  num_cells = sum( clone_sizes[x] for x in nodes )
+/home/ammasakshay/Desktop/Projects/Packages/conga_build/site-packages/conga/plotting.py:1179: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  num_cells = sum( clone_sizes[x] for x in nodes )
+/home/ammasakshay/Desktop/Projects/Packages/conga_build/site-packages/conga/plotting.py:1179: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  num_cells = sum( clone_sizes[x] for x in nodes )
+/home/ammasakshay/Desktop/Projects/Packages/conga_build/site-packages/conga/plotting.py:1179: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  num_cells = sum( clone_sizes[x] for x in nodes )
+/home/ammasakshay/Desktop/Projects/Packages/conga_build/site-packages/conga/plotting.py:1179: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  num_cells = sum( clone_sizes[x] for x in nodes )
+/home/ammasakshay/Desktop/Projects/Packages/conga_build/scripts/run_conga.py:1066: FutureWarning: The method uns_keys is deprecated and will be removed in the future. Use uns instead of uns_keys. (e.g. `k in adata.uns` or `sorted(adata.uns)`)
+  if 'batch_keys' in adata.uns_keys():
+/home/ammasakshay/Desktop/Projects/Packages/conga_build/site-packages/conga/plotting.py:3992: FutureWarning: The method uns_keys is deprecated and will be removed in the future. Use uns instead of uns_keys. (e.g. `k in adata.uns` or `sorted(adata.uns)`)
+  if 'conga_stats' in adata.uns_keys():
 run rank_genes_groups [('none', 4590), ('clp_1_5', 33), ('clp_4_11', 31), ('clp_1_2', 25), ('clp_14_11', 22), ('clp_0_3', 17), ('clp_1_10', 13), ('clp_1_0', 10), ('clp_14_3', 7), ('clp_1_6', 6), ('clp_7_11', 5), ('clp_1_8', 5), ('clp_0_15', 5)]
 making cluster logos: 0 12 CHER_graph_vs_graph_logos.png
-Error: conga.convert_svg_to_png failed to convert svg file to png file
-Is the "convert" cmdline tool (ImageMagick) installed, or Inkscape?
-
-Traceback (most recent call last):
-  File "/home/ammasakshay/Desktop/Projects/Packages/conga_build/scripts/run_conga.py", line 914, in <module>
-    conga.plotting.make_graph_vs_graph_logos(
-  File "/home/ammasakshay/Desktop/Projects/Packages/conga_build/site-packages/conga/plotting.py", line 3550, in make_graph_vs_graph_logos
-    help_message = make_logo_plots(
-                   ^^^^^^^^^^^^^^^^
-  File "/home/ammasakshay/Desktop/Projects/Packages/conga_build/site-packages/conga/plotting.py", line 1319, in make_logo_plots
-    image = mpimg.imread(pngfile)
-            ^^^^^^^^^^^^^^^^^^^^^
-  File "/home/ammasakshay/.claude-science/conda/envs/conga/lib/python3.11/site-packages/matplotlib/image.py", line 1594, in imread
-    with img_open(fname) as image:
-         ^^^^^^^^^^^^^^^
-  File "/home/ammasakshay/.claude-science/conda/envs/conga/lib/python3.11/site-packages/PIL/ImageFile.py", line 138, in __init__
-    self.fp = open(fp, "rb")
-              ^^^^^^^^^^^^^^
-FileNotFoundError: [Errno 2] No such file or directory: 'CHER_graph_vs_graph_logos.png.tmp_1_0_0.png'
+making cluster logos: 1 12 CHER_graph_vs_graph_logos.png
+making cluster logos: 2 12 CHER_graph_vs_graph_logos.png
+making cluster logos: 3 12 CHER_graph_vs_graph_logos.png
+making cluster logos: 4 12 CHER_graph_vs_graph_logos.png
+making cluster logos: 5 12 CHER_graph_vs_graph_logos.png
+making cluster logos: 6 12 CHER_graph_vs_graph_logos.png
+making cluster logos: 7 12 CHER_graph_vs_graph_logos.png
+making cluster logos: 8 12 CHER_graph_vs_graph_logos.png
+making cluster logos: 9 12 CHER_graph_vs_graph_logos.png
+making cluster logos: 10 12 CHER_graph_vs_graph_logos.png
+making cluster logos: 11 12 CHER_graph_vs_graph_logos.png
+making: CHER_graph_vs_graph_logos.png
+writing help message to file: CHER_graph_vs_graph_logos.png_README.txt
+gex_indegree_bias: nbr_frac= 0.0100 DescribeResult(nobs=np.int64(4769), minmax=(np.float64(0.0), np.float64(5.914893617021277)), mean=np.float64(1.0), variance=np.float64(0.5242787285692151), skewness=np.float64(1.4123175048646297), kurtosis=np.float64(3.0268240972017955))
+tcr_indegree_bias: nbr_frac= 0.0100 DescribeResult(nobs=np.int64(4769), minmax=(np.float64(0.0851063829787234), np.float64(6.25531914893617)), mean=np.float64(1.0), variance=np.float64(0.3045182383841576), skewness=np.float64(1.8714612681165754), kurtosis=np.float64(7.3666653321672175))
+indegree_bias_correlation: nbr_frac= 0.0100 LinregressResult(slope=np.float64(0.0014958424273067688), intercept=np.float64(0.9985041575726933), rvalue=np.float64(0.0019627288743076245), pvalue=np.float64(0.892211326318656), stderr=np.float64(0.011038298219278769), intercept_stderr=np.float64(0.013627577354380875))
+gex_indegree_bias: nbr_frac= 0.1000 DescribeResult(nobs=np.int64(4769), minmax=(np.float64(0.0), np.float64(4.579831932773109)), mean=np.float64(1.0), variance=np.float64(0.5342964410152139), skewness=np.float64(1.1179495515699895), kurtosis=np.float64(1.4626953741257545))
+tcr_indegree_bias: nbr_frac= 0.1000 DescribeResult(nobs=np.int64(4769), minmax=(np.float64(0.13025210084033614), np.float64(6.21218487394958)), mean=np.float64(1.0), variance=np.float64(0.31537554631505194), skewness=np.float64(2.0639646709907518), kurtosis=np.float64(7.660751171722621))
+indegree_bias_correlation: nbr_frac= 0.1000 LinregressResult(slope=np.float64(0.01710308400684633), intercept=np.float64(0.9828969159931537), rvalue=np.float64(0.02226135327152181), pvalue=np.float64(0.12426617420530582), stderr=np.float64(0.011124811306491676), intercept_stderr=np.float64(0.013779435791209105))
+making: CHER_results_summary.html
+make_html_summary:: no results for content_tag tcr_clumping
+make_html_summary:: no results for content_tag tcr_clumping_logos
+make_html_summary:: no results for content_tag tcr_db_match
+make_html_summary:: no results for content_tag tcr_db_match_plot
+make_html_summary:: no results for content_tag tcr_graph_vs_gex_features
+make_html_summary:: no results for content_tag tcr_graph_vs_gex_features_plot
+make_html_summary:: no results for content_tag tcr_graph_vs_gex_features_panels
+make_html_summary:: no results for content_tag tcr_genes_vs_gex_features
+make_html_summary:: no results for content_tag tcr_genes_vs_gex_features_panels
+make_html_summary:: no results for content_tag gex_graph_vs_tcr_features
+make_html_summary:: no results for content_tag gex_graph_vs_tcr_features_plot
+make_html_summary:: no results for content_tag gex_graph_vs_tcr_features_panels
+make_html_summary:: no results for content_tag graph_vs_features_gex_clustermap
+make_html_summary:: no results for content_tag graph_vs_features_tcr_clustermap
+make_html_summary:: no results for content_tag graph_vs_summary
+make_html_summary:: no results for content_tag gex_clusters_tcrdist_trees
+make_html_summary:: no results for content_tag gex_clusters_degs
+make_html_summary:: no results for content_tag gex_clusters_degs_dotplot
+make_html_summary:: no results for content_tag gex_clusters_degs_violinplot
+make_html_summary:: no results for content_tag conga_threshold_tcrdist_tree
+make_html_summary:: no results for content_tag hotspot_features
+make_html_summary:: no results for content_tag hotspot_gex_umap
+make_html_summary:: no results for content_tag hotspot_gex_clustermap
+make_html_summary:: no results for content_tag hotspot_tcr_umap
+make_html_summary:: no results for content_tag hotspot_tcr_clustermap
+make_html_summary:: no results for content_tag batch_umaps
+DONE

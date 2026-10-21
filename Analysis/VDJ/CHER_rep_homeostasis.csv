@@ -1,0 +1,26 @@
+"Sample_ID","Participant","Timepoint","size_bin","clones","pct_of_clones"
+"149496_B4","149496","B4","Single (1)",1183,96.49
+"149496_B4","149496","B4","Small (2-5)",33,2.69
+"149496_B4","149496","B4","Medium (6-20)",6,0.49
+"149496_B4","149496","B4","Large (>20)",4,0.33
+"149496_Interrupt","149496","Interrupt","Single (1)",350,91.38
+"149496_Interrupt","149496","Interrupt","Small (2-5)",24,6.27
+"149496_Interrupt","149496","Interrupt","Medium (6-20)",6,1.57
+"149496_Interrupt","149496","Interrupt","Large (>20)",3,0.78
+"150815_B4","150815","B4","Single (1)",918,99.03
+"150815_B4","150815","B4","Small (2-5)",9,0.97
+"150815_Interrupt","150815","Interrupt","Single (1)",1142,97.69
+"150815_Interrupt","150815","Interrupt","Small (2-5)",25,2.14
+"150815_Interrupt","150815","Interrupt","Medium (6-20)",2,0.17
+"154026_B4","154026","B4","Single (1)",839,96.55
+"154026_B4","154026","B4","Small (2-5)",27,3.11
+"154026_B4","154026","B4","Medium (6-20)",3,0.35
+"154026_Interrupt","154026","Interrupt","Single (1)",984,91.79
+"154026_Interrupt","154026","Interrupt","Small (2-5)",67,6.25
+"154026_Interrupt","154026","Interrupt","Medium (6-20)",21,1.96
+"BC_control_A","BC_control","Control","Single (1)",573,94.09
+"BC_control_A","BC_control","Control","Small (2-5)",33,5.42
+"BC_control_A","BC_control","Control","Medium (6-20)",3,0.49
+"BC_control_B","BC_control","Control","Single (1)",533,94.34
+"BC_control_B","BC_control","Control","Small (2-5)",30,5.31
+"BC_control_B","BC_control","Control","Medium (6-20)",2,0.35

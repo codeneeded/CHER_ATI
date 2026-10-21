@@ -1,0 +1,9 @@
+"Sample_ID","Participant","Timepoint","n_clones","median_cdr3a","median_cdr3b"
+"149496_B4","149496","B4",1226,14,15
+"149496_Interrupt","149496","Interrupt",383,14,15
+"150815_B4","150815","B4",927,14,14
+"150815_Interrupt","150815","Interrupt",1169,13,14
+"154026_B4","154026","B4",869,14,15
+"154026_Interrupt","154026","Interrupt",1072,14,14
+"BC_control_A","BC_control","Control",609,14,15
+"BC_control_B","BC_control","Control",565,14,15

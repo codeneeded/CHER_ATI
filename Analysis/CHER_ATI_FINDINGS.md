@@ -236,6 +236,74 @@ over 100 draws (raw diversity is depth-dependent — section 6):
 only marginally** (Shannon 0.03 vs 0.02; inverse Simpson 27.0 vs 22.2) — the
 direction agrees but that participant carries little weight.
 
+## 10a. Repertoire structure (`18_tcr_repertoire_depth.R`)
+
+Metrics computed from the metadata with dplyr rather than scRepertoire's
+plotting functions, so each number traces to a CSV. Clone size counted within
+sample throughout.
+
+**Clonal occupancy** — share of TCR+ cells sitting in a clone of each size:
+
+| Sample | Single | Small (2–5) | Medium (6–20) | Large (>20) |
+|---|---|---|---|---|
+| 149496_B4 | 79.66 | 5.79 | 4.24 | 10.30 |
+| 149496_Interrupt | 59.02 | 11.47 | 11.47 | 18.04 |
+| 150815_B4 | 97.14 | 2.86 | 0.00 | 0.00 |
+| 150815_Interrupt | 93.15 | 5.79 | 1.06 | 0.00 |
+| 154026_B4 | 90.02 | 7.40 | 2.58 | 0.00 |
+| 154026_Interrupt | 71.20 | 13.31 | 15.48 | 0.00 |
+| *BC_control_A* | *84.39* | *12.37* | *3.24* | *0.00* |
+| *BC_control_B* | *85.97* | *11.94* | *2.10* | *0.00* |
+
+**Clonal proportion** — share of TCR+ cells held by the top-N clones. The
+duplicate is the floor and it is remarkably tight (25.04% vs 25.00% at N=100):
+
+| Sample | top1 | top10 | top100 |
+|---|---|---|---|
+| 149496_B4 | 3.84 | 14.55 | 24.18 |
+| 149496_Interrupt | 7.08 | 30.35 | **52.28** |
+| 154026_B4 | 0.97 | 5.47 | 17.49 |
+| 154026_Interrupt | 1.45 | 9.62 | **29.67** |
+| 150815_B4 | 0.53 | 2.96 | 12.49 |
+| 150815_Interrupt | 0.57 | 3.83 | 12.81 |
+| *BC_control_A / _B* | *1.18 / 1.13* | *7.07 / 6.61* | *25.04 / 25.00* |
+
+### Clonotype overlap, and why it cannot be read naively
+
+**Two libraries from the SAME blood draw share only 8.14% of their clonotypes
+(Jaccard 0.0408).** At this sequencing depth each library samples a largely
+different slice of the repertoire. Low B4→Interrupt overlap is therefore the
+detection floor, not turnover — all three ATI pairs have Jaccard *below* the
+duplicate (0.0171, 0.0062, 0.0146) and that means nothing on its own.
+
+The metric that does carry information is **what fraction of the expanded
+(≥2-cell) Interrupt clones were detectable at B4**, read against the same
+ceiling from the duplicate:
+
+| Participant | Expanded clones at Interrupt | Seen at B4 | vs duplicate ceiling 65.6% |
+|---|---|---|---|
+| 149496 | 33 | **60.6%** | at ceiling |
+| 150815 | 27 | 22.2% | below |
+| 154026 | 88 | 13.6% | well below |
+
+So **149496 expanded clones that were already there**, at essentially the
+technical ceiling, whereas **154026's expanded clones were mostly not
+detectable before interruption** — on 88 clones, the largest expanded set of
+the three. Two different routes to the same composition shift. Note the
+asymmetry in sampling: 149496_Interrupt yielded only 383 clones against 1,226
+at B4, so its "seen at B4" rate is favoured by the deeper B4 library; 154026 is
+the reverse (869 → 1,072).
+
+**Negative controls behave.** CDR3 length is flat across every sample (median
+α 13–14, β 14–15), and expanded clones spanning more than one cell type run
+11–27% against a duplicate range of 15.6–19.4% — no shift beyond the floor
+except 150815_Interrupt at 44.4%, which rests on 27 clones.
+
+**150815 is the non-responder on every repertoire measure** — occupancy flat,
+top-100 share 12.49 → 12.81 against a 0.04 floor, diversity at the floor. The
+expansion result is 2 of 3 participants, not 3 of 3, and the findings above
+should be read that way.
+
 ## 11. CoNGA
 
 Pipeline: `14_conga_export.R` → `14_conga_run.sh` → `14_conga_interpret.py`.
@@ -246,6 +314,11 @@ a dataset-level statement — a clone whose transcriptional neighbours and whose
 receptor neighbours overlap more than chance — and is **not** a per-timepoint or
 per-participant call. Library composition is reported only as a descriptive
 diagnostic and was deliberately not split by timepoint.
+
+The logo panel (`CHER_graph_vs_graph_logos.png`) renders via cairosvg. CoNGA
+probes for a converter COMMAND with `shutil.which()`, so invoking its
+interpreter by absolute path leaves the env's `bin/` off PATH and the logo step
+fails while every table is written correctly — `14_conga_run.sh` now prepends it.
 
 Clone-level QC was set to this project's thresholds, not CoNGA's defaults,
 which would have imposed a second undocumented 3,500-gene ceiling selecting
@@ -375,5 +448,6 @@ composition results above are where this dataset carries signal.
    used, so viral reads are not counted. If rebound dynamics matter, a custom
    reference with the HIV genome would be needed.
 5. **Azimuth is not installed**; annotation is marker-based throughout.
-6. **git identity is unset** in this repo — `user.name` / `user.email` and a
-   remote must be configured before the first commit.
+6. **Not yet pushed.** git identity and the `codeneeded/CHER_ATI` remote are
+   configured and the pipeline is committed (`9b15a01`, corrections in
+   `684050a`); `git push -u origin main` is the remaining step.

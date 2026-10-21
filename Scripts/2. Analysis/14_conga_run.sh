@@ -19,6 +19,16 @@ PY="$HOME/.claude-science/conda/envs/conga/bin/python"
 export PYTHONPATH="$CONGA_BUILD/site-packages"
 PREFIX="CHER"
 
+# THE LOGO FIGURE NEEDS A CONVERTER ON *PATH*, NOT JUST AN IMPORTABLE MODULE.
+# conga renders the graph-vs-graph logo panel to SVG and then shells out via
+# conga.convert_svg_to_png, which probes for the `convert`, `inkscape`, `rsvg`,
+# `cairosvg` and `magick` COMMANDS with shutil.which(). The conga env ships a
+# cairosvg console script, but calling $PY by absolute path never puts the env's
+# bin/ on PATH, so which() found nothing and the logo step failed while every
+# table was written correctly. Prepending the interpreter's own bin/ fixes it.
+export PATH="$(dirname "$PY"):$PATH"
+export CONGA_PNG_TO_SVG_UTILITY=cairosvg
+
 cd "$STAGE" || exit 1
 
 echo "== stage 1: clones file + TCRdist kernel PCs =="
