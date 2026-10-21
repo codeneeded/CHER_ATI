@@ -2,7 +2,7 @@
 # CHER ATI — 03: apply QC thresholds
 #
 # Single purpose: filter cells and genes, report what each sample lost, and
-# redraw the diagnostics post-filter using the SAME code as 02 (run_qc_plots
+# redraw the diagnostics post-filter using the same code as 02 (run_qc_plots
 # lives in config.R precisely so the two cannot drift).
 #
 # Thresholds are in config.R. Two differ from CP018 and the reason is recorded

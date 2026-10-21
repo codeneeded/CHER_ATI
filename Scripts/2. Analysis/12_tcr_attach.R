@@ -2,17 +2,17 @@
 # CHER ATI — 12: attach TCR to the annotated object
 #
 # Single purpose: load the eight contig files, combine per sample, attach to the
-# annotated object, and report coverage. Repertoire METRICS are script 13.
+# annotated object, and report coverage. Repertoire metrics are script 13.
 #
-# TWO CONVENTIONS, both from CD8_Longitudinal:
+# Two conventions, both from CD8_Longitudinal:
 #
-#   CLONE SIZE IS COUNTED WITHIN SAMPLE. proportion = FALSE and cloneSize in
+#   Clone size is counted within sample. proportion = FALSE and cloneSize in
 #   absolute counts, so "expanded" means expanded in that library. Counting
 #   within cluster x sample instead conflates expansion with cluster confinement
 #   and can differ by tens of percentage points.
 #
-#   THE CANONICAL CLONOTYPE COLUMN IS STAMPED ONCE, on the object. Cell Ranger
-#   10.1 writes an EMPTY D-gene field where 9.0.1 wrote ".NA.", so raw CTstrict
+#   The canonical clonotype column is stamped once, on the object. Cell Ranger
+#   10.1 writes an empty D-gene field where 9.0.1 wrote ".NA.", so raw CTstrict
 #   strings never match across aligner versions and a cross-experiment
 #   comparison silently returns zero. normalise_ct() is idempotent; downstream
 #   scripts must read CT_CANON and never recompute it.
@@ -37,18 +37,18 @@ DefaultAssay(seu) <- "RNA"; seu <- JoinLayers(seu)
 # -----------------------------
 # 1) Load and combine contigs
 # -----------------------------
-# loadContigs() is REQUIRED — passing raw read.csv frames to combineTCR returns
+# loadContigs() is required — passing raw read.csv frames to combineTCR returns
 # zero rows without an error.
 contigs <- lapply(CHER_SAMPLES$Sample_ID, function(s)
   read.csv(sample_vdj(s), stringsAsFactors = FALSE))
 names(contigs) <- CHER_SAMPLES$Sample_ID
 contigs <- loadContigs(input = contigs, format = "10X")
 
-# combineTCR is called WITHOUT `samples`. Passing `samples` while leaving `ID`
+# combineTCR is called without `samples`. Passing `samples` while leaving `ID`
 # NULL makes it return zero rows silently (scRepertoire 2.2.0) — the same
 # sample parsed correctly returns 1,606. Barcodes are prefixed here instead,
 # which also guarantees the exact "<Sample_ID>_<barcode>" form that script 01
-# gave the Seurat cells.
+# gave the seurat cells.
 combined <- combineTCR(contigs, removeNA = FALSE, removeMulti = FALSE,
                        filterMulti = TRUE)
 names(combined) <- CHER_SAMPLES$Sample_ID
@@ -60,7 +60,7 @@ combined <- lapply(names(combined), function(s) {
 })
 names(combined) <- CHER_SAMPLES$Sample_ID
 
-# A key mismatch here attaches NOTHING and reads as absent TCR, so assert.
+# A key mismatch here attaches nothing and reads as absent TCR, so assert.
 ov <- length(intersect(unlist(lapply(combined, function(d) d$barcode)), colnames(seu)))
 cat("Barcode overlap with Seurat object: ", ov, "\n", sep = "")
 stopifnot(ov > 1000)

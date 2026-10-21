@@ -10,19 +10,19 @@
 #      18_tcr_repertoire_depth.R: which ribbons are already present at B4 and
 #      which appear only during interruption.
 #   B) clonalOverlay            — expanded clones as a density layer on the
-#      integrated UMAP, faceted by timepoint. Shows WHERE the expansion sits
+#      integrated UMAP, faceted by timepoint. Shows where the expansion sits
 #      relative to the annotation, independently of the composition table.
-#   C) clonalNetwork            — clonal sharing BETWEEN cell types.
+#   C) clonalNetwork            — clonal sharing between cell types.
 #
-# THE BC DUPLICATE GETS ITS OWN ALLUVIAL PANEL. BC_control_A -> BC_control_B is
+# The BC Duplicate gets its own alluvial panel. BC_control_A -> BC_control_B is
 # one blood draw split across two GEM wells, so that panel is what "nothing
 # happened" looks like in this assay. Read the participant panels against it.
 #
-# API NOTE: the CD8 script was written against scRepertoire 1.x and passes
+# API Note: the CD8 script was written against scRepertoire 1.x and passes
 # `order.by` and `proportion`. Neither exists in 2.2.0 — ordering is taken from
 # the order of `samples`, and the plot is always proportional. That default is
 # the right one here anyway: the paired libraries differ markedly in recovered
-# TCR+ cells (149496: 1,039 at B4 vs 403 at Interrupt), so raw counts would
+# TCR+ cells (149496: 1,039 at B4 vs 403 at interrupt), so raw counts would
 # show a "contraction" that is only library depth.
 #
 # Input : QS_WITH_TCR + VDJ contigs
@@ -115,15 +115,15 @@ save_png(file.path(TRK, "CHER_clonal_overlay_by_Sample.png"), ov2,
 # ─────────────────────────────────────────────────────────────────────────────
 Idents(seu) <- "Annotation"
 
-# The TABLE is the result; the ggraph rendering is presentation. ggraph 2.2.2
+# The table is the result; the ggraph rendering is presentation. ggraph 2.2.2
 # asks ggplot2 for an `edge_colourbar` guide that ggplot2 4.x no longer
 # registers, so the network plot can fail on a version pairing that has nothing
 # to do with the data. Export the table first, then attempt the plot.
 net_tbl <- clonalNetwork(seu, reduction = red, group.by = "Annotation",
                          cloneCall = "strict", exportTable = TRUE)
 
-# THE WEIGHT IS A RATIO WITH THE RECEIVING CLUSTER'S RECEPTOR COUNT IN THE
-# DENOMINATOR, so a cluster with almost no TCR+ cells produces a huge weight off
+# The weight is a ratio with the receiving cluster's receptor count in the
+# Denominator, so a cluster with almost no TCR+ cells produces a huge weight off
 # a handful of cells — and clonalNetwork draws that as a thick arrow. In this
 # dataset NK (13 TCR+ cells of 1,909) and inflammatory classical monocytes (8 of
 # 1,294) are exactly that case: their inbound edges are doublet / ambient

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# CHER ATI — CoNGA graph-vs-graph, run POST-ANNOTATION.
+# CHER ATI — CoNGA graph-vs-graph, run Post-Annotation.
 #
 # Prerequisite: Scripts/2. Analysis/14_conga_export.R has written the gex/
 # triplet, the merged contig CSV and the cell metadata into Analysis/CoNGA/.
@@ -8,7 +8,7 @@
 #   stage 2  run_conga.py             the graph-vs-graph test
 #
 # CoNGA is not in the conda env's site-packages (read-only); it lives under
-# Packages/conga_build and is reached via PYTHONPATH. Its tcrdist_cpp binaries
+# Packages/conga_build and is reached via pythonpath. Its tcrdist_cpp binaries
 # are prebuilt there.
 set -uo pipefail
 
@@ -19,10 +19,10 @@ PY="$HOME/.claude-science/conda/envs/conga/bin/python"
 export PYTHONPATH="$CONGA_BUILD/site-packages"
 PREFIX="CHER"
 
-# THE LOGO FIGURE NEEDS A CONVERTER ON *PATH*, NOT JUST AN IMPORTABLE MODULE.
+# The logo figure needs A Converter ON *PATH*, not just AN Importable module.
 # conga renders the graph-vs-graph logo panel to SVG and then shells out via
 # conga.convert_svg_to_png, which probes for the `convert`, `inkscape`, `rsvg`,
-# `cairosvg` and `magick` COMMANDS with shutil.which(). The conga env ships a
+# `cairosvg` and `magick` Commands with shutil.which(). The conga env ships a
 # cairosvg console script, but calling $PY by absolute path never puts the env's
 # bin/ on PATH, so which() found nothing and the logo step failed while every
 # table was written correctly. Prepending the interpreter's own bin/ fixes it.
@@ -43,7 +43,7 @@ rc1=$?
 echo "  clones: $(( $(wc -l < "${PREFIX}_clones.tsv") - 1 ))"
 
 echo "== stage 2: graph vs graph =="
-# CELL FILTERS RESTATE THIS PROJECT'S QC, NOT CONGA'S DEFAULTS.
+# Cell filters restate this Project'S QC, not CONGA'S Defaults.
 # conga re-filters on read at max_genes_per_cell = 3500 and max_percent_mito =
 # 0.1. The object handed to it has already been through Scripts/1. QC, whose
 # thresholds were justified for this dataset (mito ceiling 15%, no upper gene
@@ -52,10 +52,10 @@ echo "== stage 2: graph vs graph =="
 # analysis is about). Leaving conga's defaults would impose a second,
 # stricter, undocumented QC pass selecting against exactly those cells.
 #
-# NOT fail-fast on exit status, deliberately: after writing the results tables
+# Not fail-fast on exit status, deliberately: after writing the results tables
 # run_conga tries to draw the TCR logo figure via convert_svg_to_png, which
-# needs ImageMagick or Inkscape. Neither is installed, so it exits non-zero
-# AFTER the analysis is complete. The file checks below are the real gate.
+# needs ImageMagick or inkscape. Neither is installed, so it exits non-zero
+# After the analysis is complete. The file checks below are the real gate.
 #
 # nbr_fracs are left at the published defaults — thresholds are not tuned here.
 "$PY" "$CONGA_BUILD/scripts/run_conga.py" \

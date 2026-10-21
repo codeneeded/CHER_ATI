@@ -1,15 +1,15 @@
 ############################################################
-# CHER ATI — 17: composition shift within participant, B4 vs Interrupt
+# CHER ATI — 17: composition shift within participant, B4 vs interrupt
 #
 # Single purpose: per cell type, the paired change in its share of the library,
 # judged against the BC_control_A/B technical floor.
 #
-# WHY THE FLOOR MATTERS. BC_control_A and _B are the SAME blood split across two
-# GEM wells, so |A - B| for a cell type is the change that this protocol
+# Why the floor matters. BC_control_A and _B are the same blood split across two
+# GEM wells, so |a - B| for a cell type is the change that this protocol
 # produces when nothing biological has happened. A paired B4->Interrupt change
 # smaller than that is not interpretable, regardless of its direction.
 #
-# NO P-VALUES HERE, DELIBERATELY. Three pairs cannot support a composition
+# No p-values are computed here, deliberately. Three pairs cannot support a composition
 # test per cell type, and compositional data are not independent across types
 # (shares sum to 1, so one subset expanding forces the others down). What is
 # reported is the direction in each participant, the size of the change, and
@@ -56,7 +56,7 @@ paired <- comp |>
                 delta_cells = cells_Interrupt - cells_B4) |>
   dplyr::rename(B4 = pct_B4, Interrupt = pct_Interrupt)
 
-# Smallest absolute CELL-COUNT change across the three participants. A
+# Smallest absolute Cell-Count change across the three participants. A
 # percentage-point change can clear the duplicate floor while resting on one or
 # two cells in two of the three participants, which is a single-participant
 # event dressed as a consistent one. This column makes that visible.
@@ -81,7 +81,7 @@ wide <- wide |>
     min_abs_pp  = min(abs(dplyr::c_across(dplyr::all_of(dcols)))),
     median_pp   = median(dplyr::c_across(dplyr::all_of(dcols)))) |>
   dplyr::ungroup() |>
-  # "clears_floor" requires that EVERY participant moved the same way AND the
+  # "clears_floor" requires that every participant moved the same way and the
   # smallest of the three changes still exceeds what the duplicate produced.
   dplyr::mutate(
     clears_floor = consistent & (min_abs_pp > floor_pp),

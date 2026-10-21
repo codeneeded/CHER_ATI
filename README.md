@@ -1,8 +1,8 @@
 # CHER ATI — PBMC 5′ scRNA-seq + TCR
 
 Single-cell analysis of PBMC from the CHER trial around analytic treatment
-interruption (ATI). Three participants sampled before interruption (**B4**) and
-during interruption (**Interrupt**), plus one healthy control run in technical
+interruption (ATI). Three participants sampled before interruption (B4) and
+during interruption (Interrupt), plus one healthy control run in technical
 duplicate.
 
 Structure and conventions follow `codeneeded/CD8_Longitudinal`; the QC and
@@ -11,7 +11,7 @@ which used the same chemistry.
 
 ## Design
 
-Eight samples across **two 10x on-chip-multiplexed (OCM) GEM wells**. Each well
+Eight samples across two 10x on-chip-multiplexed (OCM) GEM wells. Each well
 carries four samples separated by OCM barcode `OB1`–`OB4`; one 5′ gene
 expression library and one matched TCR library per well.
 
@@ -22,10 +22,10 @@ expression library and one matched TCR library per well.
 | 154026 | OB1 | OB2 | 33445 |
 | BC control | A = OB3, B = OB4 | — | 33445 |
 
-**The design is paired.** Every participant has both timepoints in the *same*
+The design is paired. Every participant has both timepoints in the same
 well, so the within-participant B4-vs-Interrupt contrast is not confounded with
 well. The two healthy-control replicates are both in well 33445, so
-control-vs-ATI comparisons *are* confounded with well and must not be made
+control-vs-ATI comparisons are confounded with well and must not be made
 naively — see `Analysis/CHER_ATI_FINDINGS.md`.
 
 With n = 3 pairs, the supportable analyses are cell-type composition shifts
@@ -43,7 +43,7 @@ three pairs is not supportable and should not be presented as one.
 | Reference | `~/Desktop/Projects/refdata/human/{gex,vdj}/` |
 | Object checkpoints | `saved_R_data/` (in-repo, gitignored) |
 
-Alignment used Cell Ranger **10.1.0** `multi` against
+Alignment used Cell Ranger 10.1.0 `multi` against
 `refdata-gex-GRCh38-2024-A` and
 `refdata-cellranger-vdj-GRCh38-alts-ensembl-7.1.0`.
 
@@ -73,6 +73,6 @@ Rscript "Scripts/1. QC/01_build_objects.R"
 
 - Analysis output goes under `Analysis/`; nothing is written to `Manuscript/`
   (enforced by `assert_not_manuscript()` in `config.R`).
-- **Every figure ships its numbers** — a `*_source_data.csv` beside each panel.
+- Every figure ships its numbers — a `*_source_data.csv` beside each panel.
 - Object checkpoints are `.qs2` (`qs2::qs_save` / `qs_read`) in `saved_R_data/`,
   which is gitignored: they are regenerable and large.

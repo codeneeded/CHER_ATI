@@ -2,9 +2,9 @@
 # CHER ATI — 04: normalisation, pre-integration embedding, cell cycle
 #
 # Single purpose: get a first embedding and score cell cycle phase. The UMAP
-# produced here (umap.pre) is PRE-INTEGRATION and exists so that doublet calls
+# produced here (umap.pre) is pre-Integration and exists so that doublet calls
 # in script 05 can be shown in a 2-D space, and so the batch structure is
-# visible before correction. It is NOT the embedding any result should use.
+# visible before correction. It is not the embedding any result should use.
 #
 # Azimuth reference annotation runs only if the package is installed; it is a
 # convenience for orientation, not a result, so a missing package must not fail
@@ -77,7 +77,7 @@ for (g in c("Sample_ID", "Timepoint", "Group", "Well")) {
 }
 
 # Phase composition — a real readout, not only a QC metric: proliferating
-# fraction can genuinely differ between B4 and Interrupt.
+# fraction can genuinely differ between B4 and interrupt.
 phase_tab <- composition_table(seu, "Phase", "Sample_ID")
 save_csv(phase_tab, file.path(cc_dir, "CHER_phase_by_sample_source_data.csv"))
 print(as.data.frame.matrix(table(seu$Sample_ID, seu$Phase)))

@@ -1,16 +1,16 @@
 ############################################################
-# CHER ATI — 01: build the merged Seurat object
+# CHER ATI — 01: build the merged seurat object
 #
 # Single purpose: read the 8 per-sample filtered matrices, stamp metadata,
 # merge, and compute QC metrics. The only cells removed here are those below
 # CreateSeuratObject's min.features = 200 floor (24,233 called -> 23,835), which
 # drops near-empty barcodes so the QC distributions are readable; genes are held
-# to min.cells = 3. The QUALITY thresholds proper (mito, complexity, nFeature,
+# to min.cells = 3. The quality thresholds proper (mito, complexity, nFeature,
 # platelet, haemoglobin) are applied in 03_filter.R so that the pre-filter
 # distributions can be inspected first, and so a threshold change does not
 # require re-reading the H5 files.
 #
-# Input : <RUN>/outs/per_sample_outs/<sample>/sample_filtered_feature_bc_matrix.h5
+# Input : <Run>/outs/per_sample_outs/<sample>/sample_filtered_feature_bc_matrix.h5
 # Output: QS_RAW  +  Analysis/QC/CHER_cells_per_sample_raw.csv
 ############################################################
 
@@ -37,8 +37,8 @@ for (i in seq_len(nrow(CHER_SAMPLES))) {
 
   x <- Read10X_h5(h5_path)
 
-  # A multi run with a VDJ library returns a LIST from Read10X_h5. Taking x
-  # directly would hand a list to CreateSeuratObject; take Gene Expression.
+  # A multi run with a VDJ library returns a list from Read10X_h5. Taking x
+  # directly would hand a list to CreateSeuratObject; take gene expression.
   if (is.list(x)) {
     nm <- intersect(c("Gene Expression", "RNA"), names(x))
     if (!length(nm)) {
@@ -63,7 +63,7 @@ for (i in seq_len(nrow(CHER_SAMPLES))) {
   obj$Replicate             <- samp$Replicate
   obj$Participant_Timepoint <- samp$Participant_Timepoint
 
-  # Cell barcodes are only unique WITHIN a GEM well, and the two wells share the
+  # Cell barcodes are only unique within a GEM well, and the two wells share the
   # same 10x whitelist — without a per-sample prefix, merge() would silently
   # collide barcodes between wells.
   obj <- RenameCells(obj, add.cell.id = samp$Sample_ID)
@@ -76,19 +76,19 @@ for (i in seq_len(nrow(CHER_SAMPLES))) {
 # -----------------------------
 # 2) Merge
 # -----------------------------
-# Merge in ONE call, passing the rest of the list as y. Folding pairwise with
+# Merge in one call, passing the rest of the list as y. Folding pairwise with
 # Reduce(merge) instead produces eight separate counts layers with mangled
 # names ("counts.CHER_ATI.SeuratProject.SeuratProject..."), and LayerData() then
-# returns ONE of them rather than all cells — so every PercentageFeatureSet
+# returns one of them rather than all cells — so every PercentageFeatureSet
 # metric is computed on a partial matrix and silently misaligned.
 seu <- merge(x = objs[[1]], y = objs[-1])
 DefaultAssay(seu) <- "RNA"
 
-# ncol() on a Seurat object returns a double, so vapply must expect numeric.
+# ncol() on a seurat object returns a double, so vapply must expect numeric.
 stopifnot(ncol(seu) == sum(vapply(objs, ncol, numeric(1))))
 stopifnot(!anyDuplicated(colnames(seu)))
 
-# Join the per-sample layers into one counts matrix BEFORE computing any
+# Join the per-sample layers into one counts matrix before computing any
 # metric. Everything downstream (QC fractions, filtering, normalisation) assumes
 # a single block whose column order matches the metadata.
 seu <- JoinLayers(seu)
@@ -101,7 +101,7 @@ stopifnot(identical(Layers(seu[["RNA"]]), "counts"))
 # genes, the signature of a dying or low-quality cell.
 seu$log10GenesPerUMI <- log10(seu$nFeature_RNA) / log10(seu$nCount_RNA)
 
-# Patterns come from config.R so the metric DEFINITION is versioned in one
+# Patterns come from config.R so the metric definition is versioned in one
 # place — percent_plat in particular is PF4/PPBP here, not the PECAM1|PF4 used
 # by CP018 (PECAM1 is pan-leukocyte; see the note in config.R).
 seu <- PercentageFeatureSet(seu, pattern = MITO_PATTERN,     col.name = "percent_mito")

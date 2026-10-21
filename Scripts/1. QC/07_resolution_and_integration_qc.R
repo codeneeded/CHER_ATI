@@ -3,7 +3,7 @@
 #
 # Single purpose: cluster across a resolution grid on both integrated graphs,
 # render clustree, and measure whether integration absorbed the well effect
-# WITHOUT erasing biology. No resolution is chosen here — MNN_RES_FINAL and
+# Without erasing biology. No resolution is chosen here — MNN_RES_FINAL and
 # CCA_RES_FINAL stay NA in config.R until these figures have been reviewed.
 # Picking a resolution is an annotation decision, not a QC one.
 #
@@ -59,8 +59,8 @@ for (spec in list(c(red = "integrated.mnn.rna", graph = "mnn_snn", tag = "MNN"),
 # -----------------------------
 # 2) Integration quality: did the well effect get absorbed?
 # -----------------------------
-# Two things have to be true at once. (a) MIXING: clusters should not be
-# dominated by one well beyond what cell numbers imply. (b) PRESERVATION:
+# Two things have to be true at once. (a) Mixing: clusters should not be
+# dominated by one well beyond what cell numbers imply. (b) Preservation:
 # participant and timepoint structure must still exist. A correction that
 # achieves (a) by destroying (b) is worse than no correction.
 #

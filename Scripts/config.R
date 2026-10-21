@@ -2,12 +2,12 @@
 # CHER ATI — central configuration
 #
 # source() this at the top of every CHER script so paths, the sample sheet and
-# the QC thresholds live in ONE place.
+# the QC thresholds live in one place.
 #
 #   source("~/Desktop/Projects/Repositories/CHER_ATI/Scripts/config.R")
 #
 # Adapted from CD8_Longitudinal "Scripts/CP018 - FACTseq/config.R". Same OCM
-# chemistry and the same Cell Ranger 10.1.0, so the structure carries over; the
+# chemistry and the same cell ranger 10.1.0, so the structure carries over; the
 # sample sheet, the two-well layout and the pairing are CHER-specific.
 ############################################################
 
@@ -25,15 +25,15 @@ RUN_DIRS <- c("34349" = file.path(CR_ROOT, "CHER_34349_multi_vdj"),
 
 # ── Project-local R library ──────────────────────────────────────────────────
 # The conda env (cd8-seurat2) ships scDblFinder, batchelor and
-# SingleCellExperiment but NOT GenomeInfoDbData, which GenomeInfoDb requires at
-# load time. Without it every Bioconductor-dependent package fails with
+# SingleCellExperiment but not GenomeInfoDbData, which GenomeInfoDb requires at
+# load time. Without it every bioconductor-dependent package fails with
 # "there is no package called 'GenomeInfoDbData'" — which looks like the package
 # is missing rather than its data dependency. Installing
-# bioconductor-genomeinfodbdata via conda does NOT fix it (it is a post-link
+# bioconductor-genomeinfodbdata via conda does not fix it (it is a post-link
 # script package and the script does not populate the env's R library), so the
-# working fix is a project-local library placed FIRST on the path.
+# working fix is a project-local library placed first on the path.
 #
-# Do NOT set R_LIBS_SITE to /usr/lib/R/site-library when running this env: the
+# Do not set R_LIBS_SITE to /usr/lib/R/site-library when running this env: the
 # system `sp` build fails with "undefined symbol: NO_REFERENCES" and kills any
 # Seurat script at load.
 .CHER_RLIB <- file.path(REPO_DIR, ".Rlib")
@@ -57,14 +57,14 @@ QS_ANNOTATED  <- file.path(SAVED_DIR, "CHER_09_annotated.qs2")
 QS_WITH_TCR   <- file.path(SAVED_DIR, "CHER_10_annotated_withTCR.qs2")
 
 # ── Sample sheet ─────────────────────────────────────────────────────────────
-# From L. de Armas, confirmed against both BaseSpace share pages 2026-10-19.
+# From L. de armas, confirmed against both BaseSpace share pages 2026-10-19.
 # Sample_ID is the cellranger `sample_id` and therefore the per_sample_outs
 # folder name. Spaces are illegal in a cellranger sample_id, so "BC control_A"
 # became "BC_control_A".
 #
-# PAIRING IS THE POINT: each participant has BOTH timepoints in the SAME well,
+# Pairing is the point: each participant has both timepoints in the same well,
 # so the within-participant contrast carries no well effect. The two healthy
-# controls are both in 33445 — a control-vs-ATI contrast IS confounded with well.
+# controls are both in 33445 — a control-vs-ATI contrast is confounded with well.
 CHER_SAMPLES <- data.frame(
   Sample_ID   = c("149496_B4", "149496_Interrupt",
                   "150815_B4", "150815_Interrupt",
@@ -90,7 +90,7 @@ CHER_SAMPLES$Participant_Timepoint <- paste0(CHER_SAMPLES$Participant, "_",
                                              CHER_SAMPLES$Timepoint)
 
 # Resolve the filtered-matrix H5 for a sample, failing loudly rather than
-# silently returning NA. Cell Ranger 10.x writes it directly in the sample dir;
+# silently returning NA. Cell ranger 10.x writes it directly in the sample dir;
 # 9.x used a count/ subfolder — both are checked so this works if the project
 # is ever re-run on an older aligner.
 sample_h5 <- function(sample_id) {
@@ -116,9 +116,9 @@ sample_vdj <- function(sample_id) {
   p
 }
 
-# Cells carrying a productive TCR, as a named logical keyed by Seurat cell name.
-# NOTE the `productive` field in Cell Ranger 10.1 contig CSVs is lowercase
-# "true"; matching "True"/TRUE returns ZERO rows and reads as "no T cells
+# Cells carrying a productive TCR, as a named logical keyed by seurat cell name.
+# Note the `productive` field in cell ranger 10.1 contig CSVs is lowercase
+# "true"; matching "True"/TRUE returns zero rows and reads as "no T cells
 # anywhere" rather than as an error.
 tcr_cells <- function(cell_names, paired_only = FALSE) {
   tc <- do.call(rbind, lapply(CHER_SAMPLES$Sample_ID, function(s) {
@@ -146,7 +146,7 @@ WELL_COLORS  <- c("34349" = "#52B788", "33445" = "#B07AA1")
 PHASE_COLS   <- c("G1" = "#AEC6CF", "S" = "#FFD700", "G2M" = "#E63946")
 
 # ── QC thresholds ────────────────────────────────────────────────────────────
-# Starting values were CP018's. TWO WERE CHANGED for CHER, each because the
+# Starting values were CP018's. Two were changed for CHER, each because the
 # measured cost showed the inherited value was wrong for whole PBMC rather than
 # sorted CD8 T cells. Both measurements are in
 # Analysis/QC/CHER_threshold_cost_per_sample.csv and the findings document.
@@ -158,29 +158,29 @@ QC_MAX_HB             <- 20      # percent
 QC_MAX_PLAT           <- 2       # percent, now on PF4/PPBP only (see below)
 QC_MIN_CELLS_PER_GENE <- 10
 
-# CHANGE 1 — the ribosomal FLOOR is disabled (was: percent_ribo > 5).
-# This is a JUDGEMENT CALL, not a defect in the CP018 value; the numbers are
+# Change 1 — the ribosomal floor is disabled (was: percent_ribo > 5).
+# This is a judgement call, not a defect in the CP018 value; the numbers are
 # recorded so it can be overruled.
-#   - The floor would remove 3,647 cells (15.3%), but 64.6% of those ALREADY
+#   - The floor would remove 3,647 cells (15.3%), but 64.6% of those already
 #     fail a direct quality criterion (counts/features/complexity/mito/hb/
 #     platelet), so most of its work is redundant.
-#   - The 1,291 cells unique to it (5.4% of the dataset) are BORDERLINE rather
+#   - The 1,291 cells unique to it (5.4% of the dataset) are borderline rather
 #     than clearly bad: median 1,488 genes against 2,362 in retained cells, mito
-#     7.65% against 2.88%, but complexity 0.899 — ABOVE the retained median of
+#     7.65% against 2.88%, but complexity 0.899 — Above the retained median of
 #     0.870.
-#   - A ribosomal minimum is also not a standard whole-PBMC criterion.
+#   - a ribosomal minimum is also not a standard whole-PBMC criterion.
 # Decision: let nFeature/mito/complexity carry the quality filtering directly
 # rather than have an indirect proxy account for 5.4% of removals.
-# NOTE an earlier version of this comment claimed the floor preferentially
+# Note an earlier version of this comment claimed the floor preferentially
 # removed monocytes. That was measured on a partially-read counts matrix and is
-# WRONG: monocyte-marker-high cells are 0.1% of removed and 0.1% of kept.
-# percent_ribo is still COMPUTED and plotted; it is simply not a filter.
+# Wrong: monocyte-marker-high cells are 0.1% of removed and 0.1% of kept.
+# percent_ribo is still computed and plotted; it is simply not a filter.
 QC_MIN_RIBO           <- 0       # 0 = disabled
 
-# CHANGE 2 — percent_plat is PF4/PPBP, not PECAM1|PF4.
+# Change 2 — percent_plat is PF4/PPBP, not PECAM1|PF4.
 # Two reasons. (a) PECAM1 (CD31) is broadly expressed across leukocytes, so it
 # does not measure platelet contamination. (b) PPBP is the dominant platelet
-# transcript and was absent from the CP018 pattern. Net effect is to flag MORE
+# transcript and was absent from the CP018 pattern. Net effect is to flag more
 # cells, not fewer: 4.54% at >=2% by PF4|PPBP against 1.84% by PECAM1|PF4. Those
 # cells are genuinely platelet-dominated — median 356 genes against 2,298 in
 # retained cells — so this is a real quality filter rather than a cell type.
@@ -193,8 +193,8 @@ HB_PATTERN       <- "^HB[ABDEGQZ][0-9]?$|^HBA[12]$"
 
 # ── Clustering ───────────────────────────────────────────────────────────────
 MIN_CLUSTER_SIZE <- 10
-# FastMNN at 0.6, 16 clusters. NOTE the miR29a marker-redundancy criterion did
-# NOT discriminate here: zero redundant pairs at every level 0.2-1.0, so it
+# FastMNN at 0.6, 16 clusters. Note the miR29a marker-redundancy criterion did
+# Not discriminate here: zero redundant pairs at every level 0.2-1.0, so it
 # would have picked 1.0. 0.6 was chosen on nameability instead — every cluster
 # gets a defensible lineage call, which higher levels start to lose. That is a
 # judgement, recorded as such.
@@ -202,13 +202,13 @@ MNN_RES_FINAL    <- 0.6
 CCA_RES_FINAL    <- NA_real_   # CCA embedding kept but not taken forward
 
 # ── Annotation vocabulary ────────────────────────────────────────────────────
-# Lineage identity first; a PROGRAMME (cycling, inflammatory) is only ever a
+# Lineage identity first; a programme (cycling, inflammatory) is only ever a
 # bracketed qualifier, never the noun — naming a cluster after a programme hides
 # what the cell is and makes composition analysis incoherent.
-# Two labels were CORRECTED by the audit (script 10), not chosen up front:
+# Two labels were corrected by the audit (script 10), not chosen up front:
 #   "Memory B cell" -> "B cell (unresolved)". It failed its own falsification
 #      criterion (IGHD <=25 required, observed 41.5) and CD27 — the memory B
-#      marker — is detected in only 3.2% of its cells, LOWER than the naive B
+#      marker — is detected in only 3.2% of its cells, lower than the naive B
 #      cluster's 5.6%. It is a distinct population (1,351 DE genes vs naive B,
 #      FCRL1 50.5% vs 23.9%, BANK1 81.2% vs 68.2%) but is neither memory nor
 #      class-switched on the evidence, so it is named unresolved rather than
@@ -240,14 +240,14 @@ ANNO_COLS <- c(
   "Non-classical monocyte"           = "#DFC27D",
   "pDC"                              = "#00838F")
 
-# Clusters removed before annotation, with the reason. C13 is NOT a cell type:
+# Clusters removed before annotation, with the reason. C13 is not a cell type:
 # PTPRC (CD45) detected in only 43% of its cells against 97% elsewhere, median
 # 808 genes against 2,322, replication-dependent histones at ~48%, no lineage
 # marker at all, spread across all 8 samples. Debris the QC filters missed.
 DROP_CLUSTERS <- c("13")
 
 # ── Output location policy ───────────────────────────────────────────────────
-# Everything written goes under Analysis/. Manuscript/ holds figures only once
+# Everything written goes under analysis/. Manuscript/ holds figures only once
 # we decide to promote them; save_png()/save_csv() enforce this rather than
 # relying on every script getting the path right.
 MANUSCRIPT_DIR <- file.path(REPO_DIR, "Manuscript")
@@ -276,7 +276,7 @@ mkdirs <- function(...) invisible(lapply(c(...), dir.create,
 # ── Namespace conflict guard ─────────────────────────────────────────────────
 # Bioconductor packages (SingleCellExperiment/S4Vectors/IRanges, pulled in by
 # scDblFinder and batchelor) mask several dplyr/tidyr verbs. Running the scripts
-# sequentially in ONE session leaves those attachments on the search path, and
+# sequentially in one session leaves those attachments on the search path, and
 # dplyr::count then resolves to the wrong function. Binding the dplyr/tidyr
 # versions into globalenv fixes it for every downstream script, because
 # globalenv is searched before any attached package.
@@ -300,7 +300,7 @@ mkdirs <- function(...) invisible(lapply(c(...), dir.create,
                          "replace_na","drop_na","fill","complete"))
 
 # ── Optional presentation dependencies ───────────────────────────────────────
-# SeuratExtend (DimPlot2/VlnPlot2) and Azimuth are presentation/annotation
+# SeuratExtend (DimPlot2/VlnPlot2) and azimuth are presentation/annotation
 # conveniences, not load-bearing for any result. Guard both so a missing
 # package cannot fail the pipeline, and record which path was taken so a figure
 # made with a fallback is not passed off as the real thing.
@@ -357,7 +357,7 @@ theme_cher <- function(base_size = 16) {
     )
 }
 
-# width/height are INCHES.
+# width/height are inches.
 save_png <- function(filename, plot_obj, width = 9, height = 6.5,
                      dpi = FIG_DPI, limitsize = FALSE) {
   assert_not_manuscript(filename)
@@ -377,7 +377,7 @@ panel_size <- function(n_panels, ncol = 2, panel_w = 5.0, panel_h = 3.6) {
 # ── Filenames ────────────────────────────────────────────────────────────────
 # Cell-type labels contain spaces, slashes and parentheses ("CD8 naive/CM T",
 # "Classical monocyte (inflammatory)"). fs_safe turns one into a filename
-# fragment that survives a shell and a Windows checkout.
+# fragment that survives a shell and a windows checkout.
 fs_safe <- function(x) {
   x <- gsub("[^[:alnum:]]+", "_", as.character(x))
   gsub("(^_|_$)", "", x)
@@ -395,7 +395,7 @@ save_csv <- function(x, path, row.names = FALSE) {
 }
 
 # Cell-level metadata dump: the master table most downstream questions can be
-# answered from without reloading the Seurat object.
+# answered from without reloading the seurat object.
 export_metadata <- function(obj, path, extra_cols = NULL) {
   md <- obj@meta.data
   md$cell_barcode <- rownames(md)
@@ -449,10 +449,10 @@ tidy_umap <- function(p, title = NULL, subtitle = NULL,
 # ── House UMAP idiom ─────────────────────────────────────────────────────────
 # Ported from miR29a_PDAC_CD8/Scripts/config.R (umap_house + add_umap_arrows),
 # which in turn takes its parameters verbatim from CD8_Longitudinal
-# "Scripts/3. Manuscript/Figure_4.R". Boxed state names ON the embedding with
+# "Scripts/3. Manuscript/Figure_4.R". Boxed state names on the embedding with
 # leader lines, corner axis arrows instead of axes, square canvas.
 #
-# THE CANVAS MUST BE SQUARE. Each arrow arm is 0.12 of its OWN axis range, so
+# The canvas must BE Square. Each arrow arm is 0.12 of its own axis range, so
 # the two arms only render equal on a square drawing area; on a wide panel the
 # horizontal arm comes out nearly twice the vertical one.
 add_umap_arrows <- function(p, df, x = "UMAP1", y = "UMAP2", size = 5) {
@@ -537,7 +537,7 @@ umap_labels <- function(p, size = 4.2) {
 }
 
 # ── Shared QC plotting ───────────────────────────────────────────────────────
-# Defined HERE rather than in the QC script so the pre-filter and post-filter
+# Defined here rather than in the QC script so the pre-filter and post-filter
 # figures are produced by identical code. If this lived in the script and were
 # copied, the two panels could drift and the comparison would be meaningless.
 QC_FEATS <- c("nCount_RNA", "nFeature_RNA", "percent_mito", "percent_ribo",
@@ -622,11 +622,11 @@ run_qc_plots <- function(seu, group_col, out_dir) {
 # ── Canonical clonotype column ───────────────────────────────────────────────
 # Ported from CD8_Longitudinal "Scripts/CP018 - FACTseq/config.R".
 #
-# Cell Ranger 10.1.0 writes an EMPTY D-gene field where 9.0.1 and older
+# Cell ranger 10.1.0 writes an empty D-gene field where 9.0.1 and older
 # alignments write a literal "NA":
-#   CR 9.0.1   TRBV6-1.NA.TRBJ2-5.TRBC2;TGTGCC...
-#   CR 10.1.0  TRBV29-1..TRBJ1-2.TRBC1;TGCAGC...   <- ".."
-# So a CHER clonotype string can NEVER match one from an older run on raw
+#   CR 9.0.1   TRBV6-1.NA.TRBJ2-5.TRBC2;Tgtgcc...
+#   CR 10.1.0  TRBV29-1..TRBJ1-2.TRBC1;Tgcagc...   <- ".."
+# So a CHER clonotype string can never match one from an older run on raw
 # CTstrict, and the result is zero matches — indistinguishable from a real
 # biological absence. normalise_ct() makes the conventions comparable and is
 # idempotent, so re-stamping an object is harmless.
@@ -639,7 +639,7 @@ normalise_ct <- function(x) {
   x
 }
 
-# Stamp CT_CANON ON the object, and record which convention it came from so
+# Stamp CT_CANON on the object, and record which convention it came from so
 # provenance travels with the data rather than living in a script comment.
 add_ct_canon <- function(obj, verbose = TRUE) {
   md <- obj@meta.data
@@ -672,7 +672,7 @@ require_ct_canon <- function(obj, what = "object") {
 
 # ── Marker panel for whole PBMC ──────────────────────────────────────────────
 # Lineage first, then state. Used by the resolution ladder, the dot plot and the
-# annotation audit, so the panel is defined ONCE here rather than per script.
+# annotation audit, so the panel is defined once here rather than per script.
 # Order matters: the dot plot reads as a lineage map top-to-bottom.
 PBMC_PANEL <- list(
   `T cell`          = c("CD3D","CD3E","CD3G","TRAC"),
@@ -699,7 +699,7 @@ PBMC_PANEL <- list(
 PBMC_PANEL_FLAT <- unique(unlist(PBMC_PANEL, use.names = FALSE))
 
 # Programme genes, for the identity-versus-programme audit. A cluster must never
-# be NAMED after a programme (cycling / interferon / activation) — those are
+# be named after a programme (cycling / interferon / activation) — those are
 # things a cell of any identity can do, and naming a cluster after one hides what
 # the cell is and makes composition analysis incoherent. The audit rescores
 # identity with these removed.
@@ -716,11 +716,11 @@ PROGRAMME_GENES <- list(
 # ── FastMNN integration without SeuratWrappers ───────────────────────────────
 # CP018 used SeuratWrappers::FastMNNIntegration via IntegrateLayers.
 # SeuratWrappers is GitHub-only and not installed here, but it is a thin wrapper
-# around batchelor::fastMNN, which IS installed. Calling the engine directly
+# around batchelor::fastMNN, which is installed. Calling the engine directly
 # avoids a source install and makes the actual computation explicit.
 #
 # Returns the object with a new DimReduc. `batch_col` is the technical grouping
-# to absorb (library/well); biological grouping must NOT be passed here.
+# to absorb (library/well); biological grouping must not be passed here.
 run_fastmnn <- function(seu, batch_col = "batch", features = NULL,
                         d = 50, assay = "RNA",
                         reduction.name = "integrated.mnn.rna",

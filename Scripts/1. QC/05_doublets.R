@@ -3,15 +3,15 @@
 #
 # Single purpose: call doublets with scDblFinder and keep singlets.
 #
-# PER LIBRARY, NEVER POOLED. scDblFinder simulates doublets by combining cells
+# Per library, never pooled. scDblFinder simulates doublets by combining cells
 # from the same capture; pooling the eight samples would let it build doublets
 # from cells that were never in the same GEM well, which is not a doublet that
 # can exist. The two OCM wells make this sharper still — a "doublet" simulated
 # across wells is meaningless.
 #
-# NOTE on OCM: on-chip multiplexing means cellranger has already removed
+# Note on OCM: on-chip multiplexing means cellranger has already removed
 # cross-sample doublets it could identify by conflicting OCM barcode. What
-# remains, and what this script targets, is WITHIN-sample doublets, which carry
+# remains, and what this script targets, is within-sample doublets, which carry
 # no barcode conflict and are invisible to the demultiplexer.
 #
 # Input : QS_CELLCYCLE

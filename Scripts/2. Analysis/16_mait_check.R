@@ -5,7 +5,7 @@
 # receptors (TRAV1-2 with TRAJ33/12/20, mait_fraction 1.0), and those clones
 # carry CD4 naive T / CD4 memory / CD8 naive-CM labels from the res 0.6
 # annotation. This script asks whether those cells also carry the MAIT
-# TRANSCRIPTIONAL programme — i.e. whether the annotation missed a MAIT
+# Transcriptional programme — i.e. whether the annotation missed a MAIT
 # population, or whether they are TRAV1-2+ cells without the programme.
 #
 # The receptor and the programme are independent evidence here: the receptor
@@ -71,7 +71,7 @@ md <- data.frame(barcode = colnames(seu),
                  stringsAsFactors = FALSE)
 
 # Compare receptor-positive cells against receptor-negative cells carrying the
-# SAME label, so the contrast is not confounded by cell type.
+# Same label, so the contrast is not confounded by cell type.
 labs <- md |> dplyr::filter(mait_receptor) |> dplyr::count(Annotation) |>
   dplyr::filter(n >= 5) |> dplyr::pull(Annotation)
 
@@ -107,7 +107,7 @@ loc <- md |> dplyr::filter(mait_receptor) |> dplyr::count(Annotation, name = "ce
   dplyr::arrange(dplyr::desc(cells))
 save_csv(loc, file.path(CONGA_ROOT, "CHER_mait_check_location.csv"))
 
-# NOTE: compute pct from the ORIGINAL logical column before shadowing its name.
+# Note: compute pct from the original logical column before shadowing its name.
 # summarise() evaluates sequentially, so naming the sum `mait_receptor` and
 # then calling mean(mait_receptor) averages the already-summed scalar.
 bysample <- md |> dplyr::group_by(Sample_ID) |>

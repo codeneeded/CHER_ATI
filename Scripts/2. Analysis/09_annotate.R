@@ -4,24 +4,24 @@
 # Single purpose: turn FastMNN res-0.6 cluster numbers into names, split the
 # one mixed cluster, drop the one non-cell cluster, and flag Treg-like cells.
 #
-# THREE DECISIONS, each with the measurement behind it:
+# Three decisions, each with the measurement behind it:
 #
-# 1. C9 IS MIXED AND IS SPLIT. The matched TCR settles it: NK cells have no
+# 1. C9 is mixed, and is split. The matched TCR settles it: NK cells have no
 #    receptor. C9 carries a productive TCR in 22.8% of cells, against >79% in
 #    every true T cluster and 0.6% in C5 (NK). Subclustering separates it
 #    cleanly — subclusters 9_0 and 9_5 are 59-60% TCR+ (CD8A 67-69%, CD8B
 #    41-52%) and go to CD8 effector; 9_1/9_2/9_3/9_4 are 0-1.5% TCR+ with
 #    KLRF1 up to 97% and go to NK.
 #
-# 2. C13 IS DROPPED, not named (see DROP_CLUSTERS in config.R).
+# 2. C13 is dropped, not named (see DROP_CLUSTERS in config.R).
 #
-# 3. THERE IS NO TREG CLUSTER, and this is a data limit rather than a
+# 3. There is no Treg cluster, and this is a data limit rather than a
 #    clustering failure. FOXP3 is detected in 227 of 20,050 cells (1.13%); only
 #    75 co-express IL2RA and 58 are IL7R-negative. Subclustering C7/C8 at 0.4
 #    and a dedicated CD4 re-embedding at 0.8 both failed to isolate a
 #    FOXP3-high / IL7R-low population — the best CD4 subcluster reaches FOXP3
-#    12.8% while keeping IL7R at 84.8%, which is not a Treg. Tregs are therefore
-#    carried as a CELL-LEVEL FLAG, never as a cluster, and any Treg claim must
+#    12.8% while keeping IL7R at 84.8%, which is not a treg. Tregs are therefore
+#    carried as a Cell-Level flag, never as a cluster, and any treg claim must
 #    be made on that flag with its count stated.
 #
 # Input : QS_INTEGRATED
@@ -51,14 +51,14 @@ seu$cluster_base <- droplevels(factor(seu@meta.data[[res_col]]))
 # -----------------------------
 # 1) Split the mixed NK/T cluster
 # -----------------------------
-# FindSubCluster operates on the ACTIVE IDENTS, not on the column you name.
+# FindSubCluster operates on the active idents, not on the column you name.
 # Without this the saved idents (the res-1.6 grid from script 07) are used and
 # "cluster 9" is a different 897 cells than res-0.6 cluster 9.
 Idents(seu) <- "cluster_base"
 seu <- FindSubCluster(seu, cluster = "9", graph.name = "mnn_snn",
                       subcluster.name = "sub_9", resolution = 0.4, algorithm = 1)
 
-# Assign each subcluster by MEASURED TCR carriage rather than by index — the
+# Assign each subcluster by measured TCR carriage rather than by index — the
 # subcluster numbering is not stable across runs. The two populations are far
 # apart (true T clusters >79% TCR+, C5 NK 0.6%), so any threshold between them
 # gives the same split; 40% is used.
@@ -105,7 +105,7 @@ stopifnot(!anyNA(ann))
 seu$Annotation <- ann
 
 # -----------------------------
-# 3) Treg-like cell flag (NOT a cluster)
+# 3) Treg-like cell flag (Not a cluster)
 # -----------------------------
 cts <- LayerData(seu, assay = "RNA", layer = "counts")
 seu$FOXP3_pos  <- cts["FOXP3", ] > 0
@@ -139,7 +139,7 @@ for (v in c("Sample_ID", "Participant", "Timepoint", "Group", "Well", "Phase")) 
            file.path(ANNO_ROOT, paste0("CHER_annotation_composition_by_", v, ".csv")))
 }
 
-# House idiom: boxed labels on the embedding, corner arrows, SQUARE canvas (the
+# House idiom: boxed labels on the embedding, corner arrows, square canvas (the
 # arrow arms only render equal on a square drawing area).
 save_png(file.path(ANNO_ROOT, "CHER_UMAP_annotated.png"),
          umap_house(seu, group = "Annotation", reduction = "umap.mnn",
@@ -165,7 +165,7 @@ save_png(file.path(ANNO_ROOT, "CHER_DotPlot_annotated.png"),
                                             size = 8, face = "italic")),
          width = 17, height = 7)
 
-# Per-gene feature plots and grouped violins for the lineage-DEFINING genes —
+# Per-gene feature plots and grouped violins for the lineage-Defining genes —
 # the panels a reviewer uses to check a call cell-by-cell rather than trusting a
 # cluster mean. Source CSV per figure, per house convention.
 LINEAGE_GENES <- list(

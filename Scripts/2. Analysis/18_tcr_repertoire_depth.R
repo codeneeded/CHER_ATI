@@ -1,14 +1,14 @@
 ############################################################
 # CHER ATI — 18: repertoire structure in depth
 #
-# 13_tcr_repertoire.R established THAT clonal expansion rises B4 -> Interrupt.
+# 13_tcr_repertoire.R established that clonal expansion rises B4 -> Interrupt.
 # This script asks what the expanded repertoire is made of, following the
 # miR29a 26_tcr_repertoire_seven.R pattern: metrics computed from the metadata
 # with dplyr rather than from scRepertoire's plotting functions, so every
 # number lands in a CSV that can be traced.
 #
-# Clone size is counted WITHIN SAMPLE throughout (as in miR29a line 197) —
-# pooling B4 and Interrupt would let a clone's own expansion inflate its size
+# Clone size is counted within sample throughout (as in miR29a line 197) —
+# pooling B4 and interrupt would let a clone's own expansion inflate its size
 # at the earlier timepoint.
 #
 #   A) Clonal overlap B4 <-> Interrupt within participant  <- the ATI question:
@@ -56,8 +56,8 @@ md <- md |>
 # ─────────────────────────────────────────────────────────────────────────────
 # A) Overlap between timepoints within participant
 # ─────────────────────────────────────────────────────────────────────────────
-# The question the design was built for. If the Interrupt repertoire is
-# dominated by clones ALREADY detectable at B4, interruption expanded a
+# The question the design was built for. If the interrupt repertoire is
+# dominated by clones already detectable at B4, interruption expanded a
 # pre-existing population; if its large clones are mostly absent at B4, it
 # recruited new ones. Detection is depth-limited, so "absent at B4" means
 # "not sampled at B4" — stated, not glossed.
@@ -68,7 +68,7 @@ for (p in unique(md$Participant[md$Group == "ATI"])) {
   s_b4 <- unique(b4$clone); s_it <- unique(itr$clone)
   shared <- intersect(s_b4, s_it)
 
-  # Of the Interrupt CELLS, how many sit in a clone that was seen at B4?
+  # Of the interrupt cells, how many sit in a clone that was seen at B4?
   itr_cells_shared <- sum(itr$clone %in% s_b4)
   # Restrict to the clones driving the expansion signal (>=2 cells).
   exp_cl <- unique(itr$clone[itr$clone_n >= 2])
@@ -83,7 +83,7 @@ for (p in unique(md$Participant[md$Group == "ATI"])) {
     pct_expanded_clones_seen_at_B4 =
       round(100 * sum(exp_cl %in% s_b4) / max(length(exp_cl), 1), 2))
 }
-# Same computation across the control duplicate: two libraries from ONE blood
+# Same computation across the control duplicate: two libraries from one blood
 # draw, so its overlap is the ceiling this metric can reach when the repertoire
 # has genuinely not changed. Any B4/Interrupt pair must be read against it.
 bc_a <- md |> dplyr::filter(Sample_ID == "BC_control_A")
@@ -107,7 +107,7 @@ cat("\n-- A) overlap B4 <-> Interrupt --\n")
 print(as.data.frame(overlap_tbl), row.names = FALSE)
 
 # ─────────────────────────────────────────────────────────────────────────────
-# B) Clonal occupancy: share of CELLS in each size bin
+# B) Clonal occupancy: share of cells in each size bin
 # ─────────────────────────────────────────────────────────────────────────────
 occ_ct <- md |>
   dplyr::count(Annotation, Timepoint, size_bin, name = "cells") |>
@@ -130,7 +130,7 @@ print(as.data.frame(occ_s |> dplyr::select(Sample_ID, size_bin, pct) |>
                            values_fill = 0)), row.names = FALSE)
 
 # ─────────────────────────────────────────────────────────────────────────────
-# C) Clonal homeostasis: share of the REPERTOIRE (clones, not cells) per bin
+# C) Clonal homeostasis: share of the repertoire (clones, not cells) per bin
 # ─────────────────────────────────────────────────────────────────────────────
 homeo <- md |>
   dplyr::distinct(Sample_ID, Participant, Timepoint, clone, clone_n, size_bin) |>
@@ -186,8 +186,8 @@ print(as.data.frame(span_summary), row.names = FALSE)
 # ─────────────────────────────────────────────────────────────────────────────
 # F) V-gene usage
 # ─────────────────────────────────────────────────────────────────────────────
-# CTgene is "TRAV.TRAJ.TRAC_TRBV.TRBD.TRBJ.TRBC"; take the first field of each
-# chain. Counted once per CLONE, not per cell, so one large clone does not
+# CTgene is "TRAV.TRAJ.TRAC_TRBV.Trbd.TRBJ.TRBC"; take the first field of each
+# chain. Counted once per clone, not per cell, so one large clone does not
 # dominate the usage profile.
 vgene <- md |>
   dplyr::distinct(Sample_ID, Participant, Timepoint, clone, CTgene) |>

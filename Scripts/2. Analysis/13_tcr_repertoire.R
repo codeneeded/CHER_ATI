@@ -1,22 +1,22 @@
 ############################################################
 # CHER ATI — 13: repertoire metrics
 #
-# Single purpose: clonal expansion and diversity, B4 vs Interrupt, WITHIN
+# Single purpose: clonal expansion and diversity, B4 vs interrupt, Within
 # participant.
 #
-# THREE CONVENTIONS THAT CHANGE THE ANSWER, stated rather than assumed:
+# Three conventions that change the answer, stated rather than assumed:
 #
-#   CLONE SIZE IS COUNTED WITHIN SAMPLE. "Expanded" means the clone is expanded
+#   Clone size is counted within sample. "Expanded" means the clone is expanded
 #   in that library. Counting within cell type x sample instead asks a different
 #   question (is it expanded *here*) and the two differ by tens of percentage
 #   points — a 50-cell clone spread over five cell types reads as unexpanded in
 #   each.
 #
-#   EXPANSION IS A PROPERTY OF THE CLONOTYPE, not the cell. Clone size is
+#   Expansion is a property of the clonotype, not the cell. Clone size is
 #   computed over all TCR+ cells of a sample and then joined back, so a lineage
 #   is never truncated where its count in one cell type falls below threshold.
 #
-#   DIVERSITY IS RAREFIED. Raw diversity is depth-dependent and TCR+ cell counts
+#   Diversity is rarefied. Raw diversity is depth-dependent and TCR+ cell counts
 #   range 593-1,485 across these samples, so unrarefied values would largely
 #   measure library size. Each sample is subsampled to the smallest TCR+ count,
 #   100 times, and the mean reported.
@@ -45,7 +45,7 @@ cat("TCR+ cells: ", nrow(tcr), " | clonotypes: ",
     dplyr::n_distinct(tcr[[CT_CANON]]), "\n", sep = "")
 
 # -----------------------------
-# 1) Clone size, WITHIN sample
+# 1) Clone size, within sample
 # -----------------------------
 tcr <- tcr %>% group_by(Sample_ID) %>%
   mutate(clone_n = ave(seq_along(.data[[CT_CANON]]),
@@ -132,7 +132,7 @@ save_csv(rare_w, file.path(VDJ_ROOT, "CHER_rarefied_diversity_source_data.csv"))
 cat("\n=== rarefied diversity (mean of 100 draws at n=", n_min, ") ===\n", sep = "")
 print(rare_w, row.names = FALSE)
 
-# Unrarefied, for the contrast — this is what NOT to report.
+# Unrarefied, for the contrast — this is what not to report.
 unrare <- do.call(rbind, lapply(CHER_SAMPLES$Sample_ID, function(s) {
   v <- tcr[[CT_CANON]][tcr$Sample_ID == s]
   data.frame(Sample_ID = s, n_TCR = length(v), t(round(div_metrics(v), 2)))

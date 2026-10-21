@@ -5,12 +5,12 @@ Reads the graph-vs-graph output and maps every hit clone back to the cells it
 came from, so the hits can be read against the 14 annotation labels rather than
 against CoNGA's own GEX cluster numbers.
 
-THE RUN IS POOLED. All 19,826 cells from all 8 libraries go into one
+The run is pooled. All 19,826 cells from all 8 libraries go into one
 GEX graph and one TCR graph. A CoNGA hit is therefore a statement about the
 dataset as a whole - a clone whose transcriptional neighbours and whose
-receptor neighbours overlap more than chance - and is NOT a per-timepoint or
+receptor neighbours overlap more than chance - and is not a per-timepoint or
 per-participant call. The sample composition of the hits is reported below as a
-DESCRIPTIVE diagnostic only: it says which libraries the hit cells happened to
+Descriptive diagnostic only: it says which libraries the hit cells happened to
 come from, which is needed to spot a hit set driven by one library, but it is
 not a test of timepoint and must not be presented as one. Splitting these hits
 by timepoint and comparing would be a post-hoc partition of a pooled statistic.
@@ -93,7 +93,7 @@ print("\n-- hit cells by annotation (background = cells assigned to a clone) --"
 print(by_anno.to_string(index=False))
 
 # -----------------------------
-# 3) Library composition - DESCRIPTIVE CONFOUND DIAGNOSTIC, NOT A TEST
+# 3) Library composition - Descriptive confound diagnostic, not a Test
 # -----------------------------
 bgl = cell.groupby("Sample_ID").size().rename("clone_cells")
 hcl = cell[cell.is_hit].groupby("Sample_ID").size().rename("hit_cells")

@@ -1,9 +1,9 @@
 ############################################################
 # CHER ATI — 08: resolution ladder
 #
-# Single purpose: choose the clustering resolution FROM THE DATA rather than
+# Single purpose: choose the clustering resolution from the data rather than
 # inheriting one. Criterion follows miR29a_PDAC_CD8 Scripts/02_analysis/
-# 23_resolution_ladder.R: at each level, two clusters are MARKER-REDUNDANT if
+# 23_resolution_ladder.R: at each level, two clusters are marker-Redundant if
 # they share >=5 of their top 10 positive markers. A level with redundant pairs
 # is over-split for this panel; the chosen level is the last one with zero.
 #

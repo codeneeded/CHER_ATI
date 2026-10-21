@@ -12,9 +12,9 @@ CD4 naive T,Interrupt,956,9,0.94
 CD8 effector T (cycling),B4,29,2,6.9
 CD8 effector T (cycling),Control,6,0,0.0
 CD8 effector T (cycling),Interrupt,53,0,0.0
-CD8 effector/TEMRA,B4,339,6,1.77
+CD8 effector/TEMRA,B4,339,5,1.47
 CD8 effector/TEMRA,Control,176,3,1.7
-CD8 effector/TEMRA,Interrupt,465,14,3.01
+CD8 effector/TEMRA,Interrupt,465,11,2.37
 CD8 naive/CM T,B4,529,10,1.89
 CD8 naive/CM T,Control,122,0,0.0
 CD8 naive/CM T,Interrupt,602,11,1.83

@@ -1,24 +1,24 @@
 ############################################################
-# CHER ATI — 15: pseudobulk differential expression, B4 vs Interrupt
+# CHER ATI — 15: pseudobulk differential expression, B4 vs interrupt
 #
 # Single purpose: per cell type, sum counts to one library per
 # participant x timepoint and test the timepoint effect with participant as a
 # blocking factor.
 #
-# WHY PSEUDOBULK AND NOT PER-CELL. There are three biological replicates, not
-# 19,826. A per-cell Wilcoxon treats every cell as independent and returns
+# Why pseudobulk and not per-Cell. There are three biological replicates, not
+# 19,826. A per-cell wilcoxon treats every cell as independent and returns
 # p-values driven by cell count, so it would call hundreds of genes in the
 # large clusters and nothing in the small ones regardless of the effect. The
 # unit of replication here is the participant.
 #
-# WHY edgeR WITH A BLOCKING FACTOR. The design is PAIRED — both timepoints come
+# Why edgeR With a Blocking factor. The design is paired — both timepoints come
 # from the same participant and, for 149496/150815, the same GEM well. Fitting
 # ~ Participant + Timepoint removes the between-participant offset, which is
 # much larger than the timepoint effect. The QL F-test is used rather than the
-# LRT because with 3 pairs the dispersion is poorly estimated and the QL
+# Lrt because with 3 pairs the dispersion is poorly estimated and the QL
 # approach is the more conservative of the two.
 #
-# CONTROLS ARE NOT AN ARM. BC_control_A/B are excluded from testing: they
+# Controls are not an arm. BC_control_A/B are excluded from testing: they
 # differ from the ATI samples by donor, by GEM well and by dissociation stress
 # (Analysis/CHER_ATI_FINDINGS.md). They are carried only as a technical floor
 # elsewhere.
@@ -50,7 +50,7 @@ require_ct_canon(seu)
 
 # ATI participants only. Subsetting by an explicit cell vector rather than
 # subset(subset = Group == "ATI"): Seurat's non-standard evaluation looks the
-# column up in the calling frame, which fails inside Rscript.
+# column up in the calling frame, which fails inside rscript.
 seu <- subset(seu, cells = colnames(seu)[seu$Group == "ATI"])
 cat("ATI cells: ", ncol(seu), " in ", dplyr::n_distinct(seu$Sample_ID),
     " libraries\n", sep = "")

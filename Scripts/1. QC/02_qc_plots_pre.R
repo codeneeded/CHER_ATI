@@ -1,7 +1,7 @@
 ############################################################
 # CHER ATI — 02: pre-filter QC diagnostics
 #
-# Single purpose: draw the distributions that justify the thresholds, BEFORE
+# Single purpose: draw the distributions that justify the thresholds, Before
 # any cell is removed. The plotting code lives in config.R (run_qc_plots) so
 # that 03_filter.R renders the post-filter panels with identical code — a copy
 # in each script could drift and make the comparison meaningless.
@@ -24,7 +24,7 @@ pre_root <- file.path(QC_ROOT, "Pre-QC")
 mkdirs(pre_root)
 
 # Sample_ID is the unit of QC. Participant/Timepoint/Group/Well are the
-# groupings a threshold decision has to be fair across — in particular Well,
+# groupings a threshold decision has to be fair across — in particular well,
 # because the two OCM wells differ systematically in sequencing depth and a
 # single global threshold could remove cells from one well preferentially.
 group_vars <- c("Sample_ID", "Participant", "Timepoint", "Group", "Well")
@@ -37,7 +37,7 @@ for (g in group_vars) {
 # -----------------------------
 # Threshold cost, per sample
 # -----------------------------
-# How many cells EACH criterion would remove on its own. This is the table the
+# How many cells each criterion would remove on its own. This is the table the
 # threshold decision should be made from: a cutoff that is reasonable overall
 # can still gut one sample, and that is invisible in a pooled density plot.
 md <- seu@meta.data
@@ -64,7 +64,7 @@ cost_wide <- reshape(cost[, c("criterion","Sample_ID","pct_failing")],
                      direction = "wide")
 names(cost_wide) <- sub("^pct_failing\\.", "pct_", names(cost_wide))
 
-# Cells failing ANY criterion — the actual retention if all are applied.
+# Cells failing any criterion — the actual retention if all are applied.
 md$fails_any <- Reduce(`|`, crit)
 anyfail <- as.data.frame(table(md$Sample_ID, md$fails_any))
 names(anyfail) <- c("Sample_ID", "fails_any", "n_cells")

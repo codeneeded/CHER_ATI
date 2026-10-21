@@ -5,15 +5,15 @@
 # integration-quality assessment are script 07, so this one can be re-run
 # without redoing the sweep and vice versa.
 #
-# WHAT IS BATCH HERE. The technical unit is the GEM WELL, and it matters more
+# What counts as batch here. The technical unit is the GEM Well, and it matters more
 # than usual: the two wells differ systematically in depth (median UMI
 # 6,842-10,279 in 33445 against 5,176-6,393 in 34349). Library and well are the
 # same partition for GEX, so batch = Well.
 #
-# WHAT MUST SURVIVE. Participant and Timepoint are biological. Each
-# participant's B4 and Interrupt samples sit in the SAME well, so the paired
+# What must survive. Participant and timepoint are biological. Each
+# participant's B4 and interrupt samples sit in the same well, so the paired
 # contrast is not a batch contrast and integration cannot manufacture it.
-# Healthy control vs ATI IS confounded with well — integration reduces but does
+# Healthy control vs ATI is confounded with well — integration reduces but does
 # not remove that, and no amount of correction makes it a clean comparison.
 #
 # FastMNN is run through run_fastmnn() in config.R, which calls
@@ -57,7 +57,7 @@ seu <- RunPCA(seu, npcs = 50, verbose = FALSE)
 seu <- RunUMAP(seu, dims = 1:30, reduction = "pca",
                reduction.name = "umap.unintegrated", verbose = FALSE)
 
-# shuffle = TRUE is REQUIRED on any panel coloured by an overlapping grouping.
+# shuffle = TRUE is required on any panel coloured by an overlapping grouping.
 # DimPlot draws groups in factor order, so without it the last level is painted
 # over the first: at a 45/55 well split the minority well reads as a scattered
 # handful of cells and the figure implies integration failed when it did not.

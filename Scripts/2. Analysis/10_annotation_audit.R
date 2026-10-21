@@ -4,17 +4,17 @@
 # Procedure from miR29a_PDAC_CD8 (Scripts/02_analysis/20_annotation_audit.R),
 # three parts, because any one of them passes on a wrong annotation:
 #
-#   1. FALSIFICATION  — each label declares REQUIRED markers with floors and
-#      REFUTING markers with ceilings. Thresholds are written in this script
-#      BEFORE the data are read, from canonical marker biology.
-#   2. DISCRIMINATION — each label's FULL criterion set is run against EVERY
+#   1. Falsification  — each label declares required markers with floors and
+#      Refuting markers with ceilings. Thresholds are written in this script
+#      Before the data are read, from canonical marker biology.
+#   2. Discrimination — each label's full criterion set is run against every
 #      label's cells. A set satisfied by more than one population does not
 #      define a population; a set satisfied by none is worse. This is what makes
 #      part 1 worth anything, since the author writes their own thresholds.
-#   3. IDENTITY vs PROGRAMME — how much of each population's marker signal is a
+#   3. Identity vs programme — how much of each population's marker signal is a
 #      programme (cycling / interferon / activation-stress) rather than
 #      identity. A population whose markers are mostly programme must not be
-#      NAMED after it.
+#      Named after it.
 #
 # Input : QS_ANNOTATED
 # Output: Analysis/Annotation/audit/
@@ -37,19 +37,19 @@ cts <- LayerData(seu, assay = "RNA", layer = "counts")
 ann <- droplevels(factor(seu$Annotation))
 
 # ══════════════════════════════════════════════════════════════════════════
-# CRITERIA — declared before reading the data. `dir` is min (floor, a REQUIRED
-# marker) or max (ceiling, a REFUTING marker); values are percent of cells
+# Criteria — declared before reading the data. `dir` is min (floor, a Required
+# marker) or max (ceiling, a refuting marker); values are percent of cells
 # detecting the gene.
 # ══════════════════════════════════════════════════════════════════════════
 CRIT <- rbind(
   data.frame(type="CD4 naive T", gene=c("CD3E","CCR7","LEF1","IL7R","CD8A","CD8B","MS4A1","CD14","KLRF1"),
              dir=c("min","min","min","min","max","max","max","max","max"), thr=c(70,70,50,70,10,10,5,5,5)),
-  # SECOND PASS, disclosed. The first-pass criteria for the two CD4 memory
+  # Second pass, disclosed. The first-pass criteria for the two CD4 memory
   # subsets were CD3E + IL7R only, which three populations satisfied — part 2
   # correctly reported them as non-discriminating. They are tightened here with
   # the genes that actually separate the three CD4 subsets (S100A4 8.9 / 35.5 /
   # 69.6 and CCR4 3.0 / 6.1 / 41.9 across naive / CM / EM). These thresholds are
-  # therefore POST-HOC, unlike the rest of the table.
+  # therefore post-Hoc, unlike the rest of the table.
   data.frame(type="CD4 central memory T", gene=c("CD3E","CCR7","IL7R","S100A4","CCR4","CD8A","MS4A1","CD14","KLRF1"),
              dir=c("min","min","min","min","max","max","max","max","max"), thr=c(50,40,70,20,20,25,5,5,5)),
   data.frame(type="CD4 effector memory T", gene=c("CD3E","IL7R","CCR4","S100A4","KLRB1","CD8A","MS4A1","CD14","KLRF1"),
@@ -66,7 +66,7 @@ CRIT <- rbind(
              dir=c("min","min","min","min","max","max"), thr=c(50,50,45,30,5,5)),
   # "B cell (unresolved)" makes no memory or class-switch claim, so its criteria
   # assert only B lineage plus the two features that separate it from naive B
-  # (FCRL1 up, TCL1A down). A CD27 floor is deliberately NOT asserted: CD27 is
+  # (FCRL1 up, TCL1A down). A CD27 floor is deliberately not asserted: CD27 is
   # detected in 3.2% of these cells, which is what forced the rename.
   data.frame(type="B cell (unresolved)", gene=c("MS4A1","CD79A","FCRL1","TCL1A","CD3E","CD14"),
              dir=c("min","min","min","max","max","max"), thr=c(40,50,40,30,5,5)),
@@ -105,7 +105,7 @@ satisfies <- function(type, label) {
                       collapse = "; "))
 }
 
-# ── PART 1: falsification ────────────────────────────────────────────────────
+# ── Part 1: falsification ────────────────────────────────────────────────────
 p1 <- do.call(rbind, lapply(levels(ann), function(k) {
   r <- satisfies(k, k)
   data.frame(label = k, n_cells = sum(ann == k), passes = r$all,
@@ -120,7 +120,7 @@ if (any(!p1$passes)) {
   for (i in which(!p1$passes)) cat("  ", p1$label[i], ": ", p1$failed_criteria[i], "\n", sep = "")
 }
 
-# ── PART 2: discrimination ───────────────────────────────────────────────────
+# ── Part 2: discrimination ───────────────────────────────────────────────────
 grid <- expand.grid(criterion_set = levels(ann), tested_on = levels(ann),
                     stringsAsFactors = FALSE)
 grid$satisfied <- mapply(function(a, b) satisfies(a, b)$all,
@@ -135,7 +135,7 @@ cat("\n================ PART 2: DISCRIMINATION ================\n")
 print(p2, row.names = FALSE)
 cat("\nUNIQUELY discriminating criterion sets: ", sum(p2$unique), " of ", nrow(p2), "\n", sep = "")
 
-# ── PART 3: identity vs programme ────────────────────────────────────────────
+# ── Part 3: identity vs programme ────────────────────────────────────────────
 Idents(seu) <- "Annotation"
 mk <- FindAllMarkers(seu, only.pos = TRUE, logfc.threshold = 0.5, min.pct = 0.25,
                      verbose = FALSE)

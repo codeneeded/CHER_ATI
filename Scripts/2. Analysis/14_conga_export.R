@@ -2,7 +2,7 @@
 # CHER ATI — 14: export GEX + TCR for CoNGA
 #
 # Single purpose: write the 10x mtx triplet and the merged contig file that
-# CoNGA's setup script expects, with barcodes in the OBJECT's naming
+# CoNGA's setup script expects, with barcodes in the object's naming
 # ("<Sample_ID>_<barcode>") so the GEX and TCR sides join.
 #
 # Follows miR29a_PDAC_CD8 Scripts/02_analysis/26_conga_export.R and the stage
@@ -43,7 +43,7 @@ write.table(data.frame(id = rownames(cnt), name = rownames(cnt),
             file.path(GEX, "features.tsv"),
             sep = "\t", quote = FALSE, row.names = FALSE, col.names = FALSE)
 
-# scanpy's read_10x_mtx looks for the GZIPPED triplet first and only falls back
+# scanpy's read_10x_mtx looks for the gzipped triplet first and only falls back
 # to the plain names on an older layout — with uncompressed files present it
 # raises FileNotFoundError on matrix.mtx.gz rather than reading what is there.
 for (f in c("matrix.mtx", "barcodes.tsv", "features.tsv")) {
@@ -60,7 +60,7 @@ cat("GEX written: ", nrow(cnt), " genes x ", ncol(cnt), " cells\n", sep = "")
 # 2) Merged contig file
 # -----------------------------
 # Barcodes are prefixed to the object's naming, and the lowercase "true" that
-# Cell Ranger 10.1 writes is normalised to "True" — CoNGA's setup script, like
+# Cell ranger 10.1 writes is normalised to "True" — CoNGA's setup script, like
 # scRepertoire, filters on the capitalised forms and silently keeps nothing
 # otherwise.
 contigs <- do.call(rbind, lapply(CHER_SAMPLES$Sample_ID, function(s) {

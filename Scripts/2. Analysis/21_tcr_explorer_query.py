@@ -1,29 +1,29 @@
 #!/usr/bin/env python
 """CHER ATI - 21: match the repertoire against known TCR records (TCR Explorer).
 
-Runs LOCALLY against the harmonized VDJdb + IEDB + McPAS + TCR3d index built by
+Runs locally against the harmonized VDJdb + IEDB + McPAS + TCR3d index built by
 `tcr-explorer-refresh` (486,542 records). No network call at query time.
 
-THE QUESTION. The composition and repertoire results say CD8 effector/TEMRA
-clones expand during interruption. This asks whether those clones are KNOWN
+The question. The composition and repertoire results say CD8 effector/TEMRA
+clones expand during interruption. This asks whether those clones are known
 receptors - i.e. whether the expansion looks like bystander memory against
 common chronic viruses (CMV, EBV, influenza) rather than something specific to
 the interruption.
 
-TWO LEVELS OF EVIDENCE, REPORTED SEPARATELY:
+Two levels of evidence, reported separately:
   CDR3-only match   - same CDR3 beta amino acid sequence. Weaker: convergent
                       CDR3s arise on different V genes with different
                       specificity.
-  CDR3 + V match    - same CDR3 beta AND same TRBV gene. The defensible call.
+  CDR3 + V match    - same CDR3 beta and same TRBV gene. The defensible call.
 
-WHAT THIS CANNOT DO.
-  - These databases are dominated by common viral and cancer epitopes, so a HIT
-    is biased toward exactly those specificities. The hit RATE is not an
+What this cannot do.
+  - These databases are dominated by common viral and cancer epitopes, so a hit
+    is biased toward exactly those specificities. The hit rate is not an
     unbiased estimate of what the repertoire recognises.
   - HLA restriction is not checked against the participants' genotypes (unknown
     here). A CDR3 match whose record carries an HLA the participant may not have
     is weaker still; the MHC field is carried through so this can be revisited.
-  - A NON-match is not evidence of HIV specificity. It means "not a known
+  - a Non-match is not evidence of HIV specificity. It means "not a known
     receptor in these four databases".
 
 Output: Analysis/VDJ/tcr_explorer/
@@ -42,8 +42,32 @@ if not os.path.isfile(IDX):
     sys.exit(f"records index missing at {IDX}\nRun: TCR_EXPLORER_DATA={os.environ['TCR_EXPLORER_DATA']} "
              f"{PKG}/.venv/bin/tcr-explorer-refresh")
 
-clones = pd.read_csv(os.path.join(OUT, "CHER_clone_beta_table.csv"))
+clones_raw = pd.read_csv(os.path.join(OUT, "CHER_clone_beta_table.csv"))
 rec = pd.read_parquet(IDX)
+
+# Collapse to the beta receptor before matching.
+# The export groups by beta and alpha, so one beta receptor paired with two
+# different alpha chains occupies two rows. Matching is done on beta only, so
+# those rows are the same query and must be merged first: otherwise a later
+# de-duplication on a beta-level key keeps whichever row happens to come first
+# and silently discards the other, which can drop an expanded clone and
+# understate both the cell count and the expanded count.
+clones = (clones_raw
+          .groupby(["Sample_ID", "Participant", "Timepoint", "Group",
+                    "TRBV", "TRBJ", "CDR3_beta"], as_index=False)
+          .agg(n_cells=("n_cells", "sum"),
+               clone_size_in_sample=("clone_size_in_sample", "max"),
+               expanded=("expanded", "max"),
+               n_alpha_pairings=("CDR3_alpha", "nunique"),
+               cell_types=("cell_types", lambda s: ";".join(
+                   sorted({t for v in s.dropna() for t in str(v).split(";") if t}))),
+               clone_ids=("clone_ids", lambda s: ";".join(
+                   sorted({t for v in s.dropna() for t in str(v).split(";") if t}))))
+          )
+clones["expanded"] = clones.expanded.astype(bool)
+print(f"clone table: {len(clones_raw)} beta-alpha rows -> {len(clones)} unique beta receptors "
+      f"per sample ({int(clones.expanded.sum())} expanded)")
+assert clones.duplicated(["Sample_ID", "TRBV", "TRBJ", "CDR3_beta"]).sum() == 0
 
 # Human beta records with a CDR3 and an organism annotation.
 beta = rec[(rec.species.str.lower().isin(["human", "homosapiens", "homo sapiens"]))
@@ -51,7 +75,6 @@ beta = rec[(rec.species.str.lower().isin(["human", "homosapiens", "homo sapiens"
 beta["v_gene_clean"] = beta.v_gene.astype(str).str.replace(r"\*.*$", "", regex=True)
 beta = beta[beta.cdr3_aa.notna() & (beta.cdr3_aa != "")]
 print(f"index: {len(rec)} records -> {len(beta)} human beta with CDR3")
-print(f"clones: {len(clones)} unique beta receptors ({int(clones.expanded.sum())} expanded)")
 
 # -----------------------------
 # 1) Exact matching
@@ -88,7 +111,7 @@ print(f"CDR3 + V matches : {n_cv} of {len(m1)} ({100*n_cv/len(m1):.2f}%)")
 # 2) Expanded vs non-expanded
 # -----------------------------
 # The comparison that matters: if the expanding clones were bystander memory,
-# they should match known records MORE often than the unexpanded background.
+# they should match known records more often than the unexpanded background.
 rows = []
 for lvl, col in [("CDR3 only", "hit_cdr3"), ("CDR3 + V", "hit_cdr3_and_v")]:
     for grp, sub in [("expanded", m1[m1.expanded]), ("not expanded", m1[~m1.expanded])]:
@@ -113,7 +136,7 @@ except ImportError:
 # -----------------------------
 # 3) What are the hits against?
 # -----------------------------
-# The four sources do NOT agree on organism naming - CMV appears as both "CMV"
+# The four sources do not agree on organism naming - CMV appears as both "CMV"
 # and "Human herpesvirus 5 (Human cytomegalovirus)", SARS-CoV-2 as "SARS-CoV2"
 # and "SARS-CoV-2", influenza three different ways. Counting the raw strings
 # splits one organism across several rows and understates every one of them.
@@ -147,7 +170,7 @@ org = org[org.organism.notna() & (org.organism != "")]
 org["organism"] = org.organism.map(norm_org)
 # One receptor can carry several records for the same organism under different
 # spellings; collapse so n_receptors counts receptors, not label variants.
-org = org.drop_duplicates(subset=["Sample_ID", "CDR3_beta", "TRBV", "organism"])
+org = org.drop_duplicates(subset=["Sample_ID", "TRBV", "TRBJ", "CDR3_beta", "organism"])
 org_tab = (org.groupby("organism")
              .agg(n_receptors=("CDR3_beta", "nunique"),
                   n_cells=("n_cells", "sum"),
@@ -174,12 +197,21 @@ print(attr[attr.n_receptors >= 20].sort_values("pct_hits", ascending=False)
 # -----------------------------
 # 5) HIV specifically
 # -----------------------------
-# The index DOES contain HIV-annotated receptors, so the absence of HIV matches
+# The index does contain HIV-annotated receptors, so the absence of HIV matches
 # among expanded clones is a measured negative rather than an untested one -
 # though still bounded by HLA (unchecked) and by how sparsely HIV is covered.
 n_hiv_idx = int(beta.antigen_organism.astype(str)
                 .str.contains("immunodeficiency|^HIV", case=False, regex=True).sum())
-hiv = org[org.organism == "HIV"]
+hiv = org[org.organism == "HIV"].copy()
+
+# How many distinct organisms does each matching receptor hit? a CDR3 matching
+# records annotated to CMV, HIV, tuberculosis and SARS-CoV-2 at once is a
+# public, promiscuous sequence rather than evidence for any one specificity.
+n_org_per_rec = (org.groupby(["Sample_ID", "TRBV", "TRBJ", "CDR3_beta"])
+                   .organism.nunique().rename("n_organisms").reset_index())
+hiv = hiv.merge(n_org_per_rec, on=["Sample_ID", "TRBV", "TRBJ", "CDR3_beta"],
+                how="left")
+
 print(f"\n-- HIV --")
 print(f"  HIV-annotated beta records in the index: {n_hiv_idx}")
 print(f"  our receptors matching an HIV record (CDR3-only): {hiv.CDR3_beta.nunique()}"
@@ -188,7 +220,11 @@ print(f"  of those, from an expanded clone: {int(hiv.expanded.sum())}")
 if len(hiv):
     hiv.to_csv(os.path.join(OUT, "CHER_tcr_explorer_hiv_hits.csv"), index=False)
     print(hiv[["Sample_ID", "Timepoint", "TRBV", "CDR3_beta", "n_cells",
-               "expanded", "cell_types"]].to_string(index=False))
+               "expanded", "n_organisms", "cell_types"]].to_string(index=False))
+    print(f"\n  median distinct organisms matched per HIV-matching receptor: "
+          f"{hiv.n_organisms.median():.1f}")
+    print(f"  of all matching receptors, median organisms: "
+          f"{n_org_per_rec.n_organisms.median():.1f}")
 
 # -----------------------------
 # 6) The healthy control as a false-positive control

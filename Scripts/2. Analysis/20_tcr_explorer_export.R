@@ -1,7 +1,7 @@
 ############################################################
 # CHER ATI — 20: export the beta-chain clone table for TCR Explorer
 #
-# TCR Explorer (Packages/tcr-explorer-main) runs LOCALLY against a harmonized
+# TCR Explorer (Packages/tcr-explorer-main) runs locally against a harmonized
 # index of VDJdb + IEDB + McPAS + TCR3d (486,542 records after
 # `tcr-explorer-refresh`). This script writes the one table that
 # 21_tcr_explorer_query.py queries: unique beta receptors with the metadata
@@ -12,9 +12,9 @@
 # Allele suffixes are stripped (TRBV20-1*01 -> TRBV20-1): the index and the
 # tcrdist germline table are keyed on IMGT gene-level names.
 #
-# WHAT A HIT CAN AND CANNOT SAY. A match to a known CMV/EBV/influenza receptor
+# What a Hit can and cannot say. A match to a known CMV/EBV/influenza receptor
 # argues the clone is bystander memory rather than interruption-driven. A
-# NON-match is NOT evidence of HIV specificity — these databases are dominated
+# Non-match is not evidence of HIV specificity — these databases are dominated
 # by common viral and cancer epitopes, and this dataset was aligned to a stock
 # GRCh38 reference with no HIV genome, so there is no viral readout to
 # corroborate against. Read a negative as "not a known receptor", nothing more.
@@ -41,7 +41,7 @@ md <- seu@meta.data |>
                 clone = dplyr::all_of(CT_CANON), CTaa, CTgene) |>
   dplyr::filter(!is.na(clone), clone != "", clone != "NA")
 
-# CTgene is "TRAV.TRAJ.TRAC_TRBV.TRBD.TRBJ.TRBC"; CTaa is "CDR3a_CDR3b".
+# CTgene is "TRAV.TRAJ.TRAC_TRBV.Trbd.TRBJ.TRBC"; CTaa is "CDR3a_CDR3b".
 parse_beta <- function(ctgene, ctaa) {
   g <- strsplit(as.character(ctgene), "_", fixed = TRUE)
   a <- strsplit(as.character(ctaa),   "_", fixed = TRUE)
@@ -78,7 +78,7 @@ cat("Cells with a clonotype:        ", nrow(md), "\n",
 # Clone table: one row per (sample, beta receptor)
 # -----------------------------
 # Alpha chain kept for the paired tcrdist attempt. cell_types/clone_ids let a
-# hit be attributed without reloading the Seurat object.
+# hit be attributed without reloading the seurat object.
 parse_alpha <- function(ctgene, ctaa) {
   g <- strsplit(as.character(ctgene), "_", fixed = TRUE)
   a <- strsplit(as.character(ctaa),   "_", fixed = TRUE)

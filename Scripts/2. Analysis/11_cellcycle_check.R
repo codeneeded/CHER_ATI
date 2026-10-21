@@ -3,13 +3,13 @@
 #
 # Single purpose: settle one question. CellCycleScoring put ~40% of ATI cells in
 # S phase against ~20% of control cells, which would be a striking result if
-# true. But CellCycleScoring assigns phase by the RELATIVE score of the S and
+# true. But CellCycleScoring assigns phase by the relative score of the S and
 # G2M modules within the dataset — every cell gets a phase, including a resting
 # one, so in a mostly-quiescent population the S label can be assigned to cells
 # that are not cycling at all.
 #
-# The test: a genuinely proliferating cell transcribes MKI67, TOP2A, PCNA and
-# the MCM helicases. If S-labelled cells do not carry those above G1-labelled
+# The test: a genuinely proliferating cell transcribes MKI67, TOP2A, pcna and
+# the mcm helicases. If S-labelled cells do not carry those above G1-labelled
 # cells, the phase call is a scoring artefact and must not be reported as
 # proliferation.
 #
@@ -33,7 +33,7 @@ cts <- LayerData(seu, assay = "RNA", layer = "counts")
 
 PROLIF <- intersect(c("MKI67","TOP2A","PCNA","MCM2","MCM6","TYMS","CCNA2","BIRC5","UBE2C"),
                     rownames(cts))
-# A cell is PROLIFERATING if it detects at least two independent proliferation
+# A cell is proliferating if it detects at least two independent proliferation
 # transcripts — one can be ambient, two together is a cycling cell.
 n_prolif <- Matrix::colSums(cts[PROLIF, , drop = FALSE] > 0)
 seu$prolif_pos <- n_prolif >= 2
